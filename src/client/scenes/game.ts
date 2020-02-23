@@ -1,7 +1,7 @@
-import { Player } from "entities/player";
-import { Static } from "entities/static";
-import { Background } from "entities/background";
-import { BackgroundManager } from "managers/background-manager";
+import { Player } from "client/entities/player";
+import { Static } from "client/entities/static";
+import { Background } from "client/entities/background";
+import { BackgroundManager } from "client/managers/background-manager";
 
 declare var window: any;
 

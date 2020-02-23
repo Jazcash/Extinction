@@ -8,9 +8,9 @@ import "phaser";
 
 import Stats from "stats.js";
 
-import { LoadScene } from "scenes/load";
-import { GameScene } from "scenes/game";
-import { DebugScene } from "scenes/debug";
+import { LoadScene } from "client/scenes/load";
+import { GameScene } from "client/scenes/game";
+import { DebugScene } from "client/scenes/debug";
 
 declare var window: any;
 declare var __DEBUG__: boolean;
