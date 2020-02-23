@@ -1,7 +1,7 @@
 /*
 	TODO:
 		- Xbox controller support
-		- 1
+		- 2
 */
 
 import "phaser";
