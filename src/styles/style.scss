@@ -1,0 +1,22 @@
+body{
+	margin: 0;
+	padding: 0;
+	background: #222;
+}
+
+canvas{
+	display: block;
+}
+
+.loadFont{
+	position: absolute;
+	left: -1000px;
+	content: "woo";
+	visibility: hidden;
+}
+
+.game-container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

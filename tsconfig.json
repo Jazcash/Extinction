@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"sourceMap": true,
+		"strictNullChecks": true,
+		"noImplicitAny": true,
+		"module": "esnext",
+		"target": "es6",
+		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true,
+		"baseUrl": "./src"
+	}
+}
