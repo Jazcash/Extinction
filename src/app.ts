@@ -1,3 +1,8 @@
+/*
+	TODO:
+		- Xbox controller support
+*/
+
 import "phaser";
 
 import Stats from "stats.js";
