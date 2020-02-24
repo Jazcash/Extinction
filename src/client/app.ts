@@ -1,7 +1,7 @@
 /*
 	TODO:
 		- Xbox controller support
-		- 2
+		- Setup texture packer, scale assets to 0.5
 */
 
 import "phaser";
