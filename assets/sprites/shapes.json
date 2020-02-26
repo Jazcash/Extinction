@@ -1,8 +1,8 @@
 {
 	"generator_info": "Shape definitions generated with PhysicsEditor. Visit https://www.codeandweb.com/physicseditor",
-	"character": {
+	"player": {
 		"type": "fromPhysicsEditor",
-		"label": "character",
+		"label": "player",
 		"isStatic": false,
 		"density": 0.1,
 		"restitution": 0,
@@ -19,14 +19,14 @@
 				"label": "",
 				"isSensor": false,
 				"vertices": [
-					[ { "x":2, "y":2 }, { "x":2, "y":195 }, { "x":118, "y":195 }, { "x":118, "y":2 } ]
+					[ { "x":20, "y":3 }, { "x":20, "y":303 }, { "x":200, "y":303 }, { "x":200, "y":3 } ]
 				]
 			},
 			{
 				"label": "feet",
 				"isSensor": true,
 				"vertices": [
-					[ { "x":32, "y":178 }, { "x":32, "y":205 }, { "x":92, "y":205 }, { "x":92, "y":178 } ]
+					[ { "x":158, "y":284 }, { "x":65, "y":285 }, { "x":65, "y":312 }, { "x":157, "y":313 } ]
 				]
 			}
 		]

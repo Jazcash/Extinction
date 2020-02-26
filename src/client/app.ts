@@ -52,11 +52,11 @@ const game = window.game = new Phaser.Game({
 	]
 });
 
-if (__DEBUG__){
+if (__DEBUG__) {
 	const stats = new Stats();
 	stats.showPanel(2);
 	document.body.appendChild(stats.dom);
-	
+
 	game.events.on(Phaser.Core.Events.PRE_STEP, () => stats.begin());
 	game.events.on(Phaser.Core.Events.POST_RENDER, () => stats.end());
 }

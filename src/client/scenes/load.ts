@@ -27,8 +27,6 @@ export class LoadScene extends Phaser.Scene {
 
 		this.load.json("shapes", "sprites/shapes.json");
 
-		this.load.image("character", "sprites/character/idle.png");
-
 		this.load.image("stage1/main", "sprites/stage1/main.png");
 		this.load.image("stage1/bg1", "sprites/stage1/bg1.png");
 		this.load.image("stage1/bg2", "sprites/stage1/bg2.png");
@@ -36,6 +34,8 @@ export class LoadScene extends Phaser.Scene {
 		this.load.image("stage1/bg4", "sprites/stage1/bg4.png");
 		this.load.image("stage1/fg1", "sprites/stage1/fg1.png");
 		this.load.image("stage1/fg2", "sprites/stage1/fg2.png");
+
+		this.load.multiatlas("player", "sprites/player.json", "sprites");
 	}
 
 	create() {
