@@ -27,6 +27,9 @@ const game = window.game = new Phaser.Game({
 	scale: {
 		mode: Phaser.Scale.FIT
 	},
+	input: {
+		gamepad: true
+	},
 	physics: {
 		default: "matter",
 		matter: {

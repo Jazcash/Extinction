@@ -2,13 +2,14 @@ import { Player } from "client/entities/player";
 import { Static } from "client/entities/static";
 import { Background } from "client/entities/background";
 import { BackgroundManager } from "client/managers/background-manager";
+import config from "client/config";
 
 declare var window: any;
 
 export class GameScene extends Phaser.Scene {
 	cursors: Phaser.Types.Input.Keyboard.CursorKeys;
 	player: Player;
-	orange: Static;
+	gamepadInitialised = false;
 
 	constructor() {
 		super({
@@ -44,17 +45,32 @@ export class GameScene extends Phaser.Scene {
 		this.cameras.main.setBounds(bounds.x, bounds.y, bounds.width, bounds.height, true);
 
 		this.cursors = this.input.keyboard.createCursorKeys();
+
+		this.cursors.space?.on("down", () => {
+			this.player.jump();
+		});
 	}
 
 	update(){
-		if (this.cursors.left?.isDown) {
-			this.player.setVelocityX(-10);
-		} else if (this.cursors.right?.isDown){
-			this.player.setVelocityX(10);
+		const pad = this.input.gamepad.getPad(0);
+
+		if (pad && !this.gamepadInitialised){
+			this.gamepadInitialised = true;
+			this.setupGamepad(pad);
 		}
 
-		if ((this.cursors.space?.isDown || this.cursors.up?.isDown) && !this.player.jumping){
-			this.player.setVelocityY(-25);
+		const speed = this.player.jumping ? config.speed * 0.8 : config.speed;
+
+		if (this.cursors.left?.isDown || pad?.axes[0].getValue() === -1) {
+			this.player.setVelocityX(-speed);
+		} else if (this.cursors.right?.isDown || pad?.axes[0].getValue() === 1){
+			this.player.setVelocityX(speed);
 		}
+	}
+
+	setupGamepad(pad: Phaser.Input.Gamepad.Gamepad){
+		pad.on(Phaser.Input.Gamepad.Events.BUTTON_DOWN, () => {
+			this.player.jump();
+		});
 	}
 }

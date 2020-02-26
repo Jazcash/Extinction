@@ -1,12 +1,12 @@
 import { Physics } from "phaser";
+import config from "client/config";
 
 // import { Body, Bodies } from "matter";
 
 export class Player extends Phaser.Physics.Matter.Sprite {
-    //body: Phaser.Types.Physics.Matter.MatterBody;
-    //body: MatterJS.Body;
     body: MatterJS.BodyType;
     jumping = false;
+    hasDoubleJump = false;
 
     sensors: { [key: string]: MatterJS.BodyType}
 
@@ -27,6 +27,7 @@ export class Player extends Phaser.Physics.Matter.Sprite {
             event.pairs.forEach(pair => {
                 if (pair.bodyA.label === "feet" || pair.bodyB.label === "feet"){
                     this.jumping = false;
+                    this.hasDoubleJump = false;
                     this.body.friction = friction;
                 }
             });
@@ -40,5 +41,15 @@ export class Player extends Phaser.Physics.Matter.Sprite {
                 }
             });
         });
+    }
+
+    jump(){
+        if (!this.jumping){
+            this.setVelocityY(-config.jump);
+            this.hasDoubleJump = true;
+        } else if(this.jumping && this.hasDoubleJump){
+            this.setVelocityY(-config.jump);
+            this.hasDoubleJump = false;
+        }
     }
 }
