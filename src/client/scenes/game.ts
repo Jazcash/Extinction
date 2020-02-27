@@ -3,7 +3,6 @@ import { Static } from "client/entities/static";
 import { Background } from "client/entities/background";
 import { BackgroundManager } from "client/managers/background-manager";
 import config from "client/config";
-import { Direction } from "client/types";
 
 declare var window: any;
 
