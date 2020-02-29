@@ -35,6 +35,11 @@ export class LoadScene extends Phaser.Scene {
 		this.load.image("stage1/fg1", "sprites/stage1/fg1.png");
 		this.load.image("stage1/fg2", "sprites/stage1/fg2.png");
 
+		this.load.image("screen_1", "sprites/wireframe/screen_1.png");
+		this.load.image("screen_2", "sprites/wireframe/screen_2.png");
+		this.load.image("screen_3", "sprites/wireframe/screen_3.png");
+		this.load.image("screen_4", "sprites/wireframe/screen_4.png");
+
 		this.load.multiatlas("player", "sprites/player.json", "sprites");
 	}
 

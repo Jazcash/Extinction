@@ -1,9 +1,3 @@
-/*
-	TODO:
-		- Xbox controller support
-		- Setup texture packer, scale assets to 0.5
-*/
-
 import "phaser";
 
 import Stats from "stats.js";
@@ -18,7 +12,7 @@ declare var __DEBUG__: boolean;
 const game = window.game = new Phaser.Game({
 	parent: "game-container",
 	type: Phaser.AUTO,
-	width: 1820,
+	width: 1920,
 	height: 1080,
 	render: {
 		transparent: false,
@@ -35,9 +29,8 @@ const game = window.game = new Phaser.Game({
 		matter: {
 			debug: __DEBUG__ ? {
 				lineColor: 0xff0000,
-				staticLineColor: 0x00ff00,
-				sensorLineColor: 0x00ff00,
-				sensorFillColor: 0x00ff00
+				staticLineColor: 0x0000ff,
+				sensorLineColor: 0x00ff00
 			} : false,
 			gravity: {
 				x: 0,
@@ -48,7 +41,7 @@ const game = window.game = new Phaser.Game({
 	scene: [
 		new LoadScene(),
 		new GameScene(),
-		new DebugScene()
+		__DEBUG__ ? new DebugScene() : {}
 	]
 });
 
