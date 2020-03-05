@@ -28,9 +28,10 @@ export class DebugScene extends Phaser.Scene {
 
 		this.text.setText([
 			`FPS: ${this.game.loop.actualFps.toFixed()}`,
-			`Player State: ${player?.state}`
+			`Player State: ${player?.state}`,
+			`Player Feet Touching Count: ${player?.feetTouchingCount}`,
 			// `Jumping: ${gameScene.player?.jumping}`,
-			// `Has Double Jump: ${gameScene.player?.hasDoubleJump}`,
+			`Has Double Jump: ${gameScene.player?.hasDoubleJump}`,
 			// `Axes 0: ${this.input.gamepad.getPad(0)?.axes[0].getValue()}`,
 			// `Axes 1: ${this.input.gamepad.getPad(0)?.axes[1].getValue()}`,
 			// `Player Velocity: X: ${player?.body.velocity.x.toFixed(2)}, Y: ${player?.body.velocity.y.toFixed(2)}`,

@@ -4,15 +4,18 @@ import config from "client/config";
 export enum PlayerState {
 	IDLE = "IDLE",
 	RUNNING = "RUNNING",
-	JUMPING = "JUMPING"
+	JUMPING = "JUMPING",
+	CROUCHING = "CROUCHING",
+	CLIMBING = "CLIMBING"
 }
 
 export class Player extends Physics.Matter.Sprite {
 	state: PlayerState = PlayerState.IDLE;
 	body: MatterJS.BodyType;
-	jumping = false;
+	canJump = false;
 	hasDoubleJump = false;
 	sensors: { [key: string]: MatterJS.BodyType};
+	feetTouchingCount = 0;
 
 	constructor(scene: Phaser.Scene, x: number, y: number, texture = "player") {
 		super(scene.matter.world, x, y, texture, "idle");
@@ -24,27 +27,6 @@ export class Player extends Physics.Matter.Sprite {
 		this.setBody(physicsEditorConfig);
 
 		this.setFixedRotation();
-
-		const friction = this.body.friction;
-
-		this.world.on("collisionstart", (event: Physics.Matter.Events.CollisionStartEvent) => {
-			event.pairs.forEach(pair => {
-				if (pair.bodyA.label === "feet" || pair.bodyB.label === "feet") {
-					this.jumping = false;
-					this.hasDoubleJump = false;
-					this.body.friction = friction;
-				}
-			});
-		});
-
-		this.world.on("collisionend", (event: Physics.Matter.Events.CollisionStartEvent, a: MatterJS.BodyType, b: any) => {
-			event.pairs.forEach(pair => {
-				if (pair.bodyA.label === "feet" || pair.bodyB.label === "feet") {
-					this.jumping = true;
-					this.body.friction = 0;
-				}
-			});
-		});
 
 		this.anims.animationManager.create({
 			key: "running",
@@ -58,6 +40,36 @@ export class Player extends Physics.Matter.Sprite {
 			frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 18, prefix: "jumping/" }),
 			frameRate: 15
 		});
+
+		const friction = this.body.friction;
+		const frictionStatic = this.body.frictionStatic;
+
+		const feet = this.body.parts.find(part => part.label === "feet")!;
+		const leftSide = this.body.parts.find(part => part.label === "leftSide")!;
+		const rightSide = this.body.parts.find(part => part.label === "rightSide")!;
+		
+		feet.onCollideCallback = () => {
+			this.feetTouchingCount++;
+
+			if (this.state === PlayerState.JUMPING){
+				this.idle();
+			}
+		};
+
+		feet.onCollideEndCallback = () => {
+			this.feetTouchingCount--;
+
+			// if (this.feetTouchingCount === 0){
+			// 	this.state = PlayerState.JUMPING;
+			// 	this.body.friction = 0;
+			// }
+		};
+
+		//leftSide.coll
+	}
+
+	isAirbourne(){
+		return this.feetTouchingCount === 0;
 	}
 
 	idle() {
@@ -67,36 +79,37 @@ export class Player extends Physics.Matter.Sprite {
 
 		this.state = PlayerState.IDLE;
 
+		this.hasDoubleJump = false;
+
 		this.anims.stop();
 
 		this.setFrame("idle");
 	}
 
 	run(speed: number) {
-		const velocity = this.jumping ? speed * 0.8 : speed;
+		const velocity = this.state === PlayerState.JUMPING ? speed * 0.8 : speed;
 
 		this.setVelocityX(speed);
 
 		this.scaleX = velocity > 0 ? 1 : -1;
 		this.setFixedRotation();
 
-		if (!this.jumping) {
+		if (this.state !== PlayerState.JUMPING) {
 			this.state = PlayerState.RUNNING;
 			this.play("running", true);
 		}
 	}
 
 	jump() {
-		this.state = PlayerState.JUMPING;
-
-		if (!this.jumping) {
+		if (!this.isAirbourne() && !this.hasDoubleJump) {
+			this.state = PlayerState.JUMPING;
 			this.setVelocityY(-config.jump);
 			this.hasDoubleJump = true;
-			this.play("jumping");
-		} else if (this.jumping && this.hasDoubleJump) {
+			//this.play("jumping");
+		} else if (this.isAirbourne() && this.hasDoubleJump) {
 			this.setVelocityY(-config.jump);
 			this.hasDoubleJump = false;
-			this.play("jumping");
+			//this.play("jumping");
 		}
 	}
 }
