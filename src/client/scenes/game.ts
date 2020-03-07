@@ -2,7 +2,6 @@ import { Player, PlayerState } from "client/entities/player";
 import { BackgroundManager } from "client/managers/background-manager";
 import config from "client/config";
 import { Input } from "phaser";
-import { BlurPipeline } from "client/shaders/blur-pipeline";
 import { GaussianBlur1 } from "client/shaders/gaussian-blur-1-pipeline";
 
 declare var window: any;
@@ -34,13 +33,13 @@ export class GameScene extends Phaser.Scene {
 		this.matter.alignBody(world, 0, bounds.height, Phaser.Display.Align.BOTTOM_LEFT);
 
 		BackgroundManager.setupSceneBackgrounds(this, [
-			{ textures: ["bg1"], depth: -2, scrollFactorX: 0.5 },
-			{ textures: ["bg2"], depth: -3, scrollFactorX: 0.3 },
-			{ textures: ["bg3"], depth: -4, scrollFactorX: 0.25 },
-			{ textures: ["bg4"], depth: -5, scrollFactorX: 0.2 },
-			{ textures: ["main"], depth: 0, scrollFactorX: 1 },
-			{ textures: ["fg1"], depth: 1, scrollFactorX: 1.5 },
-			{ textures: ["fg2"], depth: 2, scrollFactorX: 2 },
+			// { textures: ["bg4"], depth: -4, scrollFactorX: 0.2 },
+			// { textures: ["bg3"], depth: -3, scrollFactorX: 0.25 },
+			// { textures: ["bg2"], depth: -2, scrollFactorX: 0.3 },
+			// { textures: ["bg1"], depth: -1, scrollFactorX: 0.5 },
+			{ textures: ["bg1/00", "bg1/01"], depth: -1, scrollFactorX: 1 },
+			// { textures: ["fg1"], depth: 1, scrollFactorX: 1.5 },
+			// { textures: ["fg2"], depth: 2, scrollFactorX: 2 },
 		]);
 
 		this.cameras.main.startFollow(this.player, true, 0.15, 0.15, -500);
@@ -79,11 +78,11 @@ export class GameScene extends Phaser.Scene {
 			this.player.run(-config.speed);
 		} else if (this.keys.right?.isDown || pad?.axes[0].getValue() === 1) {
 			this.player.run(config.speed);
-		} else if (this.player.state !== PlayerState.JUMPING) {
+		} else if (this.player.state !== PlayerState.JUMPING){
 			this.player.idle();
 		}
 
-		this.customPipeline.setFloat2('iMouse', this.input.x, this.input.y);
+		this.player.update();
 	}
 
 	setupGamepad(pad: Phaser.Input.Gamepad.Gamepad) {
@@ -93,8 +92,6 @@ export class GameScene extends Phaser.Scene {
 	}
 
 	pause(){
-		console.log("pause");
-
 		this.cameras.main.setRenderToTexture(this.customPipeline);
 
 		this.tweens.addCounter({
@@ -107,7 +104,25 @@ export class GameScene extends Phaser.Scene {
 			},
 			onComplete: () => {
 				this.scene.pause();
+
 				this.scene.run("menu");
+			}
+		});
+	}
+
+	resume(){
+		this.scene.resume();
+
+		this.tweens.addCounter({
+			from: 80,
+			to: 0,
+			ease: Phaser.Math.Easing.Quadratic.InOut,
+			duration: 100,
+			onUpdate: (tween, current) => {
+				this.customPipeline.setFloat1('Size', current.value);
+			},
+			onComplete: () => {
+				this.cameras.main.clearRenderToTexture();
 			}
 		});
 	}

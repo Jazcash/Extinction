@@ -1,6 +1,5 @@
-import { BlurPipeline } from "client/shaders/blur-pipeline";
-import { GrayscalePipeline } from "client/shaders/grayscale-pipeline";
 import { Input } from "phaser";
+import { GameScene } from "./game";
 
 export class MenuScene extends Phaser.Scene {
 	keys: { [key:string]: Phaser.Input.Keyboard.Key };
@@ -24,9 +23,8 @@ export class MenuScene extends Phaser.Scene {
 	}
 
 	unpause(){
-		//this.scene.sleep();
-		console.log("unpause");
-		//this.scene.get("game").scene.resume();
-		//this.scene.sleep();
+		(this.scene.get("game") as GameScene).resume();
+
+		this.scene.stop();
 	}
 }

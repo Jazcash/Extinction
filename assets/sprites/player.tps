@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>4</int>
         <key>texturePackerVersion</key>
-        <string>5.1.0</string>
+        <string>5.3.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -193,12 +193,110 @@
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
                 <rect>273,382,545,764</rect>
                 <key>scale9Paddings</key>
                 <rect>273,382,545,764</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">player/jumping/0.png</key>
+            <key type="filename">player/jumping/1.png</key>
+            <key type="filename">player/jumping/10.png</key>
+            <key type="filename">player/jumping/11.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>23,35,45,71</rect>
+                <key>scale9Paddings</key>
+                <rect>23,35,45,71</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">player/jumping/2.png</key>
+            <key type="filename">player/jumping/9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>23,33,45,66</rect>
+                <key>scale9Paddings</key>
+                <rect>23,33,45,66</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">player/jumping/3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>23,31,45,61</rect>
+                <key>scale9Paddings</key>
+                <rect>23,31,45,61</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">player/jumping/4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>23,32,45,65</rect>
+                <key>scale9Paddings</key>
+                <rect>23,32,45,65</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">player/jumping/5.png</key>
+            <key type="filename">player/jumping/6.png</key>
+            <key type="filename">player/jumping/7.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>23,37,45,73</rect>
+                <key>scale9Paddings</key>
+                <rect>23,37,45,73</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">player/jumping/8.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>23,37,45,74</rect>
+                <key>scale9Paddings</key>
+                <rect>23,37,45,74</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

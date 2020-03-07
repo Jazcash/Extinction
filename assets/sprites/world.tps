@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>4</int>
         <key>texturePackerVersion</key>
-        <string>5.1.0</string>
+        <string>5.3.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -88,9 +88,9 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>2048</int>
+            <int>4096</int>
             <key>height</key>
-            <int>2048</int>
+            <int>4096</int>
         </QSize>
         <key>fixedTextureSize</key>
         <QSize>
@@ -153,13 +153,13 @@
         <key>trimSpriteNames</key>
         <true/>
         <key>prependSmartFolderName</key>
-        <false/>
+        <true/>
         <key>autodetectAnimations</key>
         <true/>
         <key>globalSpriteSettings</key>
         <struct type="SpriteSettings">
             <key>scale</key>
-            <double>0.5</double>
+            <double>1</double>
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
@@ -181,41 +181,32 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">stage1/bg1.png</key>
-            <key type="filename">stage1/bg2.png</key>
-            <key type="filename">stage1/bg3.png</key>
-            <key type="filename">stage1/fg1.png</key>
-            <key type="filename">stage1/fg2.png</key>
-            <key type="filename">stage1/main.png</key>
+            <key type="filename">bg1/00.png</key>
+            <key type="filename">bg1/01.png</key>
+            <key type="filename">bg1/02.png</key>
+            <key type="filename">bg1/03.png</key>
+            <key type="filename">bg1/04.png</key>
+            <key type="filename">bg1/05.png</key>
+            <key type="filename">bg1/06.png</key>
+            <key type="filename">bg1/07.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>910,540,1820,1080</rect>
+                <rect>264,270,528,540</rect>
                 <key>scale9Paddings</key>
-                <rect>910,540,1820,1080</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">stage1/bg4.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>568,118,1137,237</rect>
-                <key>scale9Paddings</key>
-                <rect>568,118,1137,237</rect>
+                <rect>264,270,528,540</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>stage1</filename>
+            <filename>bg1</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

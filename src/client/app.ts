@@ -10,30 +10,8 @@ import { MenuScene } from "client/scenes/menu";
 declare var window: any;
 declare var __DEBUG__: boolean;
 
-var myCustomCanvas = document.createElement('canvas') as HTMLCanvasElement;
-
-myCustomCanvas.id = 'myCustomCanvas';
-
-document.body.appendChild(myCustomCanvas);
-
-var contextCreationConfig = {
-    alpha: false,
-    depth: false,
-    antialias: true,
-    premultipliedAlpha: true,
-    stencil: true,
-    preserveDrawingBuffer: false,
-    failIfMajorPerformanceCaveat: false,
-    powerPreference: 'default'
-};
-
-var myCustomContext = myCustomCanvas.getContext('webgl2', contextCreationConfig) as any;
-
 const game = window.game = new Phaser.Game({
 	parent: "game-container",
-	canvas: myCustomCanvas,
-    context: myCustomContext,
-	type: Phaser.WEBGL,
 	width: 1920,
 	height: 1080,
 	render: {

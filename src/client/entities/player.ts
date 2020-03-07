@@ -10,6 +10,8 @@ export enum PlayerState {
 }
 
 export class Player extends Physics.Matter.Sprite {
+	static friction: number;
+
 	state: PlayerState = PlayerState.IDLE;
 	body: MatterJS.BodyType;
 	canJump = false;
@@ -30,19 +32,18 @@ export class Player extends Physics.Matter.Sprite {
 
 		this.anims.animationManager.create({
 			key: "running",
-			frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 13, prefix: "running/" }),
+			frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 7, prefix: "running/" }),
 			frameRate: 15,
 			repeat: -1
 		});
 
 		this.anims.animationManager.create({
 			key: "jumping",
-			frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 18, prefix: "jumping/" }),
+			frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 11, prefix: "jumping/" }),
 			frameRate: 15
 		});
 
-		const friction = this.body.friction;
-		const frictionStatic = this.body.frictionStatic;
+		Player.friction = this.body.friction;
 
 		const feet = this.body.parts.find(part => part.label === "feet")!;
 		const leftSide = this.body.parts.find(part => part.label === "leftSide")!;
@@ -50,6 +51,8 @@ export class Player extends Physics.Matter.Sprite {
 		
 		feet.onCollideCallback = () => {
 			this.feetTouchingCount++;
+
+			// this.body.friction = friction;
 
 			if (this.state === PlayerState.JUMPING){
 				this.idle();
@@ -60,12 +63,13 @@ export class Player extends Physics.Matter.Sprite {
 			this.feetTouchingCount--;
 
 			// if (this.feetTouchingCount === 0){
+			// 	console.log("uncollide");
+
 			// 	this.state = PlayerState.JUMPING;
+
 			// 	this.body.friction = 0;
 			// }
 		};
-
-		//leftSide.coll
 	}
 
 	isAirbourne(){
@@ -101,15 +105,38 @@ export class Player extends Physics.Matter.Sprite {
 	}
 
 	jump() {
-		if (!this.isAirbourne() && !this.hasDoubleJump) {
-			this.state = PlayerState.JUMPING;
-			this.setVelocityY(-config.jump);
-			this.hasDoubleJump = true;
-			//this.play("jumping");
-		} else if (this.isAirbourne() && this.hasDoubleJump) {
+		// if (!this.isAirbourne() && !this.hasDoubleJump) {
+		// 	this.state = PlayerState.JUMPING;
+		// 	this.setVelocityY(-config.jump);
+		// 	this.hasDoubleJump = true;
+		// 	//this.play("jumping");
+		// } else if (this.isAirbourne() && this.hasDoubleJump) {
+		// 	this.setVelocityY(-config.jump);
+		// 	this.hasDoubleJump = false;
+		// 	//this.play("jumping");
+		// }
+		if (this.state === PlayerState.JUMPING && !this.hasDoubleJump){
+			return;
+		}
+
+		this.state = PlayerState.JUMPING;
+
+		if (this.hasDoubleJump){
 			this.setVelocityY(-config.jump);
 			this.hasDoubleJump = false;
-			//this.play("jumping");
+		} else if (!this.isAirbourne()){
+			this.setVelocityY(-config.jump);
+			this.hasDoubleJump = true;
+		}
+
+		this.play("jumping");
+	}
+
+	update(){
+		if (this.isAirbourne()){
+			this.body.friction = 0;
+		} else {
+			this.body.friction = Player.friction;
 		}
 	}
 }
