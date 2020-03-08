@@ -5,7 +5,7 @@ import Stats from "stats.js";
 import { LoadScene } from "client/scenes/load";
 import { GameScene } from "client/scenes/game";
 import { DebugScene } from "client/scenes/debug";
-import { MenuScene } from "client/scenes/menu";
+import { PauseScene } from "client/scenes/pause";
 
 declare var window: any;
 declare var __DEBUG__: boolean;
@@ -33,7 +33,6 @@ const game = window.game = new Phaser.Game({
 				sensorLineColor: 0x00ff00
 			} : false,
 			gravity: {
-				x: 0,
 				y: 3
 			}
 		}
@@ -41,7 +40,7 @@ const game = window.game = new Phaser.Game({
 	scene: [
 		new LoadScene(),
 		new GameScene(),
-		new MenuScene(),
+		new PauseScene(),
 		__DEBUG__ ? new DebugScene() : {}
 	]
 });

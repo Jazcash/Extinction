@@ -17,7 +17,7 @@ export class GaussianBlur1 extends Phaser.Renderer.WebGL.Pipelines.TextureTintPi
                 const float Pi = 6.28318530718; // Pi*2
     
                 const float Directions = 32.0; // BLUR DIRECTIONS (Default 16.0 - More is better but slower)
-                const float Quality = 10.0; // BLUR QUALITY (Default 4.0 - More is better but slower)
+                const float Quality = 20.0; // BLUR QUALITY (Default 4.0 - More is better but slower)
                
                 vec2 Radius = vec2(Size/iResolution.x, Size/iResolution.y);
                 

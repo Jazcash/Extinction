@@ -10,7 +10,7 @@
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "bg1/02",
+					"filename": "bg1/2",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "bg1/03",
+					"filename": "bg1/3",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "bg1/06",
+					"filename": "bg1/6",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "bg1/07",
+					"filename": "bg1/7",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "bg1/04",
+					"filename": "bg1/4",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "bg1/05",
+					"filename": "bg1/5",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "bg1/01",
+					"filename": "bg1/1",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "bg1/00",
+					"filename": "bg1/0",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -183,6 +183,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:241728e59a6729d3fea492458b86eb07:5a6a9708ea7caa194fca79acf9ad77a9:737c6939770e15949faf0ea6c5975d16$"
+		"smartupdate": "$TexturePacker:SmartUpdate:100f2a1d776b36d84bfbf9e9bbcc25f7:5a6a9708ea7caa194fca79acf9ad77a9:737c6939770e15949faf0ea6c5975d16$"
 	}
 }

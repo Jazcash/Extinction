@@ -1,4 +1,4 @@
-import { Physics, GameObjects } from "phaser";
+import { Physics, GameObjects, Game, Types } from "phaser";
 import config from "client/config";
 
 export enum PlayerState {
@@ -18,6 +18,7 @@ export class Player extends Physics.Matter.Sprite {
 	hasDoubleJump = false;
 	sensors: { [key: string]: MatterJS.BodyType};
 	feetTouchingCount = 0;
+	startingJump = false;
 
 	constructor(scene: Phaser.Scene, x: number, y: number, texture = "player") {
 		super(scene.matter.world, x, y, texture, "idle");
@@ -40,7 +41,7 @@ export class Player extends Physics.Matter.Sprite {
 		this.anims.animationManager.create({
 			key: "jumping",
 			frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 11, prefix: "jumping/" }),
-			frameRate: 15
+			frameRate: 30
 		});
 
 		Player.friction = this.body.friction;
@@ -49,10 +50,14 @@ export class Player extends Physics.Matter.Sprite {
 		const leftSide = this.body.parts.find(part => part.label === "leftSide")!;
 		const rightSide = this.body.parts.find(part => part.label === "rightSide")!;
 		
+		this.body.parts[1].onCollideCallback = (pair: Types.Physics.Matter.MatterCollisionPair) => {
+			if (pair.bodyA.label === "spikes" || pair.bodyB.label === "spikes"){
+				this.setVelocityY(-25);
+			}
+		};
+
 		feet.onCollideCallback = () => {
 			this.feetTouchingCount++;
-
-			// this.body.friction = friction;
 
 			if (this.state === PlayerState.JUMPING){
 				this.idle();
@@ -61,14 +66,6 @@ export class Player extends Physics.Matter.Sprite {
 
 		feet.onCollideEndCallback = () => {
 			this.feetTouchingCount--;
-
-			// if (this.feetTouchingCount === 0){
-			// 	console.log("uncollide");
-
-			// 	this.state = PlayerState.JUMPING;
-
-			// 	this.body.friction = 0;
-			// }
 		};
 	}
 
@@ -80,6 +77,8 @@ export class Player extends Physics.Matter.Sprite {
 		if (this.state === PlayerState.IDLE) {
 			return;
 		}
+
+		this.body.friction = Player.friction;
 
 		this.state = PlayerState.IDLE;
 
@@ -94,9 +93,12 @@ export class Player extends Physics.Matter.Sprite {
 		const velocity = this.state === PlayerState.JUMPING ? speed * 0.8 : speed;
 
 		this.setVelocityX(speed);
-
-		this.scaleX = velocity > 0 ? 1 : -1;
-		this.setFixedRotation();
+		
+		if (velocity > 0) {
+			this.setFlipX(false);
+		} else {
+			this.setFlipX(true);
+		}
 
 		if (this.state !== PlayerState.JUMPING) {
 			this.state = PlayerState.RUNNING;
@@ -105,21 +107,13 @@ export class Player extends Physics.Matter.Sprite {
 	}
 
 	jump() {
-		// if (!this.isAirbourne() && !this.hasDoubleJump) {
-		// 	this.state = PlayerState.JUMPING;
-		// 	this.setVelocityY(-config.jump);
-		// 	this.hasDoubleJump = true;
-		// 	//this.play("jumping");
-		// } else if (this.isAirbourne() && this.hasDoubleJump) {
-		// 	this.setVelocityY(-config.jump);
-		// 	this.hasDoubleJump = false;
-		// 	//this.play("jumping");
-		// }
 		if (this.state === PlayerState.JUMPING && !this.hasDoubleJump){
 			return;
 		}
 
 		this.state = PlayerState.JUMPING;
+
+		this.body.friction = 0;
 
 		if (this.hasDoubleJump){
 			this.setVelocityY(-config.jump);
@@ -130,13 +124,5 @@ export class Player extends Physics.Matter.Sprite {
 		}
 
 		this.play("jumping");
-	}
-
-	update(){
-		if (this.isAirbourne()){
-			this.body.friction = 0;
-		} else {
-			this.body.friction = Player.friction;
-		}
 	}
 }
