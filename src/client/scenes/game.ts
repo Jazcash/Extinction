@@ -74,6 +74,14 @@ export class GameScene extends Phaser.Scene {
 		} else if (this.player.state !== PlayerState.JUMPING){
 			this.player.idle();
 		}
+
+		if (this.player.isAirbourne()){
+			this.player.state = PlayerState.JUMPING;
+
+			this.player.body.friction = 0;
+
+			this.player.play("jumping", true);
+		}
 	}
 
 	setupGamepad(pad: Phaser.Input.Gamepad.Gamepad) {

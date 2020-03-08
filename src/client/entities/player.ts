@@ -123,6 +123,6 @@ export class Player extends Physics.Matter.Sprite {
 			this.hasDoubleJump = true;
 		}
 
-		this.play("jumping");
+		//this.play("jumping");
 	}
 }
