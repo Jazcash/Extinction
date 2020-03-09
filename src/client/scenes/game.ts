@@ -27,7 +27,7 @@ export class GameScene extends Phaser.Scene {
 		this.cameras.main.setBounds(bounds.x, bounds.y, bounds.width, bounds.height, true);
 		this.matter.world.setBounds(bounds.x, bounds.y, bounds.width, bounds.height);
 
-		this.player = window.player = new Player(this, 100, 100);
+		this.player = window.player = new Player(this, 2430, 700);
 
 		const world = window.world = this.matter.add.fromPhysicsEditor(0, 0, this.cache.json.get('shapes').world);
 		this.matter.alignBody(world, 0, bounds.height, Phaser.Display.Align.BOTTOM_LEFT);
@@ -67,20 +67,24 @@ export class GameScene extends Phaser.Scene {
 			this.setupGamepad(pad);
 		}
 
-		if (this.keys.left?.isDown || pad?.axes[0].getValue() === -1) {
-			this.player.run(-config.speed);
-		} else if (this.keys.right?.isDown || pad?.axes[0].getValue() === 1) {
-			this.player.run(config.speed);
-		} else if (this.player.state !== PlayerState.JUMPING){
-			this.player.idle();
-		}
-
-		if (this.player.isAirbourne()){
-			this.player.state = PlayerState.JUMPING;
-
+		if (this.player.spiked){
 			this.player.body.friction = 0;
-
-			this.player.play("jumping", true);
+		} else {
+			if (this.keys.left?.isDown || pad?.axes[0].getValue() === -1) {
+				this.player.run(-config.speed);
+			} else if (this.keys.right?.isDown || pad?.axes[0].getValue() === 1) {
+				this.player.run(config.speed);
+			} else if (this.player.state !== PlayerState.JUMPING){
+				this.player.idle();
+			}
+	
+			if (this.player.isAirbourne()){
+				this.player.state = PlayerState.JUMPING;
+	
+				this.player.body.friction = 0;
+	
+				this.player.play("jumping", true);
+			}
 		}
 	}
 

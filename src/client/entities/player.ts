@@ -19,6 +19,7 @@ export class Player extends Physics.Matter.Sprite {
 	sensors: { [key: string]: MatterJS.BodyType};
 	feetTouchingCount = 0;
 	startingJump = false;
+	spiked = false;
 
 	constructor(scene: Phaser.Scene, x: number, y: number, texture = "player") {
 		super(scene.matter.world, x, y, texture, "idle");
@@ -52,7 +53,7 @@ export class Player extends Physics.Matter.Sprite {
 		
 		this.body.parts[1].onCollideCallback = (pair: Types.Physics.Matter.MatterCollisionPair) => {
 			if (pair.bodyA.label === "spikes" || pair.bodyB.label === "spikes"){
-				this.setVelocityY(-25);
+				requestAnimationFrame(() => this.spike());
 			}
 		};
 
@@ -122,7 +123,32 @@ export class Player extends Physics.Matter.Sprite {
 			this.setVelocityY(-config.jump);
 			this.hasDoubleJump = true;
 		}
+	}
 
-		//this.play("jumping");
+	spike(){
+		this.spiked = true;
+
+		this.body.friction = 0;
+
+		this.anims.stop();
+
+		this.setFrame("idle");
+
+		if (this.body.velocity.y > 1){
+			this.setVelocityY(-25);
+		} else if(this.body.velocity.y < -1){
+			this.setVelocityY(25);
+		}
+
+		 else if (this.body.velocity.x > 1){
+			this.setVelocityX(-5);
+			this.body.friction = 0;
+		} else if(this.body.velocity.x < -1){
+			this.setVelocityX(5);
+		}
+
+		this.scene.time.delayedCall(500, () => {
+			this.spiked = false;
+		});
 	}
 }
