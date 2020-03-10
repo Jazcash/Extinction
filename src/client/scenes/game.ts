@@ -27,7 +27,7 @@ export class GameScene extends Phaser.Scene {
 		this.cameras.main.setBounds(bounds.x, bounds.y, bounds.width, bounds.height, true);
 		this.matter.world.setBounds(bounds.x, bounds.y, bounds.width, bounds.height);
 
-		this.player = window.player = new Player(this, 2430, 700);
+		this.player = window.player = new Player(this, 100, 700);
 
 		const world = window.world = this.matter.add.fromPhysicsEditor(0, 0, this.cache.json.get('shapes').world);
 		this.matter.alignBody(world, 0, bounds.height, Phaser.Display.Align.BOTTOM_LEFT);
@@ -47,8 +47,9 @@ export class GameScene extends Phaser.Scene {
 		this.keys = this.input.keyboard.addKeys({
 			left: Input.Keyboard.KeyCodes.LEFT,
 			right: Input.Keyboard.KeyCodes.RIGHT,
-			space: Input.Keyboard.KeyCodes.SPACE,
 			up: Input.Keyboard.KeyCodes.UP,
+			down: Input.Keyboard.KeyCodes.DOWN,
+			space: Input.Keyboard.KeyCodes.SPACE,
 			esc: Input.Keyboard.KeyCodes.ESC
 		}) as any;
 
@@ -74,8 +75,14 @@ export class GameScene extends Phaser.Scene {
 				this.player.run(-config.speed);
 			} else if (this.keys.right?.isDown || pad?.axes[0].getValue() === 1) {
 				this.player.run(config.speed);
-			} else if (this.player.state !== PlayerState.JUMPING){
+			} else if (this.player.state !== PlayerState.JUMPING && this.player.state !== PlayerState.CROUCHING){
 				this.player.idle();
+			}
+
+			if (this.keys.down?.isDown){
+				this.player.crouch();
+			} else {
+				this.player.stand();
 			}
 	
 			if (this.player.isAirbourne()){

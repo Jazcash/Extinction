@@ -70,6 +70,18 @@ export class Player extends Physics.Matter.Sprite {
 		};
 	}
 
+	test(){
+		// const physicsEditorConfig: Phaser.Types.Physics.Matter.MatterSetBodyConfig = this.scene.cache.json.get('shapes')["crouching"];
+
+		// this.setBody(physicsEditorConfig);
+
+		// this.setFixedRotation();
+
+		const crouchBox = this.body.parts.find(part => part.label === "test");
+
+		console.log(crouchBox);
+	}
+
 	isAirbourne(){
 		return this.feetTouchingCount === 0;
 	}
@@ -125,6 +137,18 @@ export class Player extends Physics.Matter.Sprite {
 		}
 	}
 
+	crouch(){
+		this.state = PlayerState.CROUCHING;
+	}
+
+	stand(){
+		if (this.state !== PlayerState.CROUCHING){
+			return;
+		}
+
+		this.state = PlayerState.IDLE;
+	}
+
 	spike(){
 		this.spiked = true;
 
@@ -138,17 +162,21 @@ export class Player extends Physics.Matter.Sprite {
 			this.setVelocityY(-25);
 		} else if(this.body.velocity.y < -1){
 			this.setVelocityY(25);
-		}
-
-		 else if (this.body.velocity.x > 1){
+		} else if (this.body.velocity.x > 1){
 			this.setVelocityX(-5);
 			this.body.friction = 0;
 		} else if(this.body.velocity.x < -1){
 			this.setVelocityX(5);
 		}
 
-		this.scene.time.delayedCall(500, () => {
+		this.scene.time.delayedCall(250, () => {
 			this.spiked = false;
 		});
+
+		this.damage();
+	}
+
+	damage(){
+		
 	}
 }

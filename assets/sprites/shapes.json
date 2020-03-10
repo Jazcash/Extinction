@@ -1,50 +1,5 @@
 {
 	"generator_info": "Shape definitions generated with PhysicsEditor. Visit https://www.codeandweb.com/physicseditor",
-	"player": {
-		"type": "fromPhysicsEditor",
-		"label": "player",
-		"isStatic": false,
-		"density": 0.1,
-		"restitution": 0,
-		"friction": 0.7,
-		"frictionAir": 0.01,
-		"frictionStatic": 50,
-		"collisionFilter": {
-			"group": 0,
-			"category": 1,
-			"mask": 255
-		},
-		"fixtures": [
-			{
-				"label": "",
-				"isSensor": false,
-				"vertices": [
-					[ { "x":0, "y":0 }, { "x":0, "y":150 }, { "x":91, "y":150 }, { "x":91, "y":0 } ]
-				]
-			},
-			{
-				"label": "feet",
-				"isSensor": true,
-				"vertices": [
-					[ { "x":23, "y":144 }, { "x":23, "y":152 }, { "x":70, "y":152 }, { "x":70, "y":144 } ]
-				]
-			},
-			{
-				"label": "leftSide",
-				"isSensor": true,
-				"vertices": [
-					[ { "x":-4, "y":4 }, { "x":-4, "y":144 }, { "x":0, "y":144 }, { "x":0, "y":4 } ]
-				]
-			},
-			{
-				"label": "rightSide",
-				"isSensor": true,
-				"vertices": [
-					[ { "x":91, "y":4 }, { "x":91, "y":144 }, { "x":95, "y":144 }, { "x":95, "y":4 } ]
-				]
-			}
-		]
-	},
 	"world": {
 		"type": "fromPhysicsEditor",
 		"label": "world",
@@ -92,7 +47,7 @@
 			},
 			{
 				"label": "spikes",
-				"isSensor": true,
+				"isSensor": false,
 				"vertices": [
 					[ { "x":697, "y":1052 }, { "x":1206, "y":1054 }, { "x":1271, "y":990 }, { "x":700, "y":895 } ]
 				]
@@ -107,16 +62,61 @@
 			},
 			{
 				"label": "spikes",
-				"isSensor": true,
+				"isSensor": false,
 				"vertices": [
 					[ { "x":3624, "y":715 }, { "x":3796, "y":642 }, { "x":3780, "y":477 }, { "x":3707, "y":445 }, { "x":3650, "y":492 } ]
 				]
 			},
 			{
 				"label": "spikes",
-				"isSensor": true,
+				"isSensor": false,
 				"vertices": [
 					[ { "x":2617, "y":677 }, { "x":2643, "y":713 }, { "x":3051, "y":704 }, { "x":3054, "y":673 } ]
+				]
+			}
+		]
+	},
+	"player": {
+		"type": "fromPhysicsEditor",
+		"label": "player",
+		"isStatic": false,
+		"density": 0.1,
+		"restitution": 0,
+		"friction": 0.7,
+		"frictionAir": 0.01,
+		"frictionStatic": 50,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":0, "y":0 }, { "x":0, "y":150 }, { "x":91, "y":150 }, { "x":91, "y":0 } ]
+				]
+			},
+			{
+				"label": "feet",
+				"isSensor": true,
+				"vertices": [
+					[ { "x":23, "y":144 }, { "x":23, "y":152 }, { "x":70, "y":152 }, { "x":70, "y":144 } ]
+				]
+			},
+			{
+				"label": "leftSide",
+				"isSensor": true,
+				"vertices": [
+					[ { "x":-4, "y":4 }, { "x":-4, "y":144 }, { "x":0, "y":144 }, { "x":0, "y":4 } ]
+				]
+			},
+			{
+				"label": "rightSide",
+				"isSensor": true,
+				"vertices": [
+					[ { "x":91, "y":4 }, { "x":91, "y":144 }, { "x":95, "y":144 }, { "x":95, "y":4 } ]
 				]
 			}
 		]
