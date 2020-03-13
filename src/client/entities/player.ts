@@ -1,5 +1,6 @@
 import { Physics, GameObjects, Game, Types } from "phaser";
 import config from "client/config";
+import { Utils } from "client/utils/utils";
 
 export enum PlayerState {
 	IDLE = "IDLE",
@@ -20,6 +21,13 @@ export class Player extends Physics.Matter.Sprite {
 	feetTouchingCount = 0;
 	startingJump = false;
 	spiked = false;
+	parts: {
+		main: MatterJS.BodyType;
+		crouch: MatterJS.BodyType;
+		feet: MatterJS.BodyType;
+		leftSensor: MatterJS.BodyType;
+		rightSensor: MatterJS.BodyType;
+	}
 
 	constructor(scene: Phaser.Scene, x: number, y: number, texture = "player") {
 		super(scene.matter.world, x, y, texture, "idle");
@@ -40,6 +48,13 @@ export class Player extends Physics.Matter.Sprite {
 		});
 
 		this.anims.animationManager.create({
+			key: "crouching",
+			frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 5, prefix: "crouching/" }),
+			frameRate: 15,
+			repeat: -1
+		});
+
+		this.anims.animationManager.create({
 			key: "jumping",
 			frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 11, prefix: "jumping/" }),
 			frameRate: 30
@@ -47,75 +62,82 @@ export class Player extends Physics.Matter.Sprite {
 
 		Player.friction = this.body.friction;
 
-		const feet = this.body.parts.find(part => part.label === "feet")!;
-		const leftSide = this.body.parts.find(part => part.label === "leftSide")!;
-		const rightSide = this.body.parts.find(part => part.label === "rightSide")!;
+		this.parts = {
+			main: this.body.parts.find(part => part.label === "main")!,
+			crouch: this.body.parts.find(part => part.label === "crouch")!,
+			feet: this.body.parts.find(part => part.label === "feet")!,
+			leftSensor: this.body.parts.find(part => part.label === "leftSide")!,
+			rightSensor: this.body.parts.find(part => part.label === "rightSide")!
+		}
 		
-		this.body.parts[1].onCollideCallback = (pair: Types.Physics.Matter.MatterCollisionPair) => {
+		this.parts.main.onCollideCallback = (pair: Types.Physics.Matter.MatterCollisionPair) => {
 			if (pair.bodyA.label === "spikes" || pair.bodyB.label === "spikes"){
 				requestAnimationFrame(() => this.spike());
 			}
 		};
 
-		feet.onCollideCallback = () => {
+		this.parts.feet.onCollideCallback = () => {
 			this.feetTouchingCount++;
 
 			if (this.state === PlayerState.JUMPING){
-				this.idle();
+				this.run();
 			}
 		};
 
-		feet.onCollideEndCallback = () => {
+		this.parts.feet.onCollideEndCallback = () => {
 			this.feetTouchingCount--;
 		};
-	}
-
-	test(){
-		// const physicsEditorConfig: Phaser.Types.Physics.Matter.MatterSetBodyConfig = this.scene.cache.json.get('shapes')["crouching"];
-
-		// this.setBody(physicsEditorConfig);
-
-		// this.setFixedRotation();
-
-		const crouchBox = this.body.parts.find(part => part.label === "test");
-
-		console.log(crouchBox);
 	}
 
 	isAirbourne(){
 		return this.feetTouchingCount === 0;
 	}
 
-	idle() {
-		if (this.state === PlayerState.IDLE) {
-			return;
-		}
-
-		this.body.friction = Player.friction;
-
-		this.state = PlayerState.IDLE;
-
-		this.hasDoubleJump = false;
-
-		this.anims.stop();
-
-		this.setFrame("idle");
-	}
-
-	run(speed: number) {
-		const velocity = this.state === PlayerState.JUMPING ? speed * 0.8 : speed;
-
-		this.setVelocityX(speed);
-		
-		if (velocity > 0) {
-			this.setFlipX(false);
-		} else {
-			this.setFlipX(true);
+	run(speed?: number) {
+		if (this.state === PlayerState.CROUCHING){
+			this.parts.main.vertices![0].y = 690;
+			this.parts.main.vertices![1].y = 690;
 		}
 
 		if (this.state !== PlayerState.JUMPING) {
 			this.state = PlayerState.RUNNING;
+
 			this.play("running", true);
+		}
+		
+		if (speed){
+			const velocity = this.state === PlayerState.JUMPING ? speed * 0.8 : speed;
+
+			this.setVelocityX(velocity);
+
+			this.setFlipX(speed < 0);
+		} else {
+			this.setFrame("idle");
+			
+			this.state = PlayerState.IDLE;
+
+			this.hasDoubleJump = false;
+		}
+	}
+	
+	crouch(speed?: number){
+		if (this.state !== PlayerState.CROUCHING){
+			this.parts.main.vertices![0].y = 735;
+			this.parts.main.vertices![1].y = 735;
+		}
+
+		if (this.state !== PlayerState.JUMPING) {
+			this.state = PlayerState.CROUCHING;
+
+			this.play("crouching", true);
+		}
+
+		if (speed){
+			this.setVelocityX(speed);
+
+			this.setFlipX(speed < 0);
+		} else {
+			this.setFrame("crouching/0");
 		}
 	}
 
@@ -126,7 +148,7 @@ export class Player extends Physics.Matter.Sprite {
 
 		this.state = PlayerState.JUMPING;
 
-		this.body.friction = 0;
+		//this.body.friction = 0;
 
 		if (this.hasDoubleJump){
 			this.setVelocityY(-config.jump);
@@ -135,10 +157,6 @@ export class Player extends Physics.Matter.Sprite {
 			this.setVelocityY(-config.jump);
 			this.hasDoubleJump = true;
 		}
-	}
-
-	crouch(){
-		this.state = PlayerState.CROUCHING;
 	}
 
 	stand(){
@@ -171,6 +189,7 @@ export class Player extends Physics.Matter.Sprite {
 
 		this.scene.time.delayedCall(250, () => {
 			this.spiked = false;
+			this.body.friction = Player.friction;
 		});
 
 		this.damage();

@@ -1,0 +1,2 @@
+Add crouch so it's possible to get past spikes
+Character menu

@@ -27,7 +27,7 @@ export class GameScene extends Phaser.Scene {
 		this.cameras.main.setBounds(bounds.x, bounds.y, bounds.width, bounds.height, true);
 		this.matter.world.setBounds(bounds.x, bounds.y, bounds.width, bounds.height);
 
-		this.player = window.player = new Player(this, 100, 700);
+		this.player = window.player = new Player(this, 2400, 500);
 
 		const world = window.world = this.matter.add.fromPhysicsEditor(0, 0, this.cache.json.get('shapes').world);
 		this.matter.alignBody(world, 0, bounds.height, Phaser.Display.Align.BOTTOM_LEFT);
@@ -72,23 +72,33 @@ export class GameScene extends Phaser.Scene {
 			this.player.body.friction = 0;
 		} else {
 			if (this.keys.left?.isDown || pad?.axes[0].getValue() === -1) {
-				this.player.run(-config.speed);
+				if (this.keys.down?.isDown){
+					this.player.crouch(-config.crouchSpeed);
+				} else {
+					this.player.run(-config.speed);
+				}
 			} else if (this.keys.right?.isDown || pad?.axes[0].getValue() === 1) {
-				this.player.run(config.speed);
-			} else if (this.player.state !== PlayerState.JUMPING && this.player.state !== PlayerState.CROUCHING){
-				this.player.idle();
+				if (this.keys.down?.isDown){
+					this.player.crouch(config.crouchSpeed);
+				} else {
+					this.player.run(config.speed);
+				}
+			} else if (this.keys.down?.isDown) {
+				this.player.crouch();
+			} else if (this.player.state !== PlayerState.JUMPING){
+				this.player.run();
 			}
 
-			if (this.keys.down?.isDown){
-				this.player.crouch();
-			} else {
-				this.player.stand();
-			}
+			// if (this.keys.down?.isDown){
+			//	this.player.crouch();
+			// } else {
+			// 	this.player.stand();
+			// }
 	
 			if (this.player.isAirbourne()){
 				this.player.state = PlayerState.JUMPING;
 	
-				this.player.body.friction = 0;
+				//this.player.body.friction = 0;
 	
 				this.player.play("jumping", true);
 			}

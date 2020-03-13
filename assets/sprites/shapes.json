@@ -92,13 +92,6 @@
 		},
 		"fixtures": [
 			{
-				"label": "",
-				"isSensor": false,
-				"vertices": [
-					[ { "x":0, "y":0 }, { "x":0, "y":150 }, { "x":91, "y":150 }, { "x":91, "y":0 } ]
-				]
-			},
-			{
 				"label": "feet",
 				"isSensor": true,
 				"vertices": [
@@ -117,6 +110,13 @@
 				"isSensor": true,
 				"vertices": [
 					[ { "x":91, "y":4 }, { "x":91, "y":144 }, { "x":95, "y":144 }, { "x":95, "y":4 } ]
+				]
+			},
+			{
+				"label": "main",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":0, "y":0 }, { "x":0, "y":150 }, { "x":91, "y":150 }, { "x":91, "y":0 } ]
 				]
 			}
 		]
