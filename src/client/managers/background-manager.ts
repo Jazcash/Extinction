@@ -11,7 +11,7 @@ export class BackgroundManager {
 		for (const bgConfig of configs) {
 			let lastBg: GameObjects.Image | undefined;
 
-			for (let i=0; i<5; i++){
+			for (let i=0; i<sectionCount; i++){
 				const bg = scene.add.image(lastBg?.getBounds().right ?? 0, 0, "world", `${bgConfig.texture}/${i}`);
 				bg.scrollFactorX = bgConfig.scrollFactorX;
 				bg.setOrigin(0, 0);

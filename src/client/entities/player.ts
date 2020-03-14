@@ -97,6 +97,8 @@ export class Player extends Physics.Matter.Sprite {
 		if (this.state === PlayerState.CROUCHING){
 			//this.parts.main.vertices![0].y = 690;
 			//this.parts.main.vertices![1].y = 690;
+			this.parts.main.vertices![0].y -= 50;
+			this.parts.main.vertices![1].y -= 50;
 		}
 
 		if (this.state !== PlayerState.JUMPING) {
@@ -121,32 +123,40 @@ export class Player extends Physics.Matter.Sprite {
 	}
 	
 	crouch(speed?: number){
+		if (this.state === PlayerState.JUMPING){
+			return;
+		}
+
 		if (this.state !== PlayerState.CROUCHING){
-			//this.parts.main.vertices![0].y = 735;
-			//this.parts.main.vertices![1].y = 735;
+			this.parts.main.vertices![0].y += 50;
+			this.parts.main.vertices![1].y += 50;
 		}
 
-		if (this.state !== PlayerState.JUMPING) {
-			this.state = PlayerState.CROUCHING;
-
-			this.play("crouching", true);
-		}
+		this.state = PlayerState.CROUCHING;
 
 		if (speed){
 			this.setVelocityX(speed);
 
 			this.setFlipX(speed < 0);
+
+			this.play("crouching", true);
 		} else {
 			this.setFrame("crouching/0");
 		}
 	}
 
 	jump() {
+		if (this.state === PlayerState.CROUCHING){
+			return;
+		}
+
 		if (this.state === PlayerState.JUMPING && !this.hasDoubleJump){
 			return;
 		}
 
 		this.state = PlayerState.JUMPING;
+
+		this.body.friction = 0;
 
 		if (this.hasDoubleJump){
 			this.setVelocityY(-config.jump);

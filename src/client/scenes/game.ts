@@ -20,7 +20,7 @@ export class GameScene extends Phaser.Scene {
 	}
 
 	create() {
-		const bounds = { x: 0, y: 0, width: 6000, height: 1080};
+		const bounds = { x: 0, y: 0, width: 180000, height: 1080};
 
 		this.cameras.main.setBackgroundColor("#A9EFFE");
 
@@ -32,14 +32,13 @@ export class GameScene extends Phaser.Scene {
 		const world = window.world = this.matter.add.fromPhysicsEditor(0, 0, this.cache.json.get('shapes').world);
 		this.matter.alignBody(world, 0, bounds.height, Phaser.Display.Align.BOTTOM_LEFT);
 
-		BackgroundManager.setupSceneBackgrounds(this, 8, [
-			// { textures: ["bg4"], depth: -4, scrollFactorX: 0.2 },
-			// { textures: ["bg3"], depth: -3, scrollFactorX: 0.25 },
-			// { textures: ["bg2"], depth: -2, scrollFactorX: 0.3 },
-			// { textures: ["bg1"], depth: -1, scrollFactorX: 0.5 },
+		BackgroundManager.setupSceneBackgrounds(this, 62, [
+			{ texture: "bg3", depth: -3, scrollFactorX: 0.3 },
+			{ texture: "bg2", depth: -2, scrollFactorX: 0.5 },
 			{ texture: "bg1", depth: -1, scrollFactorX: 1 },
-			// { textures: ["fg1"], depth: 1, scrollFactorX: 1.5 },
-			// { textures: ["fg2"], depth: 2, scrollFactorX: 2 },
+			{ texture: "fg1", depth: 1, scrollFactorX: 1.25 },
+			{ texture: "fg2", depth: 2, scrollFactorX: 1.5 },
+			{ texture: "fg3", depth: 3, scrollFactorX: 1.75 },
 		]);
 
 		this.cameras.main.startFollow(this.player, true, 0.15, 0.15, -500);
@@ -88,12 +87,6 @@ export class GameScene extends Phaser.Scene {
 			} else if (this.player.state !== PlayerState.JUMPING){
 				this.player.run();
 			}
-
-			// if (this.keys.down?.isDown){
-			//	this.player.crouch();
-			// } else {
-			// 	this.player.stand();
-			// }
 	
 			if (this.player.isAirbourne()){
 				this.player.state = PlayerState.JUMPING;

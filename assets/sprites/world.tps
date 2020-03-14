@@ -153,7 +153,7 @@
         <key>trimSpriteNames</key>
         <true/>
         <key>prependSmartFolderName</key>
-        <true/>
+        <false/>
         <key>autodetectAnimations</key>
         <true/>
         <key>globalSpriteSettings</key>
@@ -181,14 +181,417 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">bg1/00.png</key>
-            <key type="filename">bg1/01.png</key>
-            <key type="filename">bg1/02.png</key>
-            <key type="filename">bg1/03.png</key>
-            <key type="filename">bg1/04.png</key>
-            <key type="filename">bg1/05.png</key>
-            <key type="filename">bg1/06.png</key>
-            <key type="filename">bg1/07.png</key>
+            <key type="filename">world/bg1/0.png</key>
+            <key type="filename">world/bg1/1.png</key>
+            <key type="filename">world/bg1/10.png</key>
+            <key type="filename">world/bg1/11.png</key>
+            <key type="filename">world/bg1/12.png</key>
+            <key type="filename">world/bg1/13.png</key>
+            <key type="filename">world/bg1/14.png</key>
+            <key type="filename">world/bg1/15.png</key>
+            <key type="filename">world/bg1/16.png</key>
+            <key type="filename">world/bg1/17.png</key>
+            <key type="filename">world/bg1/18.png</key>
+            <key type="filename">world/bg1/19.png</key>
+            <key type="filename">world/bg1/2.png</key>
+            <key type="filename">world/bg1/20.png</key>
+            <key type="filename">world/bg1/21.png</key>
+            <key type="filename">world/bg1/22.png</key>
+            <key type="filename">world/bg1/23.png</key>
+            <key type="filename">world/bg1/24.png</key>
+            <key type="filename">world/bg1/25.png</key>
+            <key type="filename">world/bg1/26.png</key>
+            <key type="filename">world/bg1/27.png</key>
+            <key type="filename">world/bg1/28.png</key>
+            <key type="filename">world/bg1/29.png</key>
+            <key type="filename">world/bg1/3.png</key>
+            <key type="filename">world/bg1/30.png</key>
+            <key type="filename">world/bg1/31.png</key>
+            <key type="filename">world/bg1/32.png</key>
+            <key type="filename">world/bg1/33.png</key>
+            <key type="filename">world/bg1/34.png</key>
+            <key type="filename">world/bg1/35.png</key>
+            <key type="filename">world/bg1/36.png</key>
+            <key type="filename">world/bg1/37.png</key>
+            <key type="filename">world/bg1/38.png</key>
+            <key type="filename">world/bg1/39.png</key>
+            <key type="filename">world/bg1/4.png</key>
+            <key type="filename">world/bg1/40.png</key>
+            <key type="filename">world/bg1/41.png</key>
+            <key type="filename">world/bg1/42.png</key>
+            <key type="filename">world/bg1/43.png</key>
+            <key type="filename">world/bg1/44.png</key>
+            <key type="filename">world/bg1/45.png</key>
+            <key type="filename">world/bg1/46.png</key>
+            <key type="filename">world/bg1/47.png</key>
+            <key type="filename">world/bg1/48.png</key>
+            <key type="filename">world/bg1/49.png</key>
+            <key type="filename">world/bg1/5.png</key>
+            <key type="filename">world/bg1/50.png</key>
+            <key type="filename">world/bg1/51.png</key>
+            <key type="filename">world/bg1/52.png</key>
+            <key type="filename">world/bg1/53.png</key>
+            <key type="filename">world/bg1/54.png</key>
+            <key type="filename">world/bg1/55.png</key>
+            <key type="filename">world/bg1/56.png</key>
+            <key type="filename">world/bg1/57.png</key>
+            <key type="filename">world/bg1/58.png</key>
+            <key type="filename">world/bg1/59.png</key>
+            <key type="filename">world/bg1/6.png</key>
+            <key type="filename">world/bg1/60.png</key>
+            <key type="filename">world/bg1/7.png</key>
+            <key type="filename">world/bg1/8.png</key>
+            <key type="filename">world/bg1/9.png</key>
+            <key type="filename">world/bg2/0.png</key>
+            <key type="filename">world/bg2/1.png</key>
+            <key type="filename">world/bg2/10.png</key>
+            <key type="filename">world/bg2/11.png</key>
+            <key type="filename">world/bg2/12.png</key>
+            <key type="filename">world/bg2/13.png</key>
+            <key type="filename">world/bg2/14.png</key>
+            <key type="filename">world/bg2/15.png</key>
+            <key type="filename">world/bg2/16.png</key>
+            <key type="filename">world/bg2/17.png</key>
+            <key type="filename">world/bg2/18.png</key>
+            <key type="filename">world/bg2/19.png</key>
+            <key type="filename">world/bg2/2.png</key>
+            <key type="filename">world/bg2/20.png</key>
+            <key type="filename">world/bg2/21.png</key>
+            <key type="filename">world/bg2/22.png</key>
+            <key type="filename">world/bg2/23.png</key>
+            <key type="filename">world/bg2/24.png</key>
+            <key type="filename">world/bg2/25.png</key>
+            <key type="filename">world/bg2/26.png</key>
+            <key type="filename">world/bg2/27.png</key>
+            <key type="filename">world/bg2/28.png</key>
+            <key type="filename">world/bg2/29.png</key>
+            <key type="filename">world/bg2/3.png</key>
+            <key type="filename">world/bg2/30.png</key>
+            <key type="filename">world/bg2/31.png</key>
+            <key type="filename">world/bg2/32.png</key>
+            <key type="filename">world/bg2/33.png</key>
+            <key type="filename">world/bg2/34.png</key>
+            <key type="filename">world/bg2/35.png</key>
+            <key type="filename">world/bg2/36.png</key>
+            <key type="filename">world/bg2/37.png</key>
+            <key type="filename">world/bg2/38.png</key>
+            <key type="filename">world/bg2/39.png</key>
+            <key type="filename">world/bg2/4.png</key>
+            <key type="filename">world/bg2/40.png</key>
+            <key type="filename">world/bg2/41.png</key>
+            <key type="filename">world/bg2/42.png</key>
+            <key type="filename">world/bg2/43.png</key>
+            <key type="filename">world/bg2/44.png</key>
+            <key type="filename">world/bg2/45.png</key>
+            <key type="filename">world/bg2/46.png</key>
+            <key type="filename">world/bg2/47.png</key>
+            <key type="filename">world/bg2/48.png</key>
+            <key type="filename">world/bg2/49.png</key>
+            <key type="filename">world/bg2/5.png</key>
+            <key type="filename">world/bg2/50.png</key>
+            <key type="filename">world/bg2/51.png</key>
+            <key type="filename">world/bg2/52.png</key>
+            <key type="filename">world/bg2/53.png</key>
+            <key type="filename">world/bg2/54.png</key>
+            <key type="filename">world/bg2/55.png</key>
+            <key type="filename">world/bg2/56.png</key>
+            <key type="filename">world/bg2/57.png</key>
+            <key type="filename">world/bg2/58.png</key>
+            <key type="filename">world/bg2/59.png</key>
+            <key type="filename">world/bg2/6.png</key>
+            <key type="filename">world/bg2/60.png</key>
+            <key type="filename">world/bg2/61.png</key>
+            <key type="filename">world/bg2/62.png</key>
+            <key type="filename">world/bg2/63.png</key>
+            <key type="filename">world/bg2/64.png</key>
+            <key type="filename">world/bg2/65.png</key>
+            <key type="filename">world/bg2/66.png</key>
+            <key type="filename">world/bg2/67.png</key>
+            <key type="filename">world/bg2/68.png</key>
+            <key type="filename">world/bg2/69.png</key>
+            <key type="filename">world/bg2/7.png</key>
+            <key type="filename">world/bg2/8.png</key>
+            <key type="filename">world/bg2/9.png</key>
+            <key type="filename">world/bg3/0.png</key>
+            <key type="filename">world/bg3/1.png</key>
+            <key type="filename">world/bg3/10.png</key>
+            <key type="filename">world/bg3/11.png</key>
+            <key type="filename">world/bg3/12.png</key>
+            <key type="filename">world/bg3/13.png</key>
+            <key type="filename">world/bg3/14.png</key>
+            <key type="filename">world/bg3/15.png</key>
+            <key type="filename">world/bg3/16.png</key>
+            <key type="filename">world/bg3/17.png</key>
+            <key type="filename">world/bg3/18.png</key>
+            <key type="filename">world/bg3/19.png</key>
+            <key type="filename">world/bg3/2.png</key>
+            <key type="filename">world/bg3/20.png</key>
+            <key type="filename">world/bg3/21.png</key>
+            <key type="filename">world/bg3/22.png</key>
+            <key type="filename">world/bg3/23.png</key>
+            <key type="filename">world/bg3/24.png</key>
+            <key type="filename">world/bg3/25.png</key>
+            <key type="filename">world/bg3/26.png</key>
+            <key type="filename">world/bg3/27.png</key>
+            <key type="filename">world/bg3/28.png</key>
+            <key type="filename">world/bg3/29.png</key>
+            <key type="filename">world/bg3/3.png</key>
+            <key type="filename">world/bg3/30.png</key>
+            <key type="filename">world/bg3/31.png</key>
+            <key type="filename">world/bg3/32.png</key>
+            <key type="filename">world/bg3/33.png</key>
+            <key type="filename">world/bg3/34.png</key>
+            <key type="filename">world/bg3/35.png</key>
+            <key type="filename">world/bg3/36.png</key>
+            <key type="filename">world/bg3/37.png</key>
+            <key type="filename">world/bg3/38.png</key>
+            <key type="filename">world/bg3/39.png</key>
+            <key type="filename">world/bg3/4.png</key>
+            <key type="filename">world/bg3/40.png</key>
+            <key type="filename">world/bg3/41.png</key>
+            <key type="filename">world/bg3/42.png</key>
+            <key type="filename">world/bg3/43.png</key>
+            <key type="filename">world/bg3/44.png</key>
+            <key type="filename">world/bg3/45.png</key>
+            <key type="filename">world/bg3/46.png</key>
+            <key type="filename">world/bg3/47.png</key>
+            <key type="filename">world/bg3/48.png</key>
+            <key type="filename">world/bg3/49.png</key>
+            <key type="filename">world/bg3/5.png</key>
+            <key type="filename">world/bg3/50.png</key>
+            <key type="filename">world/bg3/51.png</key>
+            <key type="filename">world/bg3/52.png</key>
+            <key type="filename">world/bg3/53.png</key>
+            <key type="filename">world/bg3/54.png</key>
+            <key type="filename">world/bg3/55.png</key>
+            <key type="filename">world/bg3/56.png</key>
+            <key type="filename">world/bg3/57.png</key>
+            <key type="filename">world/bg3/58.png</key>
+            <key type="filename">world/bg3/59.png</key>
+            <key type="filename">world/bg3/6.png</key>
+            <key type="filename">world/bg3/60.png</key>
+            <key type="filename">world/bg3/61.png</key>
+            <key type="filename">world/bg3/62.png</key>
+            <key type="filename">world/bg3/63.png</key>
+            <key type="filename">world/bg3/64.png</key>
+            <key type="filename">world/bg3/65.png</key>
+            <key type="filename">world/bg3/66.png</key>
+            <key type="filename">world/bg3/67.png</key>
+            <key type="filename">world/bg3/68.png</key>
+            <key type="filename">world/bg3/69.png</key>
+            <key type="filename">world/bg3/7.png</key>
+            <key type="filename">world/bg3/8.png</key>
+            <key type="filename">world/bg3/9.png</key>
+            <key type="filename">world/fg1/0.png</key>
+            <key type="filename">world/fg1/1.png</key>
+            <key type="filename">world/fg1/10.png</key>
+            <key type="filename">world/fg1/11.png</key>
+            <key type="filename">world/fg1/12.png</key>
+            <key type="filename">world/fg1/13.png</key>
+            <key type="filename">world/fg1/14.png</key>
+            <key type="filename">world/fg1/15.png</key>
+            <key type="filename">world/fg1/16.png</key>
+            <key type="filename">world/fg1/17.png</key>
+            <key type="filename">world/fg1/18.png</key>
+            <key type="filename">world/fg1/19.png</key>
+            <key type="filename">world/fg1/2.png</key>
+            <key type="filename">world/fg1/20.png</key>
+            <key type="filename">world/fg1/21.png</key>
+            <key type="filename">world/fg1/22.png</key>
+            <key type="filename">world/fg1/23.png</key>
+            <key type="filename">world/fg1/24.png</key>
+            <key type="filename">world/fg1/25.png</key>
+            <key type="filename">world/fg1/26.png</key>
+            <key type="filename">world/fg1/27.png</key>
+            <key type="filename">world/fg1/28.png</key>
+            <key type="filename">world/fg1/29.png</key>
+            <key type="filename">world/fg1/3.png</key>
+            <key type="filename">world/fg1/30.png</key>
+            <key type="filename">world/fg1/31.png</key>
+            <key type="filename">world/fg1/32.png</key>
+            <key type="filename">world/fg1/33.png</key>
+            <key type="filename">world/fg1/34.png</key>
+            <key type="filename">world/fg1/35.png</key>
+            <key type="filename">world/fg1/36.png</key>
+            <key type="filename">world/fg1/37.png</key>
+            <key type="filename">world/fg1/38.png</key>
+            <key type="filename">world/fg1/39.png</key>
+            <key type="filename">world/fg1/4.png</key>
+            <key type="filename">world/fg1/40.png</key>
+            <key type="filename">world/fg1/41.png</key>
+            <key type="filename">world/fg1/42.png</key>
+            <key type="filename">world/fg1/43.png</key>
+            <key type="filename">world/fg1/44.png</key>
+            <key type="filename">world/fg1/45.png</key>
+            <key type="filename">world/fg1/46.png</key>
+            <key type="filename">world/fg1/47.png</key>
+            <key type="filename">world/fg1/48.png</key>
+            <key type="filename">world/fg1/49.png</key>
+            <key type="filename">world/fg1/5.png</key>
+            <key type="filename">world/fg1/50.png</key>
+            <key type="filename">world/fg1/51.png</key>
+            <key type="filename">world/fg1/52.png</key>
+            <key type="filename">world/fg1/53.png</key>
+            <key type="filename">world/fg1/54.png</key>
+            <key type="filename">world/fg1/55.png</key>
+            <key type="filename">world/fg1/56.png</key>
+            <key type="filename">world/fg1/57.png</key>
+            <key type="filename">world/fg1/58.png</key>
+            <key type="filename">world/fg1/59.png</key>
+            <key type="filename">world/fg1/6.png</key>
+            <key type="filename">world/fg1/60.png</key>
+            <key type="filename">world/fg1/61.png</key>
+            <key type="filename">world/fg1/62.png</key>
+            <key type="filename">world/fg1/63.png</key>
+            <key type="filename">world/fg1/64.png</key>
+            <key type="filename">world/fg1/65.png</key>
+            <key type="filename">world/fg1/66.png</key>
+            <key type="filename">world/fg1/67.png</key>
+            <key type="filename">world/fg1/68.png</key>
+            <key type="filename">world/fg1/69.png</key>
+            <key type="filename">world/fg1/7.png</key>
+            <key type="filename">world/fg1/8.png</key>
+            <key type="filename">world/fg1/9.png</key>
+            <key type="filename">world/fg2/0.png</key>
+            <key type="filename">world/fg2/1.png</key>
+            <key type="filename">world/fg2/10.png</key>
+            <key type="filename">world/fg2/11.png</key>
+            <key type="filename">world/fg2/12.png</key>
+            <key type="filename">world/fg2/13.png</key>
+            <key type="filename">world/fg2/14.png</key>
+            <key type="filename">world/fg2/15.png</key>
+            <key type="filename">world/fg2/16.png</key>
+            <key type="filename">world/fg2/17.png</key>
+            <key type="filename">world/fg2/18.png</key>
+            <key type="filename">world/fg2/19.png</key>
+            <key type="filename">world/fg2/2.png</key>
+            <key type="filename">world/fg2/20.png</key>
+            <key type="filename">world/fg2/21.png</key>
+            <key type="filename">world/fg2/22.png</key>
+            <key type="filename">world/fg2/23.png</key>
+            <key type="filename">world/fg2/24.png</key>
+            <key type="filename">world/fg2/25.png</key>
+            <key type="filename">world/fg2/26.png</key>
+            <key type="filename">world/fg2/27.png</key>
+            <key type="filename">world/fg2/28.png</key>
+            <key type="filename">world/fg2/29.png</key>
+            <key type="filename">world/fg2/3.png</key>
+            <key type="filename">world/fg2/30.png</key>
+            <key type="filename">world/fg2/31.png</key>
+            <key type="filename">world/fg2/32.png</key>
+            <key type="filename">world/fg2/33.png</key>
+            <key type="filename">world/fg2/34.png</key>
+            <key type="filename">world/fg2/35.png</key>
+            <key type="filename">world/fg2/36.png</key>
+            <key type="filename">world/fg2/37.png</key>
+            <key type="filename">world/fg2/38.png</key>
+            <key type="filename">world/fg2/39.png</key>
+            <key type="filename">world/fg2/4.png</key>
+            <key type="filename">world/fg2/40.png</key>
+            <key type="filename">world/fg2/41.png</key>
+            <key type="filename">world/fg2/42.png</key>
+            <key type="filename">world/fg2/43.png</key>
+            <key type="filename">world/fg2/44.png</key>
+            <key type="filename">world/fg2/45.png</key>
+            <key type="filename">world/fg2/46.png</key>
+            <key type="filename">world/fg2/47.png</key>
+            <key type="filename">world/fg2/48.png</key>
+            <key type="filename">world/fg2/49.png</key>
+            <key type="filename">world/fg2/5.png</key>
+            <key type="filename">world/fg2/50.png</key>
+            <key type="filename">world/fg2/51.png</key>
+            <key type="filename">world/fg2/52.png</key>
+            <key type="filename">world/fg2/53.png</key>
+            <key type="filename">world/fg2/54.png</key>
+            <key type="filename">world/fg2/55.png</key>
+            <key type="filename">world/fg2/56.png</key>
+            <key type="filename">world/fg2/57.png</key>
+            <key type="filename">world/fg2/58.png</key>
+            <key type="filename">world/fg2/59.png</key>
+            <key type="filename">world/fg2/6.png</key>
+            <key type="filename">world/fg2/60.png</key>
+            <key type="filename">world/fg2/61.png</key>
+            <key type="filename">world/fg2/62.png</key>
+            <key type="filename">world/fg2/63.png</key>
+            <key type="filename">world/fg2/64.png</key>
+            <key type="filename">world/fg2/65.png</key>
+            <key type="filename">world/fg2/66.png</key>
+            <key type="filename">world/fg2/67.png</key>
+            <key type="filename">world/fg2/68.png</key>
+            <key type="filename">world/fg2/69.png</key>
+            <key type="filename">world/fg2/7.png</key>
+            <key type="filename">world/fg2/8.png</key>
+            <key type="filename">world/fg2/9.png</key>
+            <key type="filename">world/fg3/0.png</key>
+            <key type="filename">world/fg3/1.png</key>
+            <key type="filename">world/fg3/10.png</key>
+            <key type="filename">world/fg3/11.png</key>
+            <key type="filename">world/fg3/12.png</key>
+            <key type="filename">world/fg3/13.png</key>
+            <key type="filename">world/fg3/14.png</key>
+            <key type="filename">world/fg3/15.png</key>
+            <key type="filename">world/fg3/16.png</key>
+            <key type="filename">world/fg3/17.png</key>
+            <key type="filename">world/fg3/18.png</key>
+            <key type="filename">world/fg3/19.png</key>
+            <key type="filename">world/fg3/2.png</key>
+            <key type="filename">world/fg3/20.png</key>
+            <key type="filename">world/fg3/21.png</key>
+            <key type="filename">world/fg3/22.png</key>
+            <key type="filename">world/fg3/23.png</key>
+            <key type="filename">world/fg3/24.png</key>
+            <key type="filename">world/fg3/25.png</key>
+            <key type="filename">world/fg3/26.png</key>
+            <key type="filename">world/fg3/27.png</key>
+            <key type="filename">world/fg3/28.png</key>
+            <key type="filename">world/fg3/29.png</key>
+            <key type="filename">world/fg3/3.png</key>
+            <key type="filename">world/fg3/30.png</key>
+            <key type="filename">world/fg3/31.png</key>
+            <key type="filename">world/fg3/32.png</key>
+            <key type="filename">world/fg3/33.png</key>
+            <key type="filename">world/fg3/34.png</key>
+            <key type="filename">world/fg3/35.png</key>
+            <key type="filename">world/fg3/36.png</key>
+            <key type="filename">world/fg3/37.png</key>
+            <key type="filename">world/fg3/38.png</key>
+            <key type="filename">world/fg3/39.png</key>
+            <key type="filename">world/fg3/4.png</key>
+            <key type="filename">world/fg3/40.png</key>
+            <key type="filename">world/fg3/41.png</key>
+            <key type="filename">world/fg3/42.png</key>
+            <key type="filename">world/fg3/43.png</key>
+            <key type="filename">world/fg3/44.png</key>
+            <key type="filename">world/fg3/45.png</key>
+            <key type="filename">world/fg3/46.png</key>
+            <key type="filename">world/fg3/47.png</key>
+            <key type="filename">world/fg3/48.png</key>
+            <key type="filename">world/fg3/49.png</key>
+            <key type="filename">world/fg3/5.png</key>
+            <key type="filename">world/fg3/50.png</key>
+            <key type="filename">world/fg3/51.png</key>
+            <key type="filename">world/fg3/52.png</key>
+            <key type="filename">world/fg3/53.png</key>
+            <key type="filename">world/fg3/54.png</key>
+            <key type="filename">world/fg3/55.png</key>
+            <key type="filename">world/fg3/56.png</key>
+            <key type="filename">world/fg3/57.png</key>
+            <key type="filename">world/fg3/58.png</key>
+            <key type="filename">world/fg3/59.png</key>
+            <key type="filename">world/fg3/6.png</key>
+            <key type="filename">world/fg3/60.png</key>
+            <key type="filename">world/fg3/61.png</key>
+            <key type="filename">world/fg3/62.png</key>
+            <key type="filename">world/fg3/63.png</key>
+            <key type="filename">world/fg3/64.png</key>
+            <key type="filename">world/fg3/65.png</key>
+            <key type="filename">world/fg3/66.png</key>
+            <key type="filename">world/fg3/67.png</key>
+            <key type="filename">world/fg3/68.png</key>
+            <key type="filename">world/fg3/69.png</key>
+            <key type="filename">world/fg3/7.png</key>
+            <key type="filename">world/fg3/8.png</key>
+            <key type="filename">world/fg3/9.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -197,16 +600,50 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>264,270,528,540</rect>
+                <rect>64,270,128,540</rect>
                 <key>scale9Paddings</key>
-                <rect>264,270,528,540</rect>
+                <rect>64,270,128,540</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">world/bg1/61.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>50,270,99,540</rect>
+                <key>scale9Paddings</key>
+                <rect>50,270,99,540</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">world/bg2/70.png</key>
+            <key type="filename">world/bg3/70.png</key>
+            <key type="filename">world/fg1/70.png</key>
+            <key type="filename">world/fg2/70.png</key>
+            <key type="filename">world/fg3/70.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>20,270,40,540</rect>
+                <key>scale9Paddings</key>
+                <rect>20,270,40,540</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>bg1</filename>
+            <filename>world</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
