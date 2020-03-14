@@ -50,6 +50,48 @@
 						"w": 1166,
 						"h": 565
 					}
+				},
+				{
+					"filename": "double-jump-tooltip",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 274,
+						"h": 214
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 274,
+						"h": 214
+					},
+					"frame": {
+						"x": 1169,
+						"y": 974,
+						"w": 274,
+						"h": 214
+					}
+				},
+				{
+					"filename": "jump-tooltip",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 266,
+						"h": 205
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 266,
+						"h": 205
+					},
+					"frame": {
+						"x": 1169,
+						"y": 1190,
+						"w": 266,
+						"h": 205
+					}
 				}
 			]
 		}
@@ -57,6 +99,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:a7456c0c0117802ec5bae0d4b952c82b:f882efac6d0ff40ebd3284277e4a29f8:b09e3af404e9adef832d409bb34f066a$"
+		"smartupdate": "$TexturePacker:SmartUpdate:801c13f7d613b61c8e828275971d0944:6ad56f70c28443f8cd6bf3c9ed425261:b09e3af404e9adef832d409bb34f066a$"
 	}
 }

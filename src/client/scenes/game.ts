@@ -4,6 +4,7 @@ import config from "client/config";
 import { Input } from "phaser";
 import { GaussianBlur1 } from "client/shaders/gaussian-blur-1-pipeline";
 import { PauseScene } from "./pause";
+import { Tooltip } from "client/entities/tooltip";
 
 declare var window: any;
 
@@ -25,7 +26,6 @@ export class GameScene extends Phaser.Scene {
 		this.cameras.main.setBackgroundColor("#A9EFFE");
 
 		this.cameras.main.setBounds(bounds.x, bounds.y, bounds.width, bounds.height, true);
-		this.matter.world.setBounds(bounds.x, bounds.y, bounds.width, bounds.height);
 
 		this.player = window.player = new Player(this, 100, 500);
 
@@ -49,6 +49,7 @@ export class GameScene extends Phaser.Scene {
 			up: Input.Keyboard.KeyCodes.UP,
 			down: Input.Keyboard.KeyCodes.DOWN,
 			space: Input.Keyboard.KeyCodes.SPACE,
+			shift: Input.Keyboard.KeyCodes.SHIFT,
 			esc: Input.Keyboard.KeyCodes.ESC
 		}) as any;
 
@@ -57,6 +58,9 @@ export class GameScene extends Phaser.Scene {
 		this.keys.esc?.on("down", () => (this.scene.get("pause") as PauseScene).resume())
 
 		this.scene.run("pause");
+
+		new Tooltip(this, 800, 400, "jump-tooltip");
+		new Tooltip(this, 1100, 400, "double-jump-tooltip");
 	}
 
 	update() {
@@ -67,8 +71,10 @@ export class GameScene extends Phaser.Scene {
 			this.setupGamepad(pad);
 		}
 
-		if (this.player.spiked){
+		if (this.player.state == PlayerState.SPIKED){
 			this.player.body.friction = 0;
+		} else if((this.keys.shift?.isDown || pad?.R2) && this.player.canClimb()){
+			this.player.climb();
 		} else {
 			if (this.keys.left?.isDown || pad?.axes[0].getValue() === -1) {
 				if (this.keys.down?.isDown){
@@ -101,8 +107,10 @@ export class GameScene extends Phaser.Scene {
 	}
 
 	setupGamepad(pad: Phaser.Input.Gamepad.Gamepad) {
-		pad.on(Phaser.Input.Gamepad.Events.BUTTON_DOWN, () => {
-			this.player.jump();
+		pad.on(Phaser.Input.Gamepad.Events.BUTTON_DOWN, (keyCode:number) => {
+			if (keyCode === 0){
+				this.player.jump();
+			}
 		});
 	}
 }

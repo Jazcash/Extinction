@@ -1,2 +1,12 @@
-Add crouch so it's possible to get past spikes
+Load screen
+Main menu screen
 Character menu
+Pollution meter
+Rubbish
+Leaderboard
+Tooltips
+Health
+Damage animation
+Butterflies
+Rolling logs
+Claw machine things
