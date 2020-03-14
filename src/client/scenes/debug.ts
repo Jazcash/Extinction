@@ -34,9 +34,10 @@ export class DebugScene extends Phaser.Scene {
 			`Has Double Jump: ${gameScene.player?.hasDoubleJump}`,
 			// `Axes 0: ${this.input.gamepad.getPad(0)?.axes[0].getValue()}`,
 			// `Axes 1: ${this.input.gamepad.getPad(0)?.axes[1].getValue()}`,
-			//`Player Velocity: X: ${player?.body.velocity.x.toFixed(2)}, Y: ${player?.body.velocity.y.toFixed(2)}`,
+			//`Player velocity: X: ${player?.body.velocity.x.toFixed(2)}, Y: ${player?.body.velocity.y.toFixed(2)}`,
 			`Player pos: X: ${player?.body.position.x.toFixed(2)}, Y: ${player?.body.position.y.toFixed(2)}`,
-			`Player friction: X: ${player?.body.friction}`,
+			//`Player friction: X: ${player?.body.friction}`,
+			`Player spiked: ${player?.spiked}`,
 		]);
 	}
 }

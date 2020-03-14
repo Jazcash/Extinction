@@ -72,7 +72,7 @@ export class Player extends Physics.Matter.Sprite {
 		
 		this.parts.main.onCollideCallback = (pair: Types.Physics.Matter.MatterCollisionPair) => {
 			if (pair.bodyA.label === "spikes" || pair.bodyB.label === "spikes"){
-				requestAnimationFrame(() => this.spike());
+				this.spike();
 			}
 		};
 
@@ -95,8 +95,8 @@ export class Player extends Physics.Matter.Sprite {
 
 	run(speed?: number) {
 		if (this.state === PlayerState.CROUCHING){
-			this.parts.main.vertices![0].y = 690;
-			this.parts.main.vertices![1].y = 690;
+			//this.parts.main.vertices![0].y = 690;
+			//this.parts.main.vertices![1].y = 690;
 		}
 
 		if (this.state !== PlayerState.JUMPING) {
@@ -122,8 +122,8 @@ export class Player extends Physics.Matter.Sprite {
 	
 	crouch(speed?: number){
 		if (this.state !== PlayerState.CROUCHING){
-			this.parts.main.vertices![0].y = 735;
-			this.parts.main.vertices![1].y = 735;
+			//this.parts.main.vertices![0].y = 735;
+			//this.parts.main.vertices![1].y = 735;
 		}
 
 		if (this.state !== PlayerState.JUMPING) {
@@ -147,8 +147,6 @@ export class Player extends Physics.Matter.Sprite {
 		}
 
 		this.state = PlayerState.JUMPING;
-
-		//this.body.friction = 0;
 
 		if (this.hasDoubleJump){
 			this.setVelocityY(-config.jump);
