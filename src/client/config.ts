@@ -4,5 +4,5 @@ export default {
 	jump: 17,
 	knockbackX: 7,
 	knockbackY: 20,
-	time: 300 // seconds
+	time: 120 // seconds
 };
