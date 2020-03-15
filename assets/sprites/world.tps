@@ -239,6 +239,14 @@
             <key type="filename">world/bg1/59.png</key>
             <key type="filename">world/bg1/6.png</key>
             <key type="filename">world/bg1/60.png</key>
+            <key type="filename">world/bg1/62.png</key>
+            <key type="filename">world/bg1/63.png</key>
+            <key type="filename">world/bg1/64.png</key>
+            <key type="filename">world/bg1/65.png</key>
+            <key type="filename">world/bg1/66.png</key>
+            <key type="filename">world/bg1/67.png</key>
+            <key type="filename">world/bg1/68.png</key>
+            <key type="filename">world/bg1/69.png</key>
             <key type="filename">world/bg1/7.png</key>
             <key type="filename">world/bg1/8.png</key>
             <key type="filename">world/bg1/9.png</key>
@@ -621,6 +629,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">world/bg1/70.png</key>
             <key type="filename">world/bg2/70.png</key>
             <key type="filename">world/bg3/70.png</key>
             <key type="filename">world/fg1/70.png</key>

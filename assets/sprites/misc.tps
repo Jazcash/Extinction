@@ -211,6 +211,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">misc/harvester.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>136,227,272,454</rect>
+                <key>scale9Paddings</key>
+                <rect>136,227,272,454</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">misc/jump-tooltip.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -223,6 +238,24 @@
                 <rect>67,51,133,103</rect>
                 <key>scale9Paddings</key>
                 <rect>67,51,133,103</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/logroll/0.png</key>
+            <key type="filename">misc/logroll/1.png</key>
+            <key type="filename">misc/logroll/2.png</key>
+            <key type="filename">misc/logroll/3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.8</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>64,64,128,128</rect>
+                <key>scale9Paddings</key>
+                <rect>64,64,128,128</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -319,6 +352,21 @@
                 <rect>44,31,88,63</rect>
                 <key>scale9Paddings</key>
                 <rect>44,31,88,63</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/truck.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>173,105,345,211</rect>
+                <key>scale9Paddings</key>
+                <rect>173,105,345,211</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

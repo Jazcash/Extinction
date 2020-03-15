@@ -7,6 +7,7 @@ import { PauseScene } from "./pause";
 import { Tooltip } from "client/entities/tooltip";
 import { Rubbish } from "client/entities/rubbish";
 import { PollutionMeter } from "client/entities/pollution-meter";
+import { LogSpawner } from "client/entities/log-spawner";
 
 declare var window: any;
 
@@ -29,7 +30,7 @@ export class GameScene extends Phaser.Scene {
 
 		this.cameras.main.setBounds(bounds.x, bounds.y, bounds.width, bounds.height, true);
 
-		this.player = window.player = new Player(this, 300, 550);
+		this.player = window.player = new Player(this, 5110, 860);
 
 		const world = window.world = this.matter.add.fromPhysicsEditor(0, 0, this.cache.json.get('shapes').world);
 		this.matter.alignBody(world, 0, bounds.height, Phaser.Display.Align.BOTTOM_LEFT);
@@ -61,10 +62,14 @@ export class GameScene extends Phaser.Scene {
 
 		this.scene.run("pause");
 
+		const truck = this.add.sprite(6330, 400, "misc", "truck").setDepth(-1);
+
 		new Tooltip(this, 800, 400, "jump-tooltip");
 		new Tooltip(this, 1600, 200, "double-jump-tooltip");
 
 		new Rubbish(this, 1100, 400);
+
+		new LogSpawner(this, truck.x - 200, truck.y);
 
 		this.scene.run("ui");
 	}
@@ -104,8 +109,6 @@ export class GameScene extends Phaser.Scene {
 				this.player.state = PlayerState.JUMPING;
 	
 				this.player.body.friction = 0;
-	
-				this.player.setFrame("jumping");
 			} else {
 				this.player.body.friction = Player.friction;
 			}

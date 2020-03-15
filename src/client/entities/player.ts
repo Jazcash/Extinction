@@ -62,8 +62,8 @@ export class Player extends Physics.Matter.Sprite {
 
 		this.anims.animationManager.create({
 			key: "jumping",
-			frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 11, prefix: "jumping/" }),
-			frameRate: 15
+			frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 9, prefix: "jumping/" }),
+			frameRate: 20
 		});
 
 		Player.friction = this.body.friction;
@@ -212,10 +212,6 @@ export class Player extends Physics.Matter.Sprite {
 			this.scene.time.delayedCall(50, () => this.jumpedFromWall = false);
 		}
 
-		this.state = PlayerState.JUMPING;
-
-		this.body.friction = 0;
-
 		if (this.hasDoubleJump){
 			this.setVelocityY(-config.jump);
 			this.hasDoubleJump = false;
@@ -223,6 +219,12 @@ export class Player extends Physics.Matter.Sprite {
 			this.setVelocityY(-config.jump);
 			this.hasDoubleJump = true;
 		}
+
+		this.state = PlayerState.JUMPING;
+
+		this.body.friction = 0;
+
+		this.anims.play("jumping");
 	}
 
 	stand(){
