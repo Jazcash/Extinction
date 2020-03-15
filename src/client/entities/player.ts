@@ -253,16 +253,26 @@ export class Player extends Physics.Matter.Sprite {
 		this.state = PlayerState.SPIKED;
 
 		if (this.body.velocity.y > 1){
-			requestAnimationFrame(() => this.setVelocityY(-25));
+			requestAnimationFrame(() => this.setVelocityY(-config.knockbackY));
 		} else if(this.body.velocity.y < -1){
-			requestAnimationFrame(() => this.setVelocityY(-25));
-		} else if (this.body.velocity.x > 1){
-			requestAnimationFrame(() => this.setVelocityX(-5));
-		} else if(this.body.velocity.x < -1){
-			requestAnimationFrame(() => this.setVelocityX(-5));
+			requestAnimationFrame(() => this.setVelocityY(config.knockbackY));
 		}
 
-		this.scene.time.delayedCall(250, () => {
+		if (this.body.velocity.y > 1 || this.body.velocity.y < -1){
+			if (this.body.velocity.x > 1){
+				requestAnimationFrame(() => { this.setVelocityX(config.knockbackX); this.body.friction = 0; });
+			} else if(this.body.velocity.x < -1){
+				requestAnimationFrame(() => { this.setVelocityX(-config.knockbackX); this.body.friction = 0; });
+			}
+		} else {
+			if (this.body.velocity.x > 1){
+				requestAnimationFrame(() => this.setVelocityX(-config.knockbackX));
+			} else if(this.body.velocity.x < -1){
+				requestAnimationFrame(() => this.setVelocityX(config.knockbackX));
+			}
+		}
+
+		this.scene.time.delayedCall(100, () => {
 			this.body.friction = Player.friction;
 			this.state = prevState;
 		});
@@ -271,6 +281,8 @@ export class Player extends Physics.Matter.Sprite {
 	}
 
 	damage(){
-		
+		for (let i=0; i<10; i++){
+			this.scene.time.delayedCall(i * 50, () => this.alpha = Number(!this.alpha));
+		}
 	}
 }
