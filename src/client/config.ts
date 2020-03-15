@@ -3,5 +3,6 @@ export default {
 	crouchSpeed: 3,
 	jump: 17,
 	knockbackX: 7,
-	knockbackY: 20
+	knockbackY: 20,
+	time: 300 // seconds
 };

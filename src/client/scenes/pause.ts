@@ -1,6 +1,7 @@
 import { Input, Display, GameObjects, Game } from "phaser";
 import { GameScene } from "./game";
 import { GaussianBlur1 } from "client/shaders/gaussian-blur-1-pipeline";
+import { UIScene } from "./ui";
 
 const menuTextStyle: Phaser.Types.GameObjects.Text.TextStyle = {
 	fontFamily: "Roboto",
@@ -97,9 +98,10 @@ export class PauseScene extends Phaser.Scene {
 		}
 
 		const gameScene = this.scene.get("game") as GameScene;
+		const uiScene = this.scene.get("ui") as UIScene;
 
 		if (!this.active){
-			gameScene.cameras.main.setRenderToTexture(this.customPipeline);
+			[gameScene, uiScene].forEach(scene => scene.cameras.main.setRenderToTexture(this.customPipeline));
 
 			this.tweens.addCounter({
 				from: 0,
@@ -110,7 +112,7 @@ export class PauseScene extends Phaser.Scene {
 					[...this.mainElements, ...this.menuElements].forEach(obj => obj.setAlpha(tween.progress));
 				},
 				onComplete: () => {
-					gameScene.scene.pause();
+					[gameScene, uiScene].forEach(scene => scene.scene.pause());
 				}
 			});
 		} else {
@@ -125,7 +127,7 @@ export class PauseScene extends Phaser.Scene {
 					[...this.mainElements, ...this.menuElements].forEach(obj => obj.setAlpha(1 - tween.progress));
 				},
 				onComplete: () => {
-					gameScene.cameras.main.clearRenderToTexture();
+					[gameScene, uiScene].forEach(scene => scene.cameras.main.clearRenderToTexture());
 
 					this.scene.sleep();
 				}

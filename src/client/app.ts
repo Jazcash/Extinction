@@ -6,6 +6,7 @@ import { LoadScene } from "client/scenes/load";
 import { GameScene } from "client/scenes/game";
 import { DebugScene } from "client/scenes/debug";
 import { PauseScene } from "client/scenes/pause";
+import { UIScene } from "./scenes/ui";
 
 declare var window: any;
 declare var __DEBUG__: boolean;
@@ -40,6 +41,7 @@ const game = window.game = new Phaser.Game({
 	scene: [
 		new LoadScene(),
 		new GameScene(),
+		new UIScene(),
 		new PauseScene(),
 		__DEBUG__ ? new DebugScene() : {}
 	]

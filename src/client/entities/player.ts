@@ -1,6 +1,7 @@
 import { Physics, GameObjects, Game, Types } from "phaser";
 import config from "client/config";
 import { Utils } from "client/utils/utils";
+import { Rubbish } from "./rubbish";
 
 export enum PlayerState {
 	IDLE = "IDLE",
@@ -62,7 +63,7 @@ export class Player extends Physics.Matter.Sprite {
 		this.anims.animationManager.create({
 			key: "jumping",
 			frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 11, prefix: "jumping/" }),
-			frameRate: 30
+			frameRate: 15
 		});
 
 		Player.friction = this.body.friction;
@@ -76,8 +77,13 @@ export class Player extends Physics.Matter.Sprite {
 		};
 		
 		this.parts.main.onCollideCallback = (pair: Types.Physics.Matter.MatterCollisionPair) => {
-			if (pair.bodyA.label === "spikes" || pair.bodyB.label === "spikes"){
+			if (pair.bodyB.label === "spikes"){
 				this.spike();
+			}
+
+			if (pair.bodyB.label === "rubbish"){
+				const rubbish = pair.bodyB.gameObject as Rubbish;
+				rubbish.collect();
 			}
 		};
 

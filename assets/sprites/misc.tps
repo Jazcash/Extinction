@@ -226,6 +226,22 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">misc/meter-backing.png</key>
+            <key type="filename">misc/meter-overlay.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.15</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>299,684,597,1367</rect>
+                <key>scale9Paddings</key>
+                <rect>299,684,597,1367</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">misc/pause-overlay.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -238,6 +254,71 @@
                 <rect>910,540,1820,1080</rect>
                 <key>scale9Paddings</key>
                 <rect>910,540,1820,1080</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/pollution-meter/0.png</key>
+            <key type="filename">misc/pollution-meter/1.png</key>
+            <key type="filename">misc/pollution-meter/2.png</key>
+            <key type="filename">misc/pollution-meter/3.png</key>
+            <key type="filename">misc/pollution-meter/4.png</key>
+            <key type="filename">misc/pollution-meter/5.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.15</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>64,23,128,45</rect>
+                <key>scale9Paddings</key>
+                <rect>64,23,128,45</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/rubbish0.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>37,33,73,65</rect>
+                <key>scale9Paddings</key>
+                <rect>37,33,73,65</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/rubbish1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>31,30,61,61</rect>
+                <key>scale9Paddings</key>
+                <rect>31,30,61,61</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/rubbish2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>44,31,88,63</rect>
+                <key>scale9Paddings</key>
+                <rect>44,31,88,63</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

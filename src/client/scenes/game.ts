@@ -5,6 +5,8 @@ import { Input } from "phaser";
 import { GaussianBlur1 } from "client/shaders/gaussian-blur-1-pipeline";
 import { PauseScene } from "./pause";
 import { Tooltip } from "client/entities/tooltip";
+import { Rubbish } from "client/entities/rubbish";
+import { PollutionMeter } from "client/entities/pollution-meter";
 
 declare var window: any;
 
@@ -27,7 +29,7 @@ export class GameScene extends Phaser.Scene {
 
 		this.cameras.main.setBounds(bounds.x, bounds.y, bounds.width, bounds.height, true);
 
-		this.player = window.player = new Player(this, 100, 500);
+		this.player = window.player = new Player(this, 300, 550);
 
 		const world = window.world = this.matter.add.fromPhysicsEditor(0, 0, this.cache.json.get('shapes').world);
 		this.matter.alignBody(world, 0, bounds.height, Phaser.Display.Align.BOTTOM_LEFT);
@@ -60,7 +62,11 @@ export class GameScene extends Phaser.Scene {
 		this.scene.run("pause");
 
 		new Tooltip(this, 800, 400, "jump-tooltip");
-		new Tooltip(this, 1100, 400, "double-jump-tooltip");
+		new Tooltip(this, 1600, 200, "double-jump-tooltip");
+
+		new Rubbish(this, 1100, 400);
+
+		this.scene.run("ui");
 	}
 
 	update() {
@@ -99,7 +105,7 @@ export class GameScene extends Phaser.Scene {
 	
 				this.player.body.friction = 0;
 	
-				this.player.play("jumping", true);
+				this.player.setFrame("jumping");
 			} else {
 				this.player.body.friction = Player.friction;
 			}
