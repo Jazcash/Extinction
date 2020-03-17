@@ -43,13 +43,22 @@ export class LogSpawner {
             radius: 55,
         }, {
             gravityScale: {
-                x: 0.2,
+                x: 1,
                 y: 0.2
             },
             density: 25,
         });
 
         log.setVelocityX(-5);
+
+        this.scene.time.delayedCall(1000, () => {
+            log.setVelocityX(-5);
+        });
+
+        this.scene.time.delayedCall(10000, () => {
+            log.destroy();
+            this.activeLogs.splice(this.activeLogs.indexOf(log), 1);
+        });
 
         this.activeLogs.push(log);
     }

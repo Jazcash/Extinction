@@ -33,7 +33,7 @@ export class Player extends Physics.Matter.Sprite {
 	rightTouchingCount = 0;
 	facingLeft = false;
 	jumpedFromWall = false;
-
+	crouching = false;
 
 	constructor(scene: Phaser.Scene, x: number, y: number, texture = "player") {
 		super(scene.matter.world, x, y, texture, "idle");
@@ -137,9 +137,10 @@ export class Player extends Physics.Matter.Sprite {
 			return;
 		}
 
-		if (this.state === PlayerState.CROUCHING){
+		if (this.crouching){
 			this.parts.main.vertices![0].y -= 50;
 			this.parts.main.vertices![1].y -= 50;
+			this.crouching = false;
 		}
 
 		if (this.state !== PlayerState.JUMPING) {
@@ -169,9 +170,10 @@ export class Player extends Physics.Matter.Sprite {
 			return;
 		}
 
-		if (this.state !== PlayerState.CROUCHING){
+		if (!this.crouching){
 			this.parts.main.vertices![0].y += 50;
 			this.parts.main.vertices![1].y += 50;
+			this.crouching = true;
 		}
 
 		this.state = PlayerState.CROUCHING;

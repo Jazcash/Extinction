@@ -181,6 +181,21 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">misc/claw1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>42,156,83,311</rect>
+                <key>scale9Paddings</key>
+                <rect>42,156,83,311</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">misc/controls.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -196,6 +211,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">misc/crouch-tooltip.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>62,51,125,101</rect>
+                <key>scale9Paddings</key>
+                <rect>62,51,125,101</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">misc/double-jump-tooltip.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -208,21 +238,6 @@
                 <rect>69,54,137,107</rect>
                 <key>scale9Paddings</key>
                 <rect>69,54,137,107</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">misc/harvester.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>136,227,272,454</rect>
-                <key>scale9Paddings</key>
-                <rect>136,227,272,454</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -367,6 +382,21 @@
                 <rect>173,105,345,211</rect>
                 <key>scale9Paddings</key>
                 <rect>173,105,345,211</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/wallgrip-tooltip.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>77,55,155,111</rect>
+                <key>scale9Paddings</key>
+                <rect>77,55,155,111</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -8,6 +8,7 @@ import { Tooltip } from "client/entities/tooltip";
 import { Rubbish } from "client/entities/rubbish";
 import { PollutionMeter } from "client/entities/pollution-meter";
 import { LogSpawner } from "client/entities/log-spawner";
+import { Harvester } from "client/entities/harvester";
 
 declare var window: any;
 
@@ -16,6 +17,7 @@ export class GameScene extends Phaser.Scene {
 	gamepadInitialised = false;
 	keys: { [key:string]: Phaser.Input.Keyboard.Key };
 	t: number = 0;
+	logSpawner: LogSpawner;
 
 	constructor() {
 		super({
@@ -30,7 +32,7 @@ export class GameScene extends Phaser.Scene {
 
 		this.cameras.main.setBounds(bounds.x, bounds.y, bounds.width, bounds.height, true);
 
-		this.player = window.player = new Player(this, 5110, 860);
+		this.player = window.player = new Player(this, 100, 530);
 
 		const world = window.world = this.matter.add.fromPhysicsEditor(0, 0, this.cache.json.get('shapes').world);
 		this.matter.alignBody(world, 0, bounds.height, Phaser.Display.Align.BOTTOM_LEFT);
@@ -62,14 +64,18 @@ export class GameScene extends Phaser.Scene {
 
 		this.scene.run("pause");
 
-		const truck = this.add.sprite(6330, 400, "misc", "truck").setDepth(-1);
+		const truck = this.add.sprite(6330, 400, "misc", "truck").setDepth(-0.5);
 
 		new Tooltip(this, 800, 400, "jump-tooltip");
-		new Tooltip(this, 1600, 200, "double-jump-tooltip");
+		new Tooltip(this, 1300, 400, "double-jump-tooltip");
+		new Tooltip(this, 2300, 500, "crouch-tooltip");
+		new Tooltip(this, 3200, 400, "wallgrip-tooltip");
 
 		new Rubbish(this, 1100, 400);
 
-		new LogSpawner(this, truck.x - 200, truck.y);
+		this.logSpawner = new LogSpawner(this, truck.x - 200, truck.y);
+
+		window.h = new Harvester(this, 7020, 7380, 500);
 
 		this.scene.run("ui");
 	}
@@ -109,7 +115,7 @@ export class GameScene extends Phaser.Scene {
 				this.player.state = PlayerState.JUMPING;
 	
 				this.player.body.friction = 0;
-			} else {
+			} else if(this.player.state !== PlayerState.JUMPING) {
 				this.player.body.friction = Player.friction;
 			}
 		}

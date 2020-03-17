@@ -5,7 +5,7 @@ export class Tooltip extends GameObjects.Sprite {
     active = false;
     interval: Phaser.Time.TimerEvent;
 
-    constructor(scene: Phaser.Scene, x: number, y: number, frameName: string, public triggerDistance = 600) {
+    constructor(scene: Phaser.Scene, x: number, y: number, frameName: string, public triggerDistance = 500) {
         super(scene, x, y, "misc", frameName);
 
         this.scene.add.existing(this);

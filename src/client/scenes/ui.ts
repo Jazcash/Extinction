@@ -25,7 +25,7 @@ export class UIScene extends Phaser.Scene {
             color: "#000",
         } as Phaser.Types.GameObjects.Text.TextStyle).setOrigin(0.5, 0);
 
-        this.timer = this.time.delayedCall(config.time * 1000, () => { console.log("done") });
+        this.timer = this.time.delayedCall(config.time * 1000, () => { console.log("time finished") });
     }
 
     update(){
