@@ -2,6 +2,7 @@ import { Physics, GameObjects, Game, Types } from "phaser";
 import config from "client/config";
 import { Utils } from "client/utils/utils";
 import { Rubbish } from "./rubbish";
+import { UIScene } from "client/scenes/ui";
 
 export enum PlayerState {
 	IDLE = "IDLE",
@@ -294,5 +295,7 @@ export class Player extends Physics.Matter.Sprite {
 		for (let i=0; i<10; i++){
 			this.scene.time.delayedCall(i * 50, () => this.alpha = Number(!this.alpha));
 		}
+		
+		(this.scene.scene.get("ui") as UIScene).damage(1);
 	}
 }

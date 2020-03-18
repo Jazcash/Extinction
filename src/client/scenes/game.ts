@@ -9,6 +9,8 @@ import { Rubbish } from "client/entities/rubbish";
 import { PollutionMeter } from "client/entities/pollution-meter";
 import { LogSpawner } from "client/entities/log-spawner";
 import { Harvester } from "client/entities/harvester";
+import { Clouds } from "client/entities/clouds";
+import { SaturatePipeline } from "client/shaders/saturate-pipeline";
 
 declare var window: any;
 
@@ -18,6 +20,8 @@ export class GameScene extends Phaser.Scene {
 	keys: { [key:string]: Phaser.Input.Keyboard.Key };
 	t: number = 0;
 	logSpawner: LogSpawner;
+	clouds: Clouds;
+	saturation: Phaser.Renderer.WebGL.WebGLPipeline;
 
 	constructor() {
 		super({
@@ -38,6 +42,7 @@ export class GameScene extends Phaser.Scene {
 		this.matter.alignBody(world, 0, bounds.height, Phaser.Display.Align.BOTTOM_LEFT);
 
 		BackgroundManager.setupSceneBackgrounds(this, 62, [
+			{ texture: "bg4", depth: -4, scrollFactorX: 0.2 },
 			{ texture: "bg3", depth: -3, scrollFactorX: 0.3 },
 			{ texture: "bg2", depth: -2, scrollFactorX: 0.5 },
 			{ texture: "bg1", depth: -1, scrollFactorX: 1 },
@@ -66,16 +71,27 @@ export class GameScene extends Phaser.Scene {
 
 		const truck = this.add.sprite(6330, 400, "misc", "truck").setDepth(-0.5);
 
+		this.clouds = new Clouds(this);
+
 		new Tooltip(this, 800, 400, "jump-tooltip");
 		new Tooltip(this, 1300, 400, "double-jump-tooltip");
 		new Tooltip(this, 2300, 500, "crouch-tooltip");
 		new Tooltip(this, 3200, 400, "wallgrip-tooltip");
 
-		new Rubbish(this, 1100, 400);
+		new Rubbish(this, 1100, 400, "rubbish0");
+		new Rubbish(this, 3075, 180, "rubbish1");
+		new Rubbish(this, 3690, 900, "rubbish2");
+		new Rubbish(this, 5500, 70, "rubbish0");
 
 		this.logSpawner = new LogSpawner(this, truck.x - 200, truck.y);
 
-		window.h = new Harvester(this, 7020, 7380, 500);
+		new Harvester(this, 7020, 7380, 500);
+
+		if (this.game.renderer instanceof Phaser.Renderer.WebGL.WebGLRenderer){
+			this.saturation = this.game.renderer.addPipeline("SaturatePipeline", new SaturatePipeline(this.game));
+			this.saturation.setFloat2('iResolution', 1920, 1080);
+			this.cameras.main.setRenderToTexture(this.saturation);
+		}
 
 		this.scene.run("ui");
 	}
@@ -119,6 +135,8 @@ export class GameScene extends Phaser.Scene {
 				this.player.body.friction = Player.friction;
 			}
 		}
+
+		this.clouds.update();
 	}
 
 	setupGamepad(pad: Phaser.Input.Gamepad.Gamepad) {
@@ -127,5 +145,9 @@ export class GameScene extends Phaser.Scene {
 				this.player.jump();
 			}
 		});
+	}
+
+	setSaturation(amount: number){
+		this.saturation.setFloat1('saturation', amount);
 	}
 }

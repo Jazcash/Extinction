@@ -116,7 +116,7 @@ export class PauseScene extends Phaser.Scene {
 				}
 			});
 		} else {
-			gameScene.scene.resume();
+			[gameScene, uiScene].forEach(scene => scene.scene.resume());
 
 			this.tweens.addCounter({
 				from: 80,

@@ -3,17 +3,14 @@ export class Harvester {
     rightClaw: Phaser.Physics.Matter.Sprite;
 
     constructor(public scene: Phaser.Scene, leftClawX: number, rightClawX: number, y: number, ){
-        const physicsEditorConfig: Phaser.Types.Physics.Matter.MatterSetBodyConfig = this.scene.cache.json.get('shapes')["claw1"];
-
         this.leftClaw = scene.matter.add.sprite(leftClawX, y, "misc", "claw1");
-        this.leftClaw.setBody(physicsEditorConfig, {
+        this.leftClaw.setBody(this.scene.cache.json.get('shapes')["claw1"], {
             isStatic: true
         });
 
-        // this.rightClaw = scene.matter.add.sprite(rightClawX, y, "misc", "claw1");
-        // this.rightClaw.setBody(physicsEditorConfig, {
-        //     isStatic: true,
-        //     angle: 50
-        // });
+        this.rightClaw = scene.matter.add.sprite(rightClawX, y, "misc", "claw2");
+        this.rightClaw.setBody(this.scene.cache.json.get('shapes')["claw2"], {
+            isStatic: true
+        });
     }
 }

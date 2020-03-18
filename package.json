@@ -7,8 +7,8 @@
     "start": "node dist/server/app",
     "dev": "node node_modules/webpack-cli/bin/cli.js --env.NODE_ENV=development",
     "prod": "node node_modules/webpack-cli/bin/cli.js --env.NODE_ENV=production",
-    "lint": "node ./node_modules/eslint/bin/eslint.js .",
-    "lint-fix": "node ./node_modules/eslint/bin/eslint.js . --fix"
+    "lint": "node ./node_modules/eslint/bin/eslint.js ./src/**/*",
+    "lint-fix": "node ./node_modules/eslint/bin/eslint.js ./src/**/* --fix"
   },
   "author": "Jazcash",
   "license": "ISC",

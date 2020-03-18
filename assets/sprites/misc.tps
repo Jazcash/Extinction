@@ -182,6 +182,7 @@
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
             <key type="filename">misc/claw1.png</key>
+            <key type="filename">misc/claw2.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -193,6 +194,21 @@
                 <rect>42,156,83,311</rect>
                 <key>scale9Paddings</key>
                 <rect>42,156,83,311</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/clouds.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>241,57,483,113</rect>
+                <key>scale9Paddings</key>
+                <rect>241,57,483,113</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -238,6 +254,22 @@
                 <rect>69,54,137,107</rect>
                 <key>scale9Paddings</key>
                 <rect>69,54,137,107</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/heart-fill.png</key>
+            <key type="filename">misc/heart-outline.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>31,30,61,59</rect>
+                <key>scale9Paddings</key>
+                <rect>31,30,61,59</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
