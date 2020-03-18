@@ -7,7 +7,7 @@ app.use(express.static("dist/client"));
 app.use(express.static("assets"));
 
 app.get("/", (req, res) => {
-	res.sendFile("index.htm", { root: "dist/client" });
+    res.sendFile("index.htm", { root: "dist/client" });
 });
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));

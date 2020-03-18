@@ -5,297 +5,297 @@ import { Rubbish } from "./rubbish";
 import { UIScene } from "client/scenes/ui";
 
 export enum PlayerState {
-	IDLE = "IDLE",
-	RUNNING = "RUNNING",
-	JUMPING = "JUMPING",
-	CROUCHING = "CROUCHING",
-	CLIMBING = "CLIMBING",
-	SPIKED = "SPIKED"
+    IDLE = "IDLE",
+    RUNNING = "RUNNING",
+    JUMPING = "JUMPING",
+    CROUCHING = "CROUCHING",
+    CLIMBING = "CLIMBING",
+    SPIKED = "SPIKED"
 }
 
 export class Player extends Physics.Matter.Sprite {
-	static friction: number;
+    static friction: number;
 
-	state: PlayerState = PlayerState.IDLE;
-	body: MatterJS.BodyType;
-	canJump = false;
-	hasDoubleJump = false;
-	sensors: { [key: string]: MatterJS.BodyType};
-	startingJump = false;
-	parts: {
-		main: MatterJS.BodyType;
-		crouch: MatterJS.BodyType;
-		feet: MatterJS.BodyType;
-		leftSensor: MatterJS.BodyType;
-		rightSensor: MatterJS.BodyType;
-	};
-	feetTouchingCount = 0;
-	leftTouchingCount = 0;
-	rightTouchingCount = 0;
-	facingLeft = false;
-	jumpedFromWall = false;
-	crouching = false;
+    state: PlayerState = PlayerState.IDLE;
+    body: MatterJS.BodyType;
+    canJump = false;
+    hasDoubleJump = false;
+    sensors: { [key: string]: MatterJS.BodyType};
+    startingJump = false;
+    parts: {
+        main: MatterJS.BodyType;
+        crouch: MatterJS.BodyType;
+        feet: MatterJS.BodyType;
+        leftSensor: MatterJS.BodyType;
+        rightSensor: MatterJS.BodyType;
+    };
+    feetTouchingCount = 0;
+    leftTouchingCount = 0;
+    rightTouchingCount = 0;
+    facingLeft = false;
+    jumpedFromWall = false;
+    crouching = false;
 
-	constructor(scene: Phaser.Scene, x: number, y: number, texture = "player") {
-		super(scene.matter.world, x, y, texture, "idle");
+    constructor(scene: Phaser.Scene, x: number, y: number, texture = "player") {
+        super(scene.matter.world, x, y, texture, "idle");
 
-		this.scene.add.existing(this);
+        this.scene.add.existing(this);
 
-		const physicsEditorConfig: Phaser.Types.Physics.Matter.MatterSetBodyConfig = this.scene.cache.json.get('shapes')[texture];
+        const physicsEditorConfig: Phaser.Types.Physics.Matter.MatterSetBodyConfig = this.scene.cache.json.get('shapes')[texture];
 
-		this.setBody(physicsEditorConfig);
+        this.setBody(physicsEditorConfig);
 
-		this.setFixedRotation();
+        this.setFixedRotation();
 
-		this.anims.animationManager.create({
-			key: "running",
-			frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 7, prefix: "running/" }),
-			frameRate: 15,
-			repeat: -1
-		});
+        this.anims.animationManager.create({
+            key: "running",
+            frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 7, prefix: "running/" }),
+            frameRate: 15,
+            repeat: -1
+        });
 
-		this.anims.animationManager.create({
-			key: "crouching",
-			frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 5, prefix: "crouching/" }),
-			frameRate: 15,
-			repeat: -1
-		});
+        this.anims.animationManager.create({
+            key: "crouching",
+            frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 5, prefix: "crouching/" }),
+            frameRate: 15,
+            repeat: -1
+        });
 
-		this.anims.animationManager.create({
-			key: "jumping",
-			frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 9, prefix: "jumping/" }),
-			frameRate: 20
-		});
+        this.anims.animationManager.create({
+            key: "jumping",
+            frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 9, prefix: "jumping/" }),
+            frameRate: 20
+        });
 
-		Player.friction = this.body.friction;
+        Player.friction = this.body.friction;
 
-		this.parts = {
-			main: this.body.parts.find(part => part.label === "main")!,
-			crouch: this.body.parts.find(part => part.label === "crouch")!,
-			feet: this.body.parts.find(part => part.label === "feet")!,
-			leftSensor: this.body.parts.find(part => part.label === "leftSide")!,
-			rightSensor: this.body.parts.find(part => part.label === "rightSide")!
-		};
-		
-		this.parts.main.onCollideCallback = (pair: Types.Physics.Matter.MatterCollisionPair) => {
-			if (pair.bodyB.label === "spikes"){
-				this.spike();
-			}
+        this.parts = {
+            main: this.body.parts.find(part => part.label === "main")!,
+            crouch: this.body.parts.find(part => part.label === "crouch")!,
+            feet: this.body.parts.find(part => part.label === "feet")!,
+            leftSensor: this.body.parts.find(part => part.label === "leftSide")!,
+            rightSensor: this.body.parts.find(part => part.label === "rightSide")!
+        };
 
-			if (pair.bodyB.label === "rubbish"){
-				const rubbish = pair.bodyB.gameObject as Rubbish;
-				rubbish.collect();
-			}
-		};
+        this.parts.main.onCollideCallback = (pair: Types.Physics.Matter.MatterCollisionPair) => {
+            if (pair.bodyB.label === "spikes"){
+                this.spike();
+            }
 
-		this.parts.feet.onCollideCallback = () => {
-			this.feetTouchingCount++;
+            if (pair.bodyB.label === "rubbish"){
+                const rubbish = pair.bodyB.gameObject as Rubbish;
+                rubbish.collect();
+            }
+        };
 
-			if (this.state === PlayerState.JUMPING){
-				this.run();
-			}
-		};
+        this.parts.feet.onCollideCallback = () => {
+            this.feetTouchingCount++;
 
-		this.parts.feet.onCollideEndCallback = () => {
-			this.feetTouchingCount--;
-		};
+            if (this.state === PlayerState.JUMPING){
+                this.run();
+            }
+        };
 
-		this.parts.leftSensor.onCollideCallback = () => {
-			this.leftTouchingCount++;
-		};
+        this.parts.feet.onCollideEndCallback = () => {
+            this.feetTouchingCount--;
+        };
 
-		this.parts.leftSensor.onCollideEndCallback = () => {
-			this.leftTouchingCount--;
-		};
-		
-		this.parts.rightSensor.onCollideCallback = () => {
-			this.leftTouchingCount++;
-		};
+        this.parts.leftSensor.onCollideCallback = () => {
+            this.leftTouchingCount++;
+        };
 
-		this.parts.rightSensor.onCollideEndCallback = () => {
-			this.leftTouchingCount--;
-		};
-	}
+        this.parts.leftSensor.onCollideEndCallback = () => {
+            this.leftTouchingCount--;
+        };
 
-	isAirbourne(){
-		return this.feetTouchingCount === 0;
-	}
+        this.parts.rightSensor.onCollideCallback = () => {
+            this.leftTouchingCount++;
+        };
 
-	touchingLeft(){
-		return this.leftTouchingCount > 0;
-	}
+        this.parts.rightSensor.onCollideEndCallback = () => {
+            this.leftTouchingCount--;
+        };
+    }
 
-	touchingRight(){
-		return this.rightTouchingCount > 0;
-	}
+    isAirbourne(){
+        return this.feetTouchingCount === 0;
+    }
 
-	canClimb(){
-		return (this.state === PlayerState.JUMPING || this.state === PlayerState.CLIMBING) && (this.touchingLeft() || this.touchingRight()) && !this.jumpedFromWall;
-	}
+    touchingLeft(){
+        return this.leftTouchingCount > 0;
+    }
 
-	run(speed?: number) {
-		if (this.jumpedFromWall){
-			return;
-		}
+    touchingRight(){
+        return this.rightTouchingCount > 0;
+    }
 
-		if (this.crouching){
-			this.parts.main.vertices![0].y -= 50;
-			this.parts.main.vertices![1].y -= 50;
-			this.crouching = false;
-		}
+    canClimb(){
+        return (this.state === PlayerState.JUMPING || this.state === PlayerState.CLIMBING) && (this.touchingLeft() || this.touchingRight()) && !this.jumpedFromWall;
+    }
 
-		if (this.state !== PlayerState.JUMPING) {
-			this.state = PlayerState.RUNNING;
+    run(speed?: number) {
+        if (this.jumpedFromWall){
+            return;
+        }
 
-			this.play("running", true);
-		}
-		
-		if (speed){
-			const velocity = this.state === PlayerState.JUMPING ? speed * 0.8 : speed;
+        if (this.crouching){
+            this.parts.main.vertices![0].y -= 50;
+            this.parts.main.vertices![1].y -= 50;
+            this.crouching = false;
+        }
 
-			this.setVelocityX(velocity);
+        if (this.state !== PlayerState.JUMPING) {
+            this.state = PlayerState.RUNNING;
 
-			this.setFlipX(speed < 0);
-			this.facingLeft = speed < 0;
-		} else {
-			this.setFrame("idle");
-			
-			this.state = PlayerState.IDLE;
+            this.play("running", true);
+        }
 
-			this.hasDoubleJump = false;
-		}
-	}
-	
-	crouch(speed?: number){
-		if (this.state === PlayerState.JUMPING){
-			return;
-		}
+        if (speed){
+            const velocity = this.state === PlayerState.JUMPING ? speed * 0.8 : speed;
 
-		if (!this.crouching){
-			this.parts.main.vertices![0].y += 50;
-			this.parts.main.vertices![1].y += 50;
-			this.crouching = true;
-		}
+            this.setVelocityX(velocity);
 
-		this.state = PlayerState.CROUCHING;
+            this.setFlipX(speed < 0);
+            this.facingLeft = speed < 0;
+        } else {
+            this.setFrame("idle");
 
-		if (speed){
-			this.setVelocityX(speed);
+            this.state = PlayerState.IDLE;
 
-			this.setFlipX(speed < 0);
+            this.hasDoubleJump = false;
+        }
+    }
 
-			this.facingLeft = speed < 0;
+    crouch(speed?: number){
+        if (this.state === PlayerState.JUMPING){
+            return;
+        }
 
-			this.play("crouching", true);
-		} else {
-			this.setFrame("crouching/0");
-		}
-	}
+        if (!this.crouching){
+            this.parts.main.vertices![0].y += 50;
+            this.parts.main.vertices![1].y += 50;
+            this.crouching = true;
+        }
 
-	jump() {
-		if (this.state === PlayerState.CROUCHING){
-			return;
-		}
+        this.state = PlayerState.CROUCHING;
 
-		if (this.state === PlayerState.JUMPING && !this.hasDoubleJump){
-			return;
-		}
+        if (speed){
+            this.setVelocityX(speed);
 
-		if (this.state === PlayerState.CLIMBING){
-			if (this.facingLeft){
-				this.setVelocityX(config.speed);
-			} else {
-				this.setVelocityX(-config.speed);
-			}
+            this.setFlipX(speed < 0);
 
-			this.setVelocityY(-config.jump);
+            this.facingLeft = speed < 0;
 
-			this.jumpedFromWall = true;
+            this.play("crouching", true);
+        } else {
+            this.setFrame("crouching/0");
+        }
+    }
 
-			this.scene.time.delayedCall(50, () => this.jumpedFromWall = false);
-		}
+    jump() {
+        if (this.state === PlayerState.CROUCHING){
+            return;
+        }
 
-		if (this.hasDoubleJump){
-			this.setVelocityY(-config.jump);
-			this.hasDoubleJump = false;
-		} else if (!this.isAirbourne()){
-			this.setVelocityY(-config.jump);
-			this.hasDoubleJump = true;
-		}
+        if (this.state === PlayerState.JUMPING && !this.hasDoubleJump){
+            return;
+        }
 
-		this.state = PlayerState.JUMPING;
+        if (this.state === PlayerState.CLIMBING){
+            if (this.facingLeft){
+                this.setVelocityX(config.speed);
+            } else {
+                this.setVelocityX(-config.speed);
+            }
 
-		this.body.friction = 0;
+            this.setVelocityY(-config.jump);
 
-		this.anims.play("jumping");
-	}
+            this.jumpedFromWall = true;
 
-	stand(){
-		if (this.state !== PlayerState.CROUCHING){
-			return;
-		}
+            this.scene.time.delayedCall(50, () => this.jumpedFromWall = false);
+        }
 
-		this.state = PlayerState.IDLE;
-	}
+        if (this.hasDoubleJump){
+            this.setVelocityY(-config.jump);
+            this.hasDoubleJump = false;
+        } else if (!this.isAirbourne()){
+            this.setVelocityY(-config.jump);
+            this.hasDoubleJump = true;
+        }
 
-	climb(){
-		this.state = PlayerState.CLIMBING;
+        this.state = PlayerState.JUMPING;
 
-		this.body.friction = 10;
+        this.body.friction = 0;
 
-		this.anims.stop();
+        this.anims.play("jumping");
+    }
 
-		this.setFrame("idle");
+    stand(){
+        if (this.state !== PlayerState.CROUCHING){
+            return;
+        }
 
-		this.hasDoubleJump = true;
-	}
+        this.state = PlayerState.IDLE;
+    }
 
-	spike(){
-		this.anims.stop();
+    climb(){
+        this.state = PlayerState.CLIMBING;
 
-		this.setFrame("idle");
+        this.body.friction = 10;
 
-		this.hasDoubleJump = true;
+        this.anims.stop();
 
-		this.body.friction = 0;
+        this.setFrame("idle");
 
-		const prevState = this.state;
+        this.hasDoubleJump = true;
+    }
 
-		this.state = PlayerState.SPIKED;
+    spike(){
+        this.anims.stop();
 
-		if (this.body.velocity.y > 1){
-			requestAnimationFrame(() => this.setVelocityY(-config.knockbackY));
-		} else if(this.body.velocity.y < -1){
-			requestAnimationFrame(() => this.setVelocityY(config.knockbackY));
-		}
+        this.setFrame("idle");
 
-		if (this.body.velocity.y > 1 || this.body.velocity.y < -1){
-			if (this.body.velocity.x > 1){
-				requestAnimationFrame(() => { this.setVelocityX(config.knockbackX); this.body.friction = 0; });
-			} else if(this.body.velocity.x < -1){
-				requestAnimationFrame(() => { this.setVelocityX(-config.knockbackX); this.body.friction = 0; });
-			}
-		} else {
-			if (this.body.velocity.x > 1){
-				requestAnimationFrame(() => this.setVelocityX(-config.knockbackX));
-			} else if(this.body.velocity.x < -1){
-				requestAnimationFrame(() => this.setVelocityX(config.knockbackX));
-			}
-		}
+        this.hasDoubleJump = true;
 
-		this.scene.time.delayedCall(100, () => {
-			this.body.friction = Player.friction;
-			this.state = prevState;
-		});
+        this.body.friction = 0;
 
-		this.damage();
-	}
+        const prevState = this.state;
 
-	damage(){
-		for (let i=0; i<10; i++){
-			this.scene.time.delayedCall(i * 50, () => this.alpha = Number(!this.alpha));
-		}
-		
-		(this.scene.scene.get("ui") as UIScene).damage(1);
-	}
+        this.state = PlayerState.SPIKED;
+
+        if (this.body.velocity.y > 1){
+            requestAnimationFrame(() => this.setVelocityY(-config.knockbackY));
+        } else if(this.body.velocity.y < -1){
+            requestAnimationFrame(() => this.setVelocityY(config.knockbackY));
+        }
+
+        if (this.body.velocity.y > 1 || this.body.velocity.y < -1){
+            if (this.body.velocity.x > 1){
+                requestAnimationFrame(() => { this.setVelocityX(config.knockbackX); this.body.friction = 0; });
+            } else if(this.body.velocity.x < -1){
+                requestAnimationFrame(() => { this.setVelocityX(-config.knockbackX); this.body.friction = 0; });
+            }
+        } else {
+            if (this.body.velocity.x > 1){
+                requestAnimationFrame(() => this.setVelocityX(-config.knockbackX));
+            } else if(this.body.velocity.x < -1){
+                requestAnimationFrame(() => this.setVelocityX(config.knockbackX));
+            }
+        }
+
+        this.scene.time.delayedCall(100, () => {
+            this.body.friction = Player.friction;
+            this.state = prevState;
+        });
+
+        this.damage();
+    }
+
+    damage(){
+        for (let i=0; i<10; i++){
+            this.scene.time.delayedCall(i * 50, () => this.alpha = Number(!this.alpha));
+        }
+
+        (this.scene.scene.get("ui") as UIScene).damage(1);
+    }
 }

@@ -21,11 +21,11 @@ export class UIScene extends Phaser.Scene {
         this.pollutionMeter = new PollutionMeter(this, 0, 0);
         Phaser.Display.Align.In.TopRight(this.pollutionMeter.container, boundingZone, -170);
 
-        this.timerText = this.add.text(this.pollutionMeter.container.getBounds().centerX, this.pollutionMeter.container.getBounds().bottom, "", { 
+        this.timerText = this.add.text(this.pollutionMeter.container.getBounds().centerX, this.pollutionMeter.container.getBounds().bottom, "", {
             fontFamily: "Roboto",
             fontSize: "40px",
             fontStyle: "900",
-            color: "#000",
+            color: "#000"
         } as Phaser.Types.GameObjects.Text.TextStyle).setOrigin(0.5, 0);
 
         this.timer = this.time.delayedCall(config.time * 1000, () => { console.log("time finished") });
@@ -61,7 +61,7 @@ export class UIScene extends Phaser.Scene {
         this.currentHealth = Math.max(this.currentHealth - amount, 0);
 
         const lastHeart = this.hearts[this.currentHealth];
-        
+
         this.tweens.add({
             targets: lastHeart,
             scaleX: 0,

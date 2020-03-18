@@ -27,10 +27,7 @@ module.exports = {
             }
         ],
         "@typescript-eslint/array-type": "error",
-        "@typescript-eslint/indent": [
-            "error",
-            "tab"
-        ],
+        "@typescript-eslint/indent": [ "error", 4 ],
         "@typescript-eslint/interface-name-prefix": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-namespace": "off",

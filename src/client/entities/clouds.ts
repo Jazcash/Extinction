@@ -22,7 +22,7 @@ export class Clouds {
             if (this.clouds.length % 2 === 0){
                 cloud.setFlipX(true);
             }
-            
+
             usedWidth += cloud.width + spaceBetween;
             this.clouds.push(cloud);
         }

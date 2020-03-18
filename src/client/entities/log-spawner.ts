@@ -2,7 +2,7 @@ import { Physics } from "phaser";
 
 export class LogSpawner {
     activeLogs: Physics.Matter.Sprite[] = [];
-    spawnRate: number = 2000;
+    spawnRate = 2000;
     interval: Phaser.Time.TimerEvent;
 
     constructor(public scene: Phaser.Scene, public x: number, public y: number){
@@ -40,13 +40,13 @@ export class LogSpawner {
 
         log.setBody({
             type: "circle",
-            radius: 55,
+            radius: 55
         }, {
             gravityScale: {
                 x: 1,
                 y: 0.2
             },
-            density: 25,
+            density: 25
         });
 
         log.setVelocityX(-5);

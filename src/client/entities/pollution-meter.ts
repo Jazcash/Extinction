@@ -9,7 +9,7 @@ export class PollutionMeter {
     mainLiquid: GameObjects.Rectangle;
     topLiquid: GameObjects.Sprite;
     overlay: GameObjects.Sprite;
-    percent: number = 0;
+    percent = 0;
 
     constructor(public scene: Phaser.Scene, x: number, y: number) {
         this.container = scene.add.container(x, y);

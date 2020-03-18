@@ -1,7 +1,7 @@
 export class TrippyPipeline extends Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline {
     constructor(game: Phaser.Game) {
-        let config = {
-            game: game,
+        const config = {
+            game,
             renderer: game.renderer,
             fragShader: `
             precision mediump float;

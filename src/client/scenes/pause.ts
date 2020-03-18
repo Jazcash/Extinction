@@ -4,44 +4,44 @@ import { GaussianBlur1 } from "client/shaders/gaussian-blur-1-pipeline";
 import { UIScene } from "./ui";
 
 const menuTextStyle: Phaser.Types.GameObjects.Text.TextStyle = {
-	fontFamily: "Roboto",
-	fontSize: "90px",
-	fontStyle: "500",
-	fixedHeight: 160,
-	shadow: {
-		offsetX: 0,
-		offsetY: 5,
-		fill: true,
-		color: "#008683",
-	}
+    fontFamily: "Roboto",
+    fontSize: "90px",
+    fontStyle: "500",
+    fixedHeight: 160,
+    shadow: {
+        offsetX: 0,
+        offsetY: 5,
+        fill: true,
+        color: "#008683"
+    }
 };
 
 export class PauseScene extends Phaser.Scene {
-	keys: { [key:string]: Phaser.Input.Keyboard.Key };
-	menuElements: Array<GameObjects.Sprite | GameObjects.Text | GameObjects.Rectangle | GameObjects.Graphics> = [];
-	mainElements: Array<GameObjects.Sprite | GameObjects.Text | GameObjects.Rectangle | GameObjects.Graphics> = [];
-	controlsElements: Array<GameObjects.Sprite | GameObjects.Text | GameObjects.Rectangle | GameObjects.Graphics> = [];
-	customPipeline: Phaser.Renderer.WebGL.WebGLPipeline;
-	active:boolean = false;
-	selectedOption: number = 0;
-	options: Array<GameObjects.Text> = [];
-	selectedBorder: GameObjects.Graphics;
-	controlsActive = false;
+    keys: { [key: string]: Phaser.Input.Keyboard.Key };
+    menuElements: (GameObjects.Sprite | GameObjects.Text | GameObjects.Rectangle | GameObjects.Graphics)[] = [];
+    mainElements: (GameObjects.Sprite | GameObjects.Text | GameObjects.Rectangle | GameObjects.Graphics)[] = [];
+    controlsElements: (GameObjects.Sprite | GameObjects.Text | GameObjects.Rectangle | GameObjects.Graphics)[] = [];
+    customPipeline: Phaser.Renderer.WebGL.WebGLPipeline;
+    active = false;
+    selectedOption = 0;
+    options: GameObjects.Text[] = [];
+    selectedBorder: GameObjects.Graphics;
+    controlsActive = false;
 
-	constructor() {
-		super({
-			key: "pause",
-			active: false
-		});
-	}
+    constructor() {
+        super({
+            key: "pause",
+            active: false
+        });
+    }
 
-	create() {
-		this.keys = this.input.keyboard.addKeys({
-			esc: Input.Keyboard.KeyCodes.ESC,
-			up: Input.Keyboard.KeyCodes.UP,
-			down: Input.Keyboard.KeyCodes.DOWN,
-			space: Input.Keyboard.KeyCodes.SPACE
-		}) as any;
+    create() {
+        this.keys = this.input.keyboard.addKeys({
+            esc: Input.Keyboard.KeyCodes.ESC,
+            up: Input.Keyboard.KeyCodes.UP,
+            down: Input.Keyboard.KeyCodes.DOWN,
+            space: Input.Keyboard.KeyCodes.SPACE
+        }) as any;
 
 		this.keys.esc?.on("down", () => this.exit());
 		this.keys.up?.on("down", () => this.selectAbove());
@@ -73,102 +73,102 @@ export class PauseScene extends Phaser.Scene {
 		this.menuElements.push(pausedText, resumeText, controlsText, menuText, this.selectedBorder);
 
 		this.controlsElements.push(controlsTitle, controlsImage);
-		
+
 		this.options.push(resumeText, controlsText, menuText);
 
 		[...this.mainElements, ...this.menuElements].forEach(obj => obj.setAlpha(0));
 
 		if (this.game.renderer instanceof Phaser.Renderer.WebGL.WebGLRenderer){
-			this.customPipeline = this.game.renderer.addPipeline("GaussianBlur1", new GaussianBlur1(this.game));
-			this.customPipeline.setFloat2('iResolution', 1920, 1080);
-			this.customPipeline.setFloat1('Size', 0);
+		    this.customPipeline = this.game.renderer.addPipeline("GaussianBlur1", new GaussianBlur1(this.game));
+		    this.customPipeline.setFloat2('iResolution', 1920, 1080);
+		    this.customPipeline.setFloat1('Size', 0);
 		}
 
 		this.scene.sleep();
-	}
+    }
 
-	exit(){
-		if (this.controlsActive){
-			this.menuElements.forEach(obj => obj.setAlpha(1));
-			this.controlsElements.forEach(obj => obj.setAlpha(0));
+    exit(){
+        if (this.controlsActive){
+            this.menuElements.forEach(obj => obj.setAlpha(1));
+            this.controlsElements.forEach(obj => obj.setAlpha(0));
 
-			this.controlsActive = false;
-			
-			return;
-		}
+            this.controlsActive = false;
 
-		const gameScene = this.scene.get("game") as GameScene;
-		const uiScene = this.scene.get("ui") as UIScene;
+            return;
+        }
 
-		if (!this.active){
-			[gameScene, uiScene].forEach(scene => scene.cameras.main.setRenderToTexture(this.customPipeline));
+        const gameScene = this.scene.get("game") as GameScene;
+        const uiScene = this.scene.get("ui") as UIScene;
 
-			this.tweens.addCounter({
-				from: 0,
-				to: 80,
-				duration: 200,
-				onUpdate: (tween, current) => {
-					this.customPipeline.setFloat1('Size', current.value);
-					[...this.mainElements, ...this.menuElements].forEach(obj => obj.setAlpha(tween.progress));
-				},
-				onComplete: () => {
-					[gameScene, uiScene].forEach(scene => scene.scene.pause());
-				}
-			});
-		} else {
-			[gameScene, uiScene].forEach(scene => scene.scene.resume());
+        if (!this.active){
+            [gameScene, uiScene].forEach(scene => scene.cameras.main.setRenderToTexture(this.customPipeline));
 
-			this.tweens.addCounter({
-				from: 80,
-				to: 0,
-				duration: 200,
-				onUpdate: (tween, current) => {
-					this.customPipeline.setFloat1('Size', current.value);
-					[...this.mainElements, ...this.menuElements].forEach(obj => obj.setAlpha(1 - tween.progress));
-				},
-				onComplete: () => {
-					[gameScene, uiScene].forEach(scene => scene.cameras.main.clearRenderToTexture());
+            this.tweens.addCounter({
+                from: 0,
+                to: 80,
+                duration: 200,
+                onUpdate: (tween, current) => {
+                    this.customPipeline.setFloat1('Size', current.value);
+                    [...this.mainElements, ...this.menuElements].forEach(obj => obj.setAlpha(tween.progress));
+                },
+                onComplete: () => {
+                    [gameScene, uiScene].forEach(scene => scene.scene.pause());
+                }
+            });
+        } else {
+            [gameScene, uiScene].forEach(scene => scene.scene.resume());
 
-					this.scene.sleep();
-				}
-			});
-		}
+            this.tweens.addCounter({
+                from: 80,
+                to: 0,
+                duration: 200,
+                onUpdate: (tween, current) => {
+                    this.customPipeline.setFloat1('Size', current.value);
+                    [...this.mainElements, ...this.menuElements].forEach(obj => obj.setAlpha(1 - tween.progress));
+                },
+                onComplete: () => {
+                    [gameScene, uiScene].forEach(scene => scene.cameras.main.clearRenderToTexture());
 
-		this.active = !this.active;
-	}
+                    this.scene.sleep();
+                }
+            });
+        }
 
-	showControls(){
-		this.controlsActive = true;
+        this.active = !this.active;
+    }
 
-		this.menuElements.forEach(obj => obj.setAlpha(0));
-		this.controlsElements.forEach(obj => obj.setAlpha(1));
-	}
+    showControls(){
+        this.controlsActive = true;
 
-	selectAbove() {
-		this.selectedOption = this.selectedOption === 0 ? this.options.length - 1 : this.selectedOption - 1;
-		const option = this.options[this.selectedOption];
+        this.menuElements.forEach(obj => obj.setAlpha(0));
+        this.controlsElements.forEach(obj => obj.setAlpha(1));
+    }
 
-		this.selectedBorder.setY(option.getBounds().top - 20);
-	}
+    selectAbove() {
+        this.selectedOption = this.selectedOption === 0 ? this.options.length - 1 : this.selectedOption - 1;
+        const option = this.options[this.selectedOption];
 
-	selectBelow() {
-		this.selectedOption = this.selectedOption === this.options.length - 1 ? 0 : this.selectedOption + 1;
-		const option = this.options[this.selectedOption];
+        this.selectedBorder.setY(option.getBounds().top - 20);
+    }
 
-		this.selectedBorder.setY(option.getBounds().top - 20);
-	}
+    selectBelow() {
+        this.selectedOption = this.selectedOption === this.options.length - 1 ? 0 : this.selectedOption + 1;
+        const option = this.options[this.selectedOption];
 
-	triggerOption(){
-		if (this.selectedOption === 0){
-			this.exit();
-		} else if (this.selectedOption === 1){
-			this.showControls();
-		}
-	}
+        this.selectedBorder.setY(option.getBounds().top - 20);
+    }
 
-	resume(){
-		this.scene.wake();
+    triggerOption(){
+        if (this.selectedOption === 0){
+            this.exit();
+        } else if (this.selectedOption === 1){
+            this.showControls();
+        }
+    }
 
-		this.exit();
-	}
+    resume(){
+        this.scene.wake();
+
+        this.exit();
+    }
 }
