@@ -1,13 +1,14 @@
 import { Physics } from "phaser";
 import { GameScene } from "client/scenes/game";
 import { UIScene } from "client/scenes/ui";
+import config from "client/config";
 
 export class Rubbish extends Physics.Matter.Sprite{
     startingY: number;
     tween: Phaser.Tweens.Tween;
 
-    constructor(scene: Phaser.Scene, x: number, y: number, texture = "rubbish1") {
-        super(scene.matter.world, x, y, "misc", texture);
+    constructor(scene: Phaser.Scene, x: number, y: number) {
+        super(scene.matter.world, x, y, "misc", `rubbish/${Math.floor(Math.random() * 10)}`);
 
         this.scene.add.existing(this);
 
@@ -21,12 +22,10 @@ export class Rubbish extends Physics.Matter.Sprite{
 
         this.setDepth(-1);
 
-        this.appear();
+        this.hover();
     }
 
-    appear(){
-        this.visible = true;
-
+    hover(){
         this.tween = this.scene.tweens.addCounter({
             from: 0,
             to: 50,
@@ -44,7 +43,7 @@ export class Rubbish extends Physics.Matter.Sprite{
         this.tween.stop();
 
         this.scene.tweens.addCounter({
-            from: 1,
+            from: this.scaleX,
             to: 0,
             duration: 100,
             ease: Phaser.Math.Easing.Quadratic.Out,
@@ -52,7 +51,7 @@ export class Rubbish extends Physics.Matter.Sprite{
                 this.setScale(value);
             },
             onComplete: () => {
-                (this.scene.scene.get("ui") as UIScene).addTime(5000);
+                (this.scene.scene.get("ui") as UIScene).addTime(config.rubbishAdds * 1000);
             }
         });
     }

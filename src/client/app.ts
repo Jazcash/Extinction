@@ -7,9 +7,10 @@ import { GameScene } from "client/scenes/game";
 import { DebugScene } from "client/scenes/debug";
 import { PauseScene } from "client/scenes/pause";
 import { UIScene } from "./scenes/ui";
+import { CharacterSelection } from "./scenes/character-selection";
 
 declare let window: any;
-declare let __DEBUG__: boolean;
+declare let __DEV__: boolean;
 
 const game = window.game = new Phaser.Game({
     parent: "game-container",
@@ -28,7 +29,7 @@ const game = window.game = new Phaser.Game({
     physics: {
         default: "matter",
         matter: {
-            debug: __DEBUG__ ? {
+            debug: __DEV__ ? {
                 lineColor: 0xff0000,
                 staticLineColor: 0x0000ff,
                 sensorLineColor: 0x00ff00
@@ -40,14 +41,15 @@ const game = window.game = new Phaser.Game({
     },
     scene: [
         new LoadScene(),
+        new CharacterSelection(),
         new GameScene(),
         new UIScene(),
         new PauseScene(),
-        __DEBUG__ ? new DebugScene() : {}
+        __DEV__ ? new DebugScene() : {}
     ]
 });
 
-if (__DEBUG__) {
+if (__DEV__) {
     const stats = new Stats();
     stats.showPanel(2);
     document.body.appendChild(stats.dom);

@@ -4,13 +4,13 @@
 			"image": "player.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1933,
-				"h": 152
+				"w": 252,
+				"h": 2006
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "crouching/3",
+					"filename": "girl/crouching/3",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -31,7 +31,70 @@
 					}
 				},
 				{
-					"filename": "crouching/0",
+					"filename": "boy/crouching/4",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 77,
+						"h": 143
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 31,
+						"w": 77,
+						"h": 112
+					},
+					"frame": {
+						"x": 95,
+						"y": 1,
+						"w": 77,
+						"h": 112
+					}
+				},
+				{
+					"filename": "boy/crouching/0",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 77,
+						"h": 143
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 30,
+						"w": 77,
+						"h": 113
+					},
+					"frame": {
+						"x": 174,
+						"y": 1,
+						"w": 77,
+						"h": 113
+					}
+				},
+				{
+					"filename": "boy/crouching/1",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 77,
+						"h": 143
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 30,
+						"w": 77,
+						"h": 113
+					},
+					"frame": {
+						"x": 174,
+						"y": 1,
+						"w": 77,
+						"h": 113
+					}
+				},
+				{
+					"filename": "girl/crouching/0",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -45,14 +108,56 @@
 						"h": 112
 					},
 					"frame": {
-						"x": 95,
-						"y": 1,
+						"x": 1,
+						"y": 114,
 						"w": 92,
 						"h": 112
 					}
 				},
 				{
-					"filename": "crouching/1",
+					"filename": "boy/crouching/5",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 77,
+						"h": 143
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 29,
+						"w": 77,
+						"h": 114
+					},
+					"frame": {
+						"x": 95,
+						"y": 115,
+						"w": 77,
+						"h": 114
+					}
+				},
+				{
+					"filename": "boy/crouching/2",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 77,
+						"h": 143
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 28,
+						"w": 77,
+						"h": 115
+					},
+					"frame": {
+						"x": 174,
+						"y": 116,
+						"w": 77,
+						"h": 115
+					}
+				},
+				{
+					"filename": "girl/crouching/1",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -66,14 +171,56 @@
 						"h": 114
 					},
 					"frame": {
-						"x": 189,
-						"y": 1,
+						"x": 1,
+						"y": 228,
 						"w": 92,
 						"h": 114
 					}
 				},
 				{
-					"filename": "crouching/4",
+					"filename": "boy/crouching/6",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 77,
+						"h": 143
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 28,
+						"w": 74,
+						"h": 115
+					},
+					"frame": {
+						"x": 95,
+						"y": 231,
+						"w": 74,
+						"h": 115
+					}
+				},
+				{
+					"filename": "boy/crouching/3",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 77,
+						"h": 143
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 26,
+						"w": 75,
+						"h": 117
+					},
+					"frame": {
+						"x": 171,
+						"y": 233,
+						"w": 75,
+						"h": 117
+					}
+				},
+				{
+					"filename": "girl/crouching/4",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -87,14 +234,56 @@
 						"h": 114
 					},
 					"frame": {
-						"x": 283,
-						"y": 1,
+						"x": 1,
+						"y": 344,
 						"w": 92,
 						"h": 114
 					}
 				},
 				{
-					"filename": "crouching/5",
+					"filename": "boy/climb",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 94,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 25,
+						"y": 5,
+						"w": 69,
+						"h": 119
+					},
+					"frame": {
+						"x": 95,
+						"y": 348,
+						"w": 69,
+						"h": 119
+					}
+				},
+				{
+					"filename": "girl/climb",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 94,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 84,
+						"h": 116
+					},
+					"frame": {
+						"x": 166,
+						"y": 352,
+						"w": 84,
+						"h": 116
+					}
+				},
+				{
+					"filename": "girl/crouching/5",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -108,14 +297,14 @@
 						"h": 115
 					},
 					"frame": {
-						"x": 377,
-						"y": 1,
+						"x": 1,
+						"y": 460,
 						"w": 92,
 						"h": 115
 					}
 				},
 				{
-					"filename": "crouching/2",
+					"filename": "girl/crouching/2",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -129,14 +318,35 @@
 						"h": 117
 					},
 					"frame": {
-						"x": 471,
-						"y": 1,
+						"x": 95,
+						"y": 470,
 						"w": 92,
 						"h": 117
 					}
 				},
 				{
-					"filename": "jumping/8",
+					"filename": "boy/jumping/8",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 63,
+						"h": 122
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 63,
+						"h": 122
+					},
+					"frame": {
+						"x": 1,
+						"y": 577,
+						"w": 63,
+						"h": 122
+					}
+				},
+				{
+					"filename": "girl/jumping/8",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -150,14 +360,98 @@
 						"h": 122
 					},
 					"frame": {
-						"x": 565,
-						"y": 1,
+						"x": 66,
+						"y": 589,
 						"w": 90,
 						"h": 122
 					}
 				},
 				{
-					"filename": "jumping/0",
+					"filename": "boy/jumping/0",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 66,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 66,
+						"h": 125
+					},
+					"frame": {
+						"x": 158,
+						"y": 589,
+						"w": 66,
+						"h": 125
+					}
+				},
+				{
+					"filename": "boy/jumping/1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 66,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 66,
+						"h": 125
+					},
+					"frame": {
+						"x": 158,
+						"y": 589,
+						"w": 66,
+						"h": 125
+					}
+				},
+				{
+					"filename": "boy/jumping/2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 66,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 66,
+						"h": 125
+					},
+					"frame": {
+						"x": 158,
+						"y": 589,
+						"w": 66,
+						"h": 125
+					}
+				},
+				{
+					"filename": "boy/jumping/7",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 63,
+						"h": 129
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 63,
+						"h": 129
+					},
+					"frame": {
+						"x": 1,
+						"y": 701,
+						"w": 63,
+						"h": 129
+					}
+				},
+				{
+					"filename": "girl/jumping/0",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -171,14 +465,14 @@
 						"h": 125
 					},
 					"frame": {
-						"x": 657,
-						"y": 1,
+						"x": 66,
+						"y": 713,
 						"w": 90,
 						"h": 125
 					}
 				},
 				{
-					"filename": "jumping/1",
+					"filename": "girl/jumping/1",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -192,14 +486,14 @@
 						"h": 125
 					},
 					"frame": {
-						"x": 657,
-						"y": 1,
+						"x": 66,
+						"y": 713,
 						"w": 90,
 						"h": 125
 					}
 				},
 				{
-					"filename": "jumping/2",
+					"filename": "girl/jumping/2",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -213,14 +507,14 @@
 						"h": 125
 					},
 					"frame": {
-						"x": 657,
-						"y": 1,
+						"x": 66,
+						"y": 713,
 						"w": 90,
 						"h": 125
 					}
 				},
 				{
-					"filename": "jumping/7",
+					"filename": "girl/jumping/7",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -234,77 +528,35 @@
 						"h": 129
 					},
 					"frame": {
-						"x": 749,
-						"y": 1,
+						"x": 158,
+						"y": 716,
 						"w": 90,
 						"h": 129
 					}
 				},
 				{
-					"filename": "running/5",
+					"filename": "boy/jumping/9",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 103,
-						"h": 135
+						"w": 63,
+						"h": 141
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 103,
-						"h": 135
+						"w": 63,
+						"h": 141
 					},
 					"frame": {
-						"x": 841,
-						"y": 1,
-						"w": 103,
-						"h": 135
+						"x": 1,
+						"y": 832,
+						"w": 63,
+						"h": 141
 					}
 				},
 				{
-					"filename": "running/1",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 105,
-						"h": 137
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 105,
-						"h": 137
-					},
-					"frame": {
-						"x": 946,
-						"y": 1,
-						"w": 105,
-						"h": 137
-					}
-				},
-				{
-					"filename": "running/2",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 93,
-						"h": 138
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 93,
-						"h": 138
-					},
-					"frame": {
-						"x": 1053,
-						"y": 1,
-						"w": 93,
-						"h": 138
-					}
-				},
-				{
-					"filename": "jumping/9",
+					"filename": "girl/jumping/9",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -318,14 +570,224 @@
 						"h": 141
 					},
 					"frame": {
-						"x": 1148,
-						"y": 1,
+						"x": 66,
+						"y": 840,
 						"w": 90,
 						"h": 141
 					}
 				},
 				{
-					"filename": "running/6",
+					"filename": "boy/running/2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 93,
+						"h": 136
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 93,
+						"h": 136
+					},
+					"frame": {
+						"x": 158,
+						"y": 847,
+						"w": 93,
+						"h": 136
+					}
+				},
+				{
+					"filename": "girl/running/5",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 103,
+						"h": 135
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 103,
+						"h": 135
+					},
+					"frame": {
+						"x": 1,
+						"y": 983,
+						"w": 103,
+						"h": 135
+					}
+				},
+				{
+					"filename": "boy/running/1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 105,
+						"h": 136
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 105,
+						"h": 136
+					},
+					"frame": {
+						"x": 106,
+						"y": 985,
+						"w": 105,
+						"h": 136
+					}
+				},
+				{
+					"filename": "girl/running/2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 93,
+						"h": 138
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 93,
+						"h": 138
+					},
+					"frame": {
+						"x": 1,
+						"y": 1120,
+						"w": 93,
+						"h": 138
+					}
+				},
+				{
+					"filename": "girl/running/1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 105,
+						"h": 137
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 105,
+						"h": 137
+					},
+					"frame": {
+						"x": 96,
+						"y": 1123,
+						"w": 105,
+						"h": 137
+					}
+				},
+				{
+					"filename": "boy/running/0",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 75,
+						"h": 142
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 75,
+						"h": 142
+					},
+					"frame": {
+						"x": 1,
+						"y": 1260,
+						"w": 75,
+						"h": 142
+					}
+				},
+				{
+					"filename": "boy/running/7",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 75,
+						"h": 142
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 75,
+						"h": 142
+					},
+					"frame": {
+						"x": 1,
+						"y": 1260,
+						"w": 75,
+						"h": 142
+					}
+				},
+				{
+					"filename": "boy/running/5",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 96,
+						"h": 140
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 96,
+						"h": 140
+					},
+					"frame": {
+						"x": 78,
+						"y": 1262,
+						"w": 96,
+						"h": 140
+					}
+				},
+				{
+					"filename": "boy/running/6",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 96,
+						"h": 140
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 96,
+						"h": 140
+					},
+					"frame": {
+						"x": 78,
+						"y": 1262,
+						"w": 96,
+						"h": 140
+					}
+				},
+				{
+					"filename": "boy/running/4",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 66,
+						"h": 144
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 66,
+						"h": 144
+					},
+					"frame": {
+						"x": 176,
+						"y": 1262,
+						"w": 66,
+						"h": 144
+					}
+				},
+				{
+					"filename": "girl/running/6",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -339,14 +801,56 @@
 						"h": 142
 					},
 					"frame": {
-						"x": 1240,
-						"y": 1,
+						"x": 1,
+						"y": 1404,
 						"w": 96,
 						"h": 142
 					}
 				},
 				{
-					"filename": "running/0",
+					"filename": "boy/running/3",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 84,
+						"h": 143
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 84,
+						"h": 143
+					},
+					"frame": {
+						"x": 99,
+						"y": 1408,
+						"w": 84,
+						"h": 143
+					}
+				},
+				{
+					"filename": "boy/jumping/3",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 63,
+						"h": 148
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 63,
+						"h": 148
+					},
+					"frame": {
+						"x": 185,
+						"y": 1408,
+						"w": 63,
+						"h": 148
+					}
+				},
+				{
+					"filename": "girl/running/0",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -360,14 +864,14 @@
 						"h": 144
 					},
 					"frame": {
-						"x": 1338,
-						"y": 1,
+						"x": 1,
+						"y": 1548,
 						"w": 77,
 						"h": 144
 					}
 				},
 				{
-					"filename": "running/7",
+					"filename": "girl/running/7",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -381,14 +885,14 @@
 						"h": 144
 					},
 					"frame": {
-						"x": 1417,
-						"y": 1,
+						"x": 80,
+						"y": 1553,
 						"w": 77,
 						"h": 144
 					}
 				},
 				{
-					"filename": "running/3",
+					"filename": "girl/running/3",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -402,77 +906,14 @@
 						"h": 146
 					},
 					"frame": {
-						"x": 1496,
-						"y": 1,
+						"x": 159,
+						"y": 1558,
 						"w": 81,
 						"h": 146
 					}
 				},
 				{
-					"filename": "jumping/4",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 90,
-						"h": 147
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 90,
-						"h": 147
-					},
-					"frame": {
-						"x": 1579,
-						"y": 1,
-						"w": 90,
-						"h": 147
-					}
-				},
-				{
-					"filename": "jumping/5",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 90,
-						"h": 147
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 90,
-						"h": 147
-					},
-					"frame": {
-						"x": 1579,
-						"y": 1,
-						"w": 90,
-						"h": 147
-					}
-				},
-				{
-					"filename": "jumping/6",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 90,
-						"h": 147
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 90,
-						"h": 147
-					},
-					"frame": {
-						"x": 1579,
-						"y": 1,
-						"w": 90,
-						"h": 147
-					}
-				},
-				{
-					"filename": "running/4",
+					"filename": "girl/running/4",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -486,14 +927,161 @@
 						"h": 147
 					},
 					"frame": {
-						"x": 1671,
-						"y": 1,
+						"x": 1,
+						"y": 1694,
 						"w": 76,
 						"h": 147
 					}
 				},
 				{
-					"filename": "jumping/3",
+					"filename": "boy/jumping/4",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 63,
+						"h": 148
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 63,
+						"h": 148
+					},
+					"frame": {
+						"x": 79,
+						"y": 1699,
+						"w": 63,
+						"h": 148
+					}
+				},
+				{
+					"filename": "boy/jumping/5",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 63,
+						"h": 148
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 63,
+						"h": 148
+					},
+					"frame": {
+						"x": 79,
+						"y": 1699,
+						"w": 63,
+						"h": 148
+					}
+				},
+				{
+					"filename": "boy/jumping/6",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 63,
+						"h": 148
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 63,
+						"h": 148
+					},
+					"frame": {
+						"x": 79,
+						"y": 1699,
+						"w": 63,
+						"h": 148
+					}
+				},
+				{
+					"filename": "girl/jumping/4",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 90,
+						"h": 147
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 90,
+						"h": 147
+					},
+					"frame": {
+						"x": 144,
+						"y": 1706,
+						"w": 90,
+						"h": 147
+					}
+				},
+				{
+					"filename": "girl/jumping/5",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 90,
+						"h": 147
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 90,
+						"h": 147
+					},
+					"frame": {
+						"x": 144,
+						"y": 1706,
+						"w": 90,
+						"h": 147
+					}
+				},
+				{
+					"filename": "girl/jumping/6",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 90,
+						"h": 147
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 90,
+						"h": 147
+					},
+					"frame": {
+						"x": 144,
+						"y": 1706,
+						"w": 90,
+						"h": 147
+					}
+				},
+				{
+					"filename": "boy/idle",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 92,
+						"h": 149
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 0,
+						"w": 65,
+						"h": 149
+					},
+					"frame": {
+						"x": 1,
+						"y": 1843,
+						"w": 65,
+						"h": 149
+					}
+				},
+				{
+					"filename": "girl/jumping/3",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -507,14 +1095,14 @@
 						"h": 148
 					},
 					"frame": {
-						"x": 1749,
-						"y": 1,
+						"x": 68,
+						"y": 1855,
 						"w": 90,
 						"h": 148
 					}
 				},
 				{
-					"filename": "idle",
+					"filename": "girl/idle",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -528,8 +1116,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 1841,
-						"y": 1,
+						"x": 160,
+						"y": 1855,
 						"w": 91,
 						"h": 150
 					}
@@ -540,6 +1128,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:71cd789e98329b526424ae0df7473f4a:5e554a5b6e365f1ca4f8f12cfe2dc508:86d5339b780aedd87b35e2b7c0a7e11b$"
+		"smartupdate": "$TexturePacker:SmartUpdate:beac2545cd431bc3ae2b040d34c284ae:01d1a0ff8c0875b5ed3ea8fa6fff7de6:86d5339b780aedd87b35e2b7c0a7e11b$"
 	}
 }

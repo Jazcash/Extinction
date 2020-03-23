@@ -1,1 +1,0 @@
-convert $1 -crop 1056x1080 %02d.png 

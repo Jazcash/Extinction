@@ -1,8 +1,8 @@
 import { Physics } from "phaser";
+import config from "client/config";
 
 export class LogSpawner {
     activeLogs: Physics.Matter.Sprite[] = [];
-    spawnRate = 2000;
     interval: Phaser.Time.TimerEvent;
 
     constructor(public scene: Phaser.Scene, public x: number, public y: number){
@@ -11,7 +11,7 @@ export class LogSpawner {
 
     startSpawning(){
         this.interval = this.scene.time.addEvent({
-            delay: this.spawnRate,
+            delay: config.logSpawnRate * 1000,
             loop: true,
             startAt: 0,
             callback: () => this.spawnLog()

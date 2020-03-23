@@ -15,6 +15,7 @@ export enum PlayerState {
 
 export class Player extends Physics.Matter.Sprite {
     static friction: number;
+    static gender: string = "girl";
 
     state: PlayerState = PlayerState.IDLE;
     body: MatterJS.BodyType;
@@ -35,13 +36,14 @@ export class Player extends Physics.Matter.Sprite {
     facingLeft = false;
     jumpedFromWall = false;
     crouching = false;
+    onIce = false;
 
-    constructor(scene: Phaser.Scene, x: number, y: number, texture = "player") {
-        super(scene.matter.world, x, y, texture, "idle");
+    constructor(scene: Phaser.Scene, x: number, y: number) {
+        super(scene.matter.world, x, y, "player", `${Player.gender}/idle`);
 
         this.scene.add.existing(this);
 
-        const physicsEditorConfig: Phaser.Types.Physics.Matter.MatterSetBodyConfig = this.scene.cache.json.get('shapes')[texture];
+        const physicsEditorConfig: Phaser.Types.Physics.Matter.MatterSetBodyConfig = this.scene.cache.json.get('shapes')["player"];
 
         this.setBody(physicsEditorConfig);
 
@@ -49,21 +51,21 @@ export class Player extends Physics.Matter.Sprite {
 
         this.anims.animationManager.create({
             key: "running",
-            frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 7, prefix: "running/" }),
+            frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 7, prefix: `${Player.gender}/running/` }),
             frameRate: 15,
             repeat: -1
         });
 
         this.anims.animationManager.create({
             key: "crouching",
-            frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 5, prefix: "crouching/" }),
+            frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 5, prefix: `${Player.gender}/crouching/` }),
             frameRate: 15,
             repeat: -1
         });
 
         this.anims.animationManager.create({
             key: "jumping",
-            frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 9, prefix: "jumping/" }),
+            frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 9, prefix: `${Player.gender}/jumping/` }),
             frameRate: 20
         });
 
@@ -88,16 +90,24 @@ export class Player extends Physics.Matter.Sprite {
             }
         };
 
-        this.parts.feet.onCollideCallback = () => {
+        this.parts.feet.onCollideCallback = (pair: Types.Physics.Matter.MatterCollisionPair) => {
             this.feetTouchingCount++;
 
             if (this.state === PlayerState.JUMPING){
                 this.run();
             }
+
+            if (pair.bodyB.label === "ice"){
+                this.onIce = true;
+            }
         };
 
-        this.parts.feet.onCollideEndCallback = () => {
+        this.parts.feet.onCollideEndCallback = (pair: Types.Physics.Matter.MatterCollisionPair) => {
             this.feetTouchingCount--;
+
+            if (pair.bodyB.label === "ice"){
+                this.onIce = false;
+            }
         };
 
         this.parts.leftSensor.onCollideCallback = () => {
@@ -158,7 +168,7 @@ export class Player extends Physics.Matter.Sprite {
             this.setFlipX(speed < 0);
             this.facingLeft = speed < 0;
         } else {
-            this.setFrame("idle");
+            this.setFrame(`${Player.gender}/idle`);
 
             this.state = PlayerState.IDLE;
 
@@ -188,7 +198,7 @@ export class Player extends Physics.Matter.Sprite {
 
             this.play("crouching", true);
         } else {
-            this.setFrame("crouching/0");
+            this.setFrame(`${Player.gender}/crouching/0`);
         }
     }
 
@@ -212,22 +222,24 @@ export class Player extends Physics.Matter.Sprite {
 
             this.jumpedFromWall = true;
 
-            this.scene.time.delayedCall(50, () => this.jumpedFromWall = false);
-        }
-
-        if (this.hasDoubleJump){
-            this.setVelocityY(-config.jump);
-            this.hasDoubleJump = false;
-        } else if (!this.isAirbourne()){
-            this.setVelocityY(-config.jump);
             this.hasDoubleJump = true;
+
+            this.scene.time.delayedCall(50, () => this.jumpedFromWall = false);
+        } else {
+            if (this.hasDoubleJump){
+                this.setVelocityY(-config.jump);
+                this.hasDoubleJump = false;
+            } else if (!this.isAirbourne()){
+                this.setVelocityY(-config.jump);
+                this.hasDoubleJump = true;
+            }
         }
 
         this.state = PlayerState.JUMPING;
 
         this.body.friction = 0;
 
-        this.anims.play("jumping");
+        this.play("jumping");
     }
 
     stand(){
@@ -245,7 +257,7 @@ export class Player extends Physics.Matter.Sprite {
 
         this.anims.stop();
 
-        this.setFrame("idle");
+        this.setFrame(`${Player.gender}/climb`);
 
         this.hasDoubleJump = true;
     }
@@ -253,7 +265,7 @@ export class Player extends Physics.Matter.Sprite {
     spike(){
         this.anims.stop();
 
-        this.setFrame("idle");
+        this.setFrame(`${Player.gender}/idle`);
 
         this.hasDoubleJump = true;
 

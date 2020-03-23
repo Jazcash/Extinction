@@ -25,18 +25,20 @@ export class GameScene extends Phaser.Scene {
 
     constructor() {
         super({
-            key: "game"
+            key: "game",
         });
     }
 
     create() {
-        const bounds = { x: 0, y: 0, width: 180000, height: 1080};
+        const bounds = { x: 50, y: 0, width: 180000, height: 1080 };
 
         this.cameras.main.setBackgroundColor("#A9EFFE");
 
         this.cameras.main.setBounds(bounds.x, bounds.y, bounds.width, bounds.height, true);
 
-        this.player = window.player = new Player(this, 100, 530);
+        this.cameras.main.setZoom(1);
+
+        this.player = window.player = new Player(this, config.startPos.x, config.startPos.y);
 
         const world = window.world = this.matter.add.fromPhysicsEditor(0, 0, this.cache.json.get('shapes').world);
         this.matter.alignBody(world, 0, bounds.height, Phaser.Display.Align.BOTTOM_LEFT);
@@ -47,8 +49,8 @@ export class GameScene extends Phaser.Scene {
             { texture: "bg2", depth: -2, scrollFactorX: 0.5 },
             { texture: "bg1", depth: -1, scrollFactorX: 1 },
             { texture: "fg1", depth: 1, scrollFactorX: 1.25 },
-            { texture: "fg2", depth: 2, scrollFactorX: 1.5 },
-            { texture: "fg3", depth: 3, scrollFactorX: 1.75 }
+            { texture: "fg2", depth: 2, scrollFactorX: 1.4 },
+            { texture: "fg3", depth: 3, scrollFactorX: 1.8 }
         ]);
 
         this.cameras.main.startFollow(this.player, true, 0.15, 0.15, -500);
@@ -63,37 +65,41 @@ export class GameScene extends Phaser.Scene {
             esc: Input.Keyboard.KeyCodes.ESC
         }) as any;
 
-		this.keys.space?.on("down", () => this.player.jump());
-		this.keys.up?.on("down", () => this.player.jump());
-		this.keys.esc?.on("down", () => (this.scene.get("pause") as PauseScene).resume())
+        this.keys.space?.on("down", () => this.player.jump());
+        this.keys.up?.on("down", () => this.player.jump());
+        this.keys.esc?.on("down", () => (this.scene.get("pause") as PauseScene).resume())
 
-		this.scene.run("pause");
+        this.scene.run("pause");
 
-		const truck = this.add.sprite(6330, 400, "misc", "truck").setDepth(-0.5);
+        const truck = this.add.sprite(6330, 400, "misc", "truck").setDepth(-0.5);
 
-		this.clouds = new Clouds(this);
+        this.clouds = new Clouds(this);
 
-		new Tooltip(this, 800, 400, "jump-tooltip");
-		new Tooltip(this, 1300, 400, "double-jump-tooltip");
-		new Tooltip(this, 2300, 500, "crouch-tooltip");
-		new Tooltip(this, 3200, 400, "wallgrip-tooltip");
+        new Tooltip(this, 800, 400, "jump-tooltip");
+        new Tooltip(this, 1300, 400, "double-jump-tooltip");
+        new Tooltip(this, 2300, 500, "crouch-tooltip");
+        new Tooltip(this, 3200, 400, "wallgrip-tooltip");
 
-		new Rubbish(this, 1100, 400, "rubbish0");
-		new Rubbish(this, 3075, 180, "rubbish1");
-		new Rubbish(this, 3690, 900, "rubbish2");
-		new Rubbish(this, 5500, 70, "rubbish0");
+        new Rubbish(this, 1100, 400);
+        new Rubbish(this, 3075, 180);
+        new Rubbish(this, 3690, 900);
+        new Rubbish(this, 5500, 70);
+        new Rubbish(this, 7239, 870);
+        new Rubbish(this, 7800, 50);
+        new Rubbish(this, 9900, 50);
 
-		this.logSpawner = new LogSpawner(this, truck.x - 200, truck.y);
+        this.logSpawner = new LogSpawner(this, truck.x - 200, truck.y);
 
-		new Harvester(this, 7020, 7380, 500);
+        window.h = new Harvester(this, "claw3", "claw4", 4250, 4560, 600);
+        new Harvester(this, "claw1", "claw2", 7620, 7980, 550);
 
-		if (this.game.renderer instanceof Phaser.Renderer.WebGL.WebGLRenderer){
-		    this.saturation = this.game.renderer.addPipeline("SaturatePipeline", new SaturatePipeline(this.game));
-		    this.saturation.setFloat2('iResolution', 1920, 1080);
-		    this.cameras.main.setRenderToTexture(this.saturation);
-		}
+        if (this.game.renderer instanceof Phaser.Renderer.WebGL.WebGLRenderer) {
+            this.saturation = this.game.renderer.addPipeline("SaturatePipeline", new SaturatePipeline(this.game));
+            this.saturation.setFloat2('iResolution', 1920, 1080);
+            this.cameras.main.setRenderToTexture(this.saturation);
+        }
 
-		this.scene.run("ui");
+        this.scene.run("ui");
     }
 
     update() {
@@ -104,35 +110,39 @@ export class GameScene extends Phaser.Scene {
             this.setupGamepad(pad);
         }
 
-        if (this.player.state == PlayerState.SPIKED){
+        if (this.player.state == PlayerState.SPIKED) {
             this.player.body.friction = 0;
-        } else if((this.keys.shift?.isDown || pad?.R2) && this.player.canClimb()){
+        } else if ((this.keys.shift?.isDown || pad?.R2) && this.player.canClimb()) {
             this.player.climb();
         } else {
             if (this.keys.left?.isDown || pad?.axes[0].getValue() === -1) {
-                if (this.keys.down?.isDown){
+                if (this.keys.down?.isDown) {
                     this.player.crouch(-config.crouchSpeed);
                 } else {
                     this.player.run(-config.speed);
                 }
             } else if (this.keys.right?.isDown || pad?.axes[0].getValue() === 1) {
-                if (this.keys.down?.isDown){
+                if (this.keys.down?.isDown) {
                     this.player.crouch(config.crouchSpeed);
                 } else {
                     this.player.run(config.speed);
                 }
             } else if (this.keys.down?.isDown) {
                 this.player.crouch();
-            } else if (this.player.state !== PlayerState.JUMPING){
+            } else if (this.player.state !== PlayerState.JUMPING) {
                 this.player.run();
             }
 
-            if (this.player.isAirbourne()){
+            if (this.player.isAirbourne()) {
                 this.player.state = PlayerState.JUMPING;
 
                 this.player.body.friction = 0;
-            } else if(this.player.state !== PlayerState.JUMPING) {
-                this.player.body.friction = Player.friction;
+            } else if (this.player.state !== PlayerState.JUMPING) {
+                if (this.player.onIce) {
+                    this.player.body.friction = config.iceFriction;
+                } else {
+                    this.player.body.friction = Player.friction;
+                }
             }
         }
 
@@ -141,13 +151,13 @@ export class GameScene extends Phaser.Scene {
 
     setupGamepad(pad: Phaser.Input.Gamepad.Gamepad) {
         pad.on(Phaser.Input.Gamepad.Events.BUTTON_DOWN, (keyCode: number) => {
-            if (keyCode === 0){
+            if (keyCode === 0) {
                 this.player.jump();
             }
         });
     }
 
-    setSaturation(amount: number){
+    setSaturation(amount: number) {
         this.saturation.setFloat1('saturation', amount);
     }
 }

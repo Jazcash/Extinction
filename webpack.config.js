@@ -55,7 +55,9 @@ module.exports = env => {
 				template: "./src/client/index.htm"
 			}),
 			new webpack.DefinePlugin({
-				__DEBUG__: JSON.stringify(mode === "development")
+				__DEV__: JSON.stringify(mode === "development"),
+				WEBGL_RENDERER: true,
+				CANVAS_RENDERER: true
 			})
 		],
 		optimization: {

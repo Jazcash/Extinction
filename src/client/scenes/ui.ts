@@ -2,6 +2,7 @@ import { PollutionMeter } from "client/entities/pollution-meter";
 import config from "client/config";
 import { GameScene } from "./game";
 import { GameObjects } from "phaser";
+
 export class UIScene extends Phaser.Scene {
     pollutionMeter: PollutionMeter;
     timerText: Phaser.GameObjects.Text;

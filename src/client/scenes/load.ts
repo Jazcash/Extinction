@@ -29,16 +29,15 @@ export class LoadScene extends Phaser.Scene {
 
         this.load.json("shapes", "sprites/shapes.json");
 
+        this.load.multiatlas("menu", "sprites/menu.json", "sprites");
         this.load.multiatlas("world", "sprites/world.json", "sprites");
-
         this.load.multiatlas("player", "sprites/player.json", "sprites");
-
         this.load.multiatlas("misc", "sprites/misc.json", "sprites");
 
         Utils.loadFont("Roboto", [100, 300, 400, 500, 700, 900]);
     }
 
     create() {
-        this.scene.start("game");
+        this.scene.start("character-selection");
     }
 }
