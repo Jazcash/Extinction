@@ -43,14 +43,16 @@ export class GameScene extends Phaser.Scene {
         const world = window.world = this.matter.add.fromPhysicsEditor(0, 0, this.cache.json.get('shapes').world);
         this.matter.alignBody(world, 0, bounds.height, Phaser.Display.Align.BOTTOM_LEFT);
 
-        BackgroundManager.setupSceneBackgrounds(this, 62, [
-            { texture: "bg4", depth: -4, scrollFactorX: 0.2 },
-            { texture: "bg3", depth: -3, scrollFactorX: 0.3 },
-            { texture: "bg2", depth: -2, scrollFactorX: 0.5 },
-            { texture: "bg1", depth: -1, scrollFactorX: 1 },
-            { texture: "fg1", depth: 1, scrollFactorX: 1.25 },
-            { texture: "fg2", depth: 2, scrollFactorX: 1.4 },
-            { texture: "fg3", depth: 3, scrollFactorX: 1.8 }
+        BackgroundManager.setupSceneBackgrounds(this, [
+            { texture: "sky", depth: -6, scrollFactorX: 1, totalFrames: 74 },
+            { texture: "bg5", depth: -5, scrollFactorX: 0.2, totalFrames: 15 },
+            { texture: "bg4", depth: -4, scrollFactorX: 0.2, totalFrames: 25 },
+            { texture: "bg3", depth: -3, scrollFactorX: 0.3, totalFrames: 9 },
+            { texture: "bg2", depth: -2, scrollFactorX: 0.5, totalFrames: 37 },
+            { texture: "bg1", depth: -1, scrollFactorX: 1, totalFrames: 75 },
+            { texture: "fg1", depth: 1, scrollFactorX: 1.25, totalFrames: 71 },
+            { texture: "fg2", depth: 2, scrollFactorX: 1.4, totalFrames: 51 },
+            { texture: "fg3", depth: 3, scrollFactorX: 1.8, totalFrames: 127 }
         ]);
 
         this.cameras.main.startFollow(this.player, true, 0.15, 0.15, -500);

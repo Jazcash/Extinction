@@ -320,6 +320,36 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">menu/boy-glow.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>73,162,145,324</rect>
+                <key>scale9Paddings</key>
+                <rect>73,162,145,324</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">menu/girl-glow.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>100,160,199,319</rect>
+                <key>scale9Paddings</key>
+                <rect>100,160,199,319</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">menu/play-arrow.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

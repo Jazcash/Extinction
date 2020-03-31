@@ -233,6 +233,25 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">player/boy/idle/0.png</key>
+            <key type="filename">player/boy/idle/1.png</key>
+            <key type="filename">player/boy/idle/2.png</key>
+            <key type="filename">player/boy/idle/3.png</key>
+            <key type="filename">player/boy/idle/4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>16,38,32,75</rect>
+                <key>scale9Paddings</key>
+                <rect>16,38,32,75</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">player/boy/jumping/0.png</key>
             <key type="filename">player/boy/jumping/1.png</key>
             <key type="filename">player/boy/jumping/2.png</key>
@@ -411,6 +430,11 @@
             <key type="filename">player/girl/crouching/3.png</key>
             <key type="filename">player/girl/crouching/4.png</key>
             <key type="filename">player/girl/crouching/5.png</key>
+            <key type="filename">player/girl/idle/0.png</key>
+            <key type="filename">player/girl/idle/1.png</key>
+            <key type="filename">player/girl/idle/2.png</key>
+            <key type="filename">player/girl/idle/3.png</key>
+            <key type="filename">player/girl/idle/4.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

@@ -1,9 +1,7 @@
 import { Utils } from "client/utils/utils";
+import { PollutionMeter } from "client/entities/pollution-meter";
 
 export class LoadScene extends Phaser.Scene {
-    progressBar: Phaser.GameObjects.Graphics;
-    progressBox: Phaser.GameObjects.Graphics;
-
     constructor() {
         super({
             key: "load"
@@ -11,20 +9,19 @@ export class LoadScene extends Phaser.Scene {
     }
 
     preload() {
-        const barWidth = 320;
-        const barHeight = 50;
-
         this.cameras.main.setBackgroundColor("rgba(0, 0, 0, 0.5)");
 
-        this.progressBox = this.add.graphics();
-        this.progressBar = this.add.graphics();
-        this.progressBox.fillStyle(0x222222, 0.8);
-        this.progressBox.fillRect(this.cameras.main.width / 2 - barWidth / 2, this.cameras.main.height / 2 - barHeight / 2, barWidth, barHeight);
+        const boundingZone = this.add.zone(this.cameras.main.x, this.cameras.main.y, this.cameras.main.width, this.cameras.main.height).setOrigin(0, 0);
+
+        const bg = this.add.graphics();
+        bg.fillGradientStyle(0x333333, 0x333333, 0x232323, 0x232323, 1);
+        bg.fillRect(0, 0, boundingZone.width, boundingZone.height);
+
+        const pollutionMeter = new PollutionMeter(this, 0, 0, true);
+        Phaser.Display.Align.In.BottomRight(pollutionMeter.container, boundingZone, -180, -440);
 
         this.load.on("progress", (v: number) => {
-            this.progressBar.clear();
-            this.progressBar.fillStyle(0xdddddd, 1);
-            this.progressBar.fillRect(this.cameras.main.width / 2 - barWidth / 2, this.cameras.main.height / 2 - barHeight / 2, barWidth * v, 50);
+            pollutionMeter.setPercent(v, true);
         });
 
         this.load.json("shapes", "sprites/shapes.json");

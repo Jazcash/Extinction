@@ -37,6 +37,7 @@ export class Player extends Physics.Matter.Sprite {
     jumpedFromWall = false;
     crouching = false;
     onIce = false;
+    idleTween: Phaser.Tweens.Tween;
 
     constructor(scene: Phaser.Scene, x: number, y: number) {
         super(scene.matter.world, x, y, "player", `${Player.gender}/idle`);
@@ -48,6 +49,13 @@ export class Player extends Physics.Matter.Sprite {
         this.setBody(physicsEditorConfig);
 
         this.setFixedRotation();
+
+        this.anims.animationManager.create({
+            key: "idle",
+            frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 4, prefix: `${Player.gender}/idle/` }),
+            frameRate: 6,
+            repeat: -1
+        });
 
         this.anims.animationManager.create({
             key: "running",
@@ -142,6 +150,14 @@ export class Player extends Physics.Matter.Sprite {
     canClimb(){
         return (this.state === PlayerState.JUMPING || this.state === PlayerState.CLIMBING) && (this.touchingLeft() || this.touchingRight()) && !this.jumpedFromWall;
     }
+    
+    idle(){
+        this.state = PlayerState.IDLE;
+
+        this.play("idle", true);
+
+        this.hasDoubleJump = false;
+    }
 
     run(speed?: number) {
         if (this.jumpedFromWall){
@@ -154,7 +170,7 @@ export class Player extends Physics.Matter.Sprite {
             this.crouching = false;
         }
 
-        if (this.state !== PlayerState.JUMPING) {
+        if (this.state !== PlayerState.JUMPING && speed) {
             this.state = PlayerState.RUNNING;
 
             this.play("running", true);
@@ -168,11 +184,7 @@ export class Player extends Physics.Matter.Sprite {
             this.setFlipX(speed < 0);
             this.facingLeft = speed < 0;
         } else {
-            this.setFrame(`${Player.gender}/idle`);
-
-            this.state = PlayerState.IDLE;
-
-            this.hasDoubleJump = false;
+            this.idle();
         }
     }
 
@@ -240,14 +252,6 @@ export class Player extends Physics.Matter.Sprite {
         this.body.friction = 0;
 
         this.play("jumping");
-    }
-
-    stand(){
-        if (this.state !== PlayerState.CROUCHING){
-            return;
-        }
-
-        this.state = PlayerState.IDLE;
     }
 
     climb(){

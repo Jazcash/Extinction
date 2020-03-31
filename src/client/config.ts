@@ -1,5 +1,5 @@
 export default {
-    startPos: { x: 200, y: 640 },
+    startPos: { x: 100, y: 700 },
     speed: 7,
     crouchSpeed: 3,
     jump: 17,
