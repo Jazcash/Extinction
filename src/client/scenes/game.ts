@@ -11,8 +11,11 @@ import { LogSpawner } from "client/entities/log-spawner";
 import { Harvester } from "client/entities/harvester";
 import { Clouds } from "client/entities/clouds";
 import { SaturatePipeline } from "client/shaders/saturate-pipeline";
+import { IceCap } from "client/entities/ice-cap";
+import { Drill } from "client/entities/drill";
 
 declare let window: any;
+declare var __DEV__: boolean;
 
 export class GameScene extends Phaser.Scene {
     player: Player;
@@ -22,6 +25,7 @@ export class GameScene extends Phaser.Scene {
     logSpawner: LogSpawner;
     clouds: Clouds;
     saturation: Phaser.Renderer.WebGL.WebGLPipeline;
+    entering: boolean = true;
 
     constructor() {
         super({
@@ -47,7 +51,7 @@ export class GameScene extends Phaser.Scene {
             { texture: "sky", depth: -6, scrollFactorX: 1, totalFrames: 74 },
             { texture: "bg5", depth: -5, scrollFactorX: 0.2, totalFrames: 15 },
             { texture: "bg4", depth: -4, scrollFactorX: 0.2, totalFrames: 25 },
-            { texture: "bg3", depth: -3, scrollFactorX: 0.3, totalFrames: 9 },
+            { texture: "bg3", depth: -3, scrollFactorX: 0.3, totalFrames: 9, offsetX: 1000 },
             { texture: "bg2", depth: -2, scrollFactorX: 0.5, totalFrames: 37 },
             { texture: "bg1", depth: -1, scrollFactorX: 1, totalFrames: 75 },
             { texture: "fg1", depth: 1, scrollFactorX: 1.25, totalFrames: 71 },
@@ -73,7 +77,10 @@ export class GameScene extends Phaser.Scene {
 
         this.scene.run("pause");
 
-        const truck = this.add.sprite(6330, 400, "misc", "truck").setDepth(-0.5);
+        const truck = this.add.image(6330, 400, "misc", "truck").setDepth(-0.5);
+
+        this.add.image(9591, 868, "misc", "sea-bottom").setOrigin(0).setDepth(1).setBlendMode(Phaser.BlendModes.MULTIPLY);
+        this.add.image(9591, 810, "misc", "sea-top").setOrigin(0).setDepth(1);
 
         this.clouds = new Clouds(this);
 
@@ -90,10 +97,25 @@ export class GameScene extends Phaser.Scene {
         new Rubbish(this, 7800, 50);
         new Rubbish(this, 9900, 50);
 
-        this.logSpawner = new LogSpawner(this, truck.x - 200, truck.y);
+        new LogSpawner(this, truck.x - 200, truck.y);
 
-        window.h = new Harvester(this, "claw3", "claw4", 4250, 4560, 600);
+        new Harvester(this, "claw3", "claw4", 4250, 4560, 600);
         new Harvester(this, "claw1", "claw2", 7620, 7980, 550);
+
+        new IceCap(this, 9900, 930, "ice-cap1").setDepth(-1);
+        new IceCap(this, 10400, 930, "ice-cap2").setDepth(-1);
+        new IceCap(this, 11350, 930, "ice-cap1").setDepth(-1);
+
+        new Drill(this, { x: 10520, y: 0, drillId: 1, duration: 2000, reach: 250, scale: 0.7 });
+        new Drill(this, { x: 10990, y: 0, drillId: 2, duration: 2000, reach: 200, scale: 1 });
+        new Drill(this, { x: 11300, y: 0, drillId: 1, duration: 2000, reach: 250, scale: 0.8 });
+        new Drill(this, { x: 11880, y: 180, drillId: 2, duration: 2000, reach: 250, scale: 0.8 });
+        new Drill(this, { x: 12260, y: 0, drillId: 3, duration: 2000, reach: 380, scale: 0.8});
+        new Drill(this, { x: 12790, y: -200, drillId: 2, duration: 3000, reach: 400, scale: 1 });
+        new Drill(this, { x: 13100, y: -100, drillId: 1, duration: 2000, reach: 250, scale: 0.7 });
+        new Drill(this, { x: 13500, y: -200, drillId: 3, duration: 2000, reach: 450, scale: 0.8});
+
+        this.add.image(10090, 0, "world", "misc/ice-cave-top").setOrigin(0);
 
         if (this.game.renderer instanceof Phaser.Renderer.WebGL.WebGLRenderer) {
             this.saturation = this.game.renderer.addPipeline("SaturatePipeline", new SaturatePipeline(this.game));
@@ -102,6 +124,11 @@ export class GameScene extends Phaser.Scene {
         }
 
         this.scene.run("ui");
+
+        this.input.gamepad.enabled = false;
+        this.input.keyboard.enabled = false;
+
+        this.entrance();
     }
 
     update() {
@@ -112,7 +139,9 @@ export class GameScene extends Phaser.Scene {
             this.setupGamepad(pad);
         }
 
-        if (this.player.state == PlayerState.SPIKED) {
+        if (this.entering && !__DEV__){
+            this.player.run(config.speed * 0.5);
+        } else if (this.player.state == PlayerState.SPIKED) {
             this.player.body.friction = 0;
         } else if ((this.keys.shift?.isDown || pad?.R2) && this.player.canClimb()) {
             this.player.climb();
@@ -161,5 +190,18 @@ export class GameScene extends Phaser.Scene {
 
     setSaturation(amount: number) {
         this.saturation.setFloat1('saturation', amount);
+    }
+
+    entrance(){
+        this.cameras.main.fadeIn(1000, 0, 0, 0, (camera: Phaser.Cameras.Scene2D.Camera, progress: number) => {
+            if (progress === 1){
+                this.input.gamepad.enabled = true;
+                this.input.keyboard.enabled = true;
+
+                this.entering = false;
+
+                this.player.run();
+            }
+        });
     }
 }

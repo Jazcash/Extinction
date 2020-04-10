@@ -1,6 +1,7 @@
 import { Utils } from "client/utils/utils";
 import { PollutionMeter } from "client/entities/pollution-meter";
 
+declare var __DEV__: boolean;
 export class LoadScene extends Phaser.Scene {
     constructor() {
         super({
@@ -35,6 +36,12 @@ export class LoadScene extends Phaser.Scene {
     }
 
     create() {
-        this.scene.start("character-selection");
+        this.scene.run("debug");
+
+        if (__DEV__){
+            this.scene.start("game");
+        } else {
+            this.scene.start("character-selection");
+        }
     }
 }

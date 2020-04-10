@@ -1,12 +1,12 @@
 import { GameScene } from "./game";
 
+declare var window: any;
 export class DebugScene extends Phaser.Scene {
     text: Phaser.GameObjects.Text;
 
     constructor() {
         super({
-            key: "debug",
-            active: true
+            key: "debug"
         });
     }
 
@@ -40,7 +40,8 @@ export class DebugScene extends Phaser.Scene {
             // `Facing: ${player?.facingLeft ? "Left" : "Right"}`,
             // `JumpedFromWall: ${player?.jumpedFromWall}`,
             // `Active logs: ${gameScene.logSpawner?.activeLogs.length ?? 0}`
-           // `On ice: ${player?.onIce}`
+            `Feet touching count: ${player?.feetTouchingBodies.length}`,
+            `On ice: ${player?.onIce}`
         ]);
     }
 }

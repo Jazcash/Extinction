@@ -748,6 +748,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">world/misc/ice-cave-top.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>984,132,1967,263</rect>
+                <key>scale9Paddings</key>
+                <rect>984,132,1967,263</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">world/sky/73.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

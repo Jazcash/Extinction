@@ -4,7 +4,7 @@ import { GameObjects } from "phaser";
 import ShakePosition from 'phaser3-rex-plugins/plugins/shakeposition.js';
 
 const minPx = 10;
-const maxPx = 250;
+const maxPx = 260;
 const maxHeight = maxPx - minPx;
 
 export class PollutionMeter {

@@ -44,6 +44,12 @@ export class UIScene extends Phaser.Scene {
         const seconds = config.time - this.timer.getElapsedSeconds();
         this.timerText.setText(seconds.toFixed(0));
 
+        if (seconds <= 20){
+            this.timerText.setColor("#f00");
+        } else {
+            this.timerText.setColor("#000");
+        }
+
         const percent = this.timer.getElapsedSeconds() / config.time;
         this.pollutionMeter.setPercent(percent, true);
 

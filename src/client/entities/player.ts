@@ -30,7 +30,7 @@ export class Player extends Physics.Matter.Sprite {
         leftSensor: MatterJS.BodyType;
         rightSensor: MatterJS.BodyType;
     };
-    feetTouchingCount = 0;
+    feetTouchingBodies: MatterJS.BodyType[] = [];
     leftTouchingCount = 0;
     rightTouchingCount = 0;
     facingLeft = false;
@@ -99,7 +99,7 @@ export class Player extends Physics.Matter.Sprite {
         };
 
         this.parts.feet.onCollideCallback = (pair: Types.Physics.Matter.MatterCollisionPair) => {
-            this.feetTouchingCount++;
+            this.feetTouchingBodies.push(pair.bodyB);
 
             if (this.state === PlayerState.JUMPING){
                 this.run();
@@ -111,9 +111,9 @@ export class Player extends Physics.Matter.Sprite {
         };
 
         this.parts.feet.onCollideEndCallback = (pair: Types.Physics.Matter.MatterCollisionPair) => {
-            this.feetTouchingCount--;
+            this.feetTouchingBodies.splice(this.feetTouchingBodies.indexOf(pair.bodyB), 1);
 
-            if (pair.bodyB.label === "ice"){
+            if (pair.bodyB.label === "ice" && !this.feetTouchingBodies.find(body => body.label === "ice")){
                 this.onIce = false;
             }
         };
@@ -136,7 +136,7 @@ export class Player extends Physics.Matter.Sprite {
     }
 
     isAirbourne(){
-        return this.feetTouchingCount === 0;
+        return this.feetTouchingBodies.length === 0;
     }
 
     touchingLeft(){

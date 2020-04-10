@@ -11,8 +11,8 @@ import { CharacterSelection } from "./scenes/character-selection";
 import { PreloadScene } from "./scenes/preload";
 import { MainMenuScene } from "./scenes/main-menu";
 
-declare let window: any;
-declare let __DEV__: boolean;
+declare var window: any;
+declare var __DEV__: boolean;
 
 const game = window.game = new Phaser.Game({
     parent: "game-container",
