@@ -32,16 +32,20 @@ export class LoadScene extends Phaser.Scene {
         this.load.multiatlas("player", "sprites/player.json", "sprites");
         this.load.multiatlas("misc", "sprites/misc.json", "sprites");
 
+        this.load.video("title", "video/title.mp4");
+
         Utils.loadFont("Roboto", [100, 300, 400, 500, 700, 900]);
     }
 
     create() {
+        console.log("game started");
+
         this.scene.run("debug");
 
         if (__DEV__){
             this.scene.start("game");
         } else {
-            this.scene.start("character-selection");
+            this.scene.start("main-menu");
         }
     }
 }

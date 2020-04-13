@@ -216,10 +216,10 @@
 				]
 			},
 			{
-				"label": "",
+				"label": "ice",
 				"isSensor": false,
 				"vertices": [
-					[ { "x":15801, "y":1080 }, { "x":15800, "y":850 }, { "x":15499, "y":851 }, { "x":15511, "y":1080 } ]
+					[ { "x":15499, "y":850 }, { "x":15511, "y":1080 }, { "x":15801, "y":1080 }, { "x":15800, "y":850 } ]
 				]
 			},
 			{
@@ -544,6 +544,44 @@
 				"isSensor": false,
 				"vertices": [
 					[ { "x":186, "y":836 }, { "x":259, "y":749 }, { "x":259, "y":23 }, { "x":101, "y":23 }, { "x":106, "y":791 } ]
+				]
+			}
+		]
+	},
+	"boat": {
+		"type": "fromPhysicsEditor",
+		"label": "boat",
+		"isStatic": true,
+		"density": 0.1,
+		"restitution": 0,
+		"friction": 0.1,
+		"frictionAir": 0.01,
+		"frictionStatic": 5,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":10, "y":465 }, { "x":10, "y":473 }, { "x":285, "y":473 }, { "x":285, "y":465 } ]
+				]
+			},
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":347, "y":563 }, { "x":347, "y":576 }, { "x":929, "y":576 }, { "x":928, "y":563 } ]
+				]
+			},
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":998, "y":456 }, { "x":998, "y":464 }, { "x":1288, "y":464 }, { "x":1288, "y":456 } ]
 				]
 			}
 		]

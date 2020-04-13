@@ -19,7 +19,7 @@ const game = window.game = new Phaser.Game({
     width: 1920,
     height: 1080,
     render: {
-        transparent: false,
+        transparent: true,
         roundPixels: true
     },
     scale: {
@@ -33,7 +33,7 @@ const game = window.game = new Phaser.Game({
         matter: {
             debug: __DEV__ ? {
                 lineColor: 0xff0000,
-                staticLineColor: 0x0000ff,
+                staticLineColor: 0xff0000,
                 sensorLineColor: 0x00ff00
             } : false,
             gravity: {

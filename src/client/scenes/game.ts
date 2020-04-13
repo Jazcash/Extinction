@@ -13,6 +13,8 @@ import { Clouds } from "client/entities/clouds";
 import { SaturatePipeline } from "client/shaders/saturate-pipeline";
 import { IceCap } from "client/entities/ice-cap";
 import { Drill } from "client/entities/drill";
+import { OilRig } from "client/entities/oil-rig";
+import { Boat } from "client/entities/boat";
 
 declare let window: any;
 declare var __DEV__: boolean;
@@ -26,6 +28,9 @@ export class GameScene extends Phaser.Scene {
     clouds: Clouds;
     saturation: Phaser.Renderer.WebGL.WebGLPipeline;
     entering: boolean = true;
+    oilrig: OilRig;
+    platform: MatterJS.BodyType;
+    test: Phaser.GameObjects.Rectangle;
 
     constructor() {
         super({
@@ -117,6 +122,10 @@ export class GameScene extends Phaser.Scene {
 
         this.add.image(10090, 0, "world", "misc/ice-cave-top").setOrigin(0);
 
+        this.oilrig = new OilRig(this, 14000, 50);
+
+        new Boat(this, 16550, 800);
+
         if (this.game.renderer instanceof Phaser.Renderer.WebGL.WebGLRenderer) {
             this.saturation = this.game.renderer.addPipeline("SaturatePipeline", new SaturatePipeline(this.game));
             this.saturation.setFloat2('iResolution', 1920, 1080);
@@ -178,6 +187,8 @@ export class GameScene extends Phaser.Scene {
         }
 
         this.clouds.update();
+
+        this.oilrig.update(this.player.parts.feet.position.y - 7);
     }
 
     setupGamepad(pad: Phaser.Input.Gamepad.Gamepad) {
