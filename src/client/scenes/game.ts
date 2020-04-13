@@ -31,6 +31,7 @@ export class GameScene extends Phaser.Scene {
     oilrig: OilRig;
     platform: MatterJS.BodyType;
     test: Phaser.GameObjects.Rectangle;
+    snowEmitter: Phaser.GameObjects.Particles.ParticleEmitter;
 
     constructor() {
         super({
@@ -39,7 +40,7 @@ export class GameScene extends Phaser.Scene {
     }
 
     create() {
-        const bounds = { x: 50, y: 0, width: 180000, height: 1080 };
+        const bounds = { x: 50, y: 0, width: 18700, height: 1080 };
 
         this.cameras.main.setBackgroundColor("#A9EFFE");
 
@@ -94,13 +95,20 @@ export class GameScene extends Phaser.Scene {
         new Tooltip(this, 2300, 500, "crouch-tooltip");
         new Tooltip(this, 3200, 400, "wallgrip-tooltip");
 
-        new Rubbish(this, 1100, 400);
-        new Rubbish(this, 3075, 180);
+        new Rubbish(this, 1100, 700);
+        new Rubbish(this, 2200, 300);
+        new Rubbish(this, 2930, 350);
+        new Rubbish(this, 4400, 570);
         new Rubbish(this, 3690, 900);
-        new Rubbish(this, 5500, 70);
+        new Rubbish(this, 5500, 50);
         new Rubbish(this, 7239, 870);
-        new Rubbish(this, 7800, 50);
+        new Rubbish(this, 7800, 500);
         new Rubbish(this, 9900, 50);
+        new Rubbish(this, 8630, 200);
+        new Rubbish(this, 10700, 300);
+        new Rubbish(this, 12090, 350);
+        new Rubbish(this, 12975, 350);
+        new Rubbish(this, 14800, 0);
 
         new LogSpawner(this, truck.x - 200, truck.y);
 
@@ -122,9 +130,22 @@ export class GameScene extends Phaser.Scene {
 
         this.add.image(10090, 0, "world", "misc/ice-cave-top").setOrigin(0);
 
-        this.oilrig = new OilRig(this, 14000, 50);
+        this.oilrig = new OilRig(this, 14100, 50);
 
         new Boat(this, 16550, 800);
+
+        const particles = this.add.particles("misc", "snow-particle");
+        this.snowEmitter = particles.createEmitter({
+            x: 9400,
+            y: -100,
+            lifespan: 5000,
+            gravityY: 600,
+            scale: { min: 0.5, max: 1 },
+            speed: { min: 1, max: 10 },
+            alpha: { start: 1, end: 0 },
+            quantity: 1,
+            emitZone: { source: new Phaser.Geom.Rectangle(0, 0, 5000, 10)}
+        });
 
         if (this.game.renderer instanceof Phaser.Renderer.WebGL.WebGLRenderer) {
             this.saturation = this.game.renderer.addPipeline("SaturatePipeline", new SaturatePipeline(this.game));
@@ -189,6 +210,12 @@ export class GameScene extends Phaser.Scene {
         this.clouds.update();
 
         this.oilrig.update(this.player.parts.feet.position.y - 7);
+
+        if (this.player.body.position.x > 8000 && this.player.body.position.x < 14000 && !this.snowEmitter.on){
+            this.snowEmitter.start();
+        } else if (this.player.body.position.x < 8000 || this.player.body.position.x > 14000 && this.snowEmitter.on){
+            this.snowEmitter.stop();
+        }
     }
 
     setupGamepad(pad: Phaser.Input.Gamepad.Gamepad) {

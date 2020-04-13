@@ -2,7 +2,7 @@ import { GameObjects } from "phaser";
 
 const worldWidth = 180000;
 const spaceBetween = 700;
-const pxPerFrame = 0.2;
+const pxPerFrame = 0.25;
 
 export class Clouds {
     clouds: GameObjects.Image[] = [];

@@ -9,6 +9,7 @@ export class UIScene extends Phaser.Scene {
     timer: Phaser.Time.TimerEvent;
     currentHealth: number = config.maxHealth;
     hearts: GameObjects.Sprite[] = [];
+    snow: GameObjects.Particles.ParticleEmitterManager;
 
     constructor() {
         super({
@@ -22,11 +23,15 @@ export class UIScene extends Phaser.Scene {
         this.pollutionMeter = new PollutionMeter(this, 0, 0);
         Phaser.Display.Align.In.TopRight(this.pollutionMeter.container, boundingZone, -170);
 
-        this.timerText = this.add.text(this.pollutionMeter.container.getBounds().centerX, this.pollutionMeter.container.getBounds().bottom, "", {
+        this.add.image(this.pollutionMeter.container.getBounds().centerX - 6, this.pollutionMeter.container.getBounds().bottom + 50, "misc", "black-banner");
+
+        this.timerText = this.add.text(this.pollutionMeter.container.getBounds().centerX, this.pollutionMeter.container.getBounds().bottom + 25, "", {
             fontFamily: "Roboto",
             fontSize: "40px",
             fontStyle: "900",
-            color: "#000"
+            color: "#000",
+            stroke: "#aaa",
+            strokeThickness: 5
         } as Phaser.Types.GameObjects.Text.TextStyle).setOrigin(0.5, 0);
 
         this.timer = this.time.delayedCall(config.time * 1000, () => { console.log("time finished") });
@@ -76,5 +81,13 @@ export class UIScene extends Phaser.Scene {
             duration: 200,
             ease: Phaser.Math.Easing.Sine.Out
         });
+    }
+
+    startSnow(){
+        
+    }
+
+    stopSnow(){
+
     }
 }
