@@ -10,6 +10,7 @@ import { UIScene } from "./scenes/ui";
 import { CharacterSelection } from "./scenes/character-selection";
 import { PreloadScene } from "./scenes/preload";
 import { MainMenuScene } from "./scenes/main-menu";
+import { TestScene } from "./scenes/test";
 
 declare var window: any;
 declare var __DEV__: boolean;
@@ -49,7 +50,8 @@ const game = window.game = new Phaser.Game({
         new GameScene(),
         new UIScene(),
         new PauseScene(),
-        __DEV__ ? new DebugScene() : {}
+        __DEV__ ? new DebugScene() : {},
+        __DEV__ ? new TestScene() : {}
     ]
 });
 

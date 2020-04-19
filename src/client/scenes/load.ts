@@ -1,7 +1,9 @@
 import { Utils } from "client/utils/utils";
 import { PollutionMeter } from "client/entities/pollution-meter";
+import { EdgeFadePipeline } from "client/shaders/edge-fade-pipeline";
 
 declare var __DEV__: boolean;
+declare var window: any;
 export class LoadScene extends Phaser.Scene {
     constructor() {
         super({
@@ -35,15 +37,21 @@ export class LoadScene extends Phaser.Scene {
         this.load.video("title", "video/title.mp4");
 
         Utils.loadFont("Roboto", [100, 300, 400, 500, 700, 900]);
+        Utils.loadFont("OCRAEXT");
+        Utils.loadFont("Baloo");
     }
 
-    create() {
-        console.log("game started");
+    async create() {
+        if (this.game.renderer instanceof Phaser.Renderer.WebGL.WebGLRenderer) {
+            this.game.renderer.addPipeline("EdgeFadePipeline", new EdgeFadePipeline(this.game));
+        }
 
         this.scene.run("debug");
 
         if (__DEV__){
-            this.scene.start("game");
+            this.scene.start("main-menu");
+            //this.scene.start("game");
+            //this.scene.start("test");
         } else {
             this.scene.start("main-menu");
         }

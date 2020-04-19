@@ -1,5 +1,6 @@
 import { Utils } from "client/utils/utils";
 import { PollutionMeter } from "client/entities/pollution-meter";
+import { TypewriterText } from "client/entities/typewriter-text";
 
 export class PreloadScene extends Phaser.Scene {
     constructor() {

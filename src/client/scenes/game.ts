@@ -27,10 +27,9 @@ export class GameScene extends Phaser.Scene {
     logSpawner: LogSpawner;
     clouds: Clouds;
     saturation: Phaser.Renderer.WebGL.WebGLPipeline;
-    entering: boolean = true;
+    entering: boolean = false;
     oilrig: OilRig;
     platform: MatterJS.BodyType;
-    test: Phaser.GameObjects.Rectangle;
     snowEmitter: Phaser.GameObjects.Particles.ParticleEmitter;
 
     constructor() {
@@ -154,11 +153,6 @@ export class GameScene extends Phaser.Scene {
         }
 
         this.scene.run("ui");
-
-        this.input.gamepad.enabled = false;
-        this.input.keyboard.enabled = false;
-
-        this.entrance();
     }
 
     update() {

@@ -1,19 +1,36 @@
+import { CancelablePromise } from "./cancel-group";
+
 export namespace Utils {
-    export function loadFont(fontName: string, weights: number[]){
+    export function loadFont(fontName: string, weights?: number[]){
         const fontFace = document.createElement("style");
 
-        for (const weight of weights){
+        if (weights){
+            for (const weight of weights){
+                fontFace.innerHTML += `@font-face{
+                    font-family: "${fontName}";
+                    src: url("fonts/${fontName}-${weight}.ttf") format("truetype");
+                    src: url("fonts/${fontName}-${weight}.woff") format("woff");
+                    font-weight: ${weight}
+                }`;
+    
+                const fontEl = document.createElement("div");
+                fontEl.className = "font-loader";
+                fontEl.style.fontFamily = fontName;
+                fontEl.style.fontWeight = `${weight}`;
+                fontEl.innerHTML = fontName;
+    
+                document.body.append(fontEl);
+            }
+        } else {
             fontFace.innerHTML += `@font-face{
                 font-family: "${fontName}";
-                src: url("fonts/${fontName}-${weight}.ttf") format("truetype");
-                src: url("fonts/${fontName}-${weight}.woff") format("woff");
-                font-weight: ${weight}
+                src: url("fonts/${fontName}.ttf") format("truetype");
+                src: url("fonts/${fontName}.woff") format("woff");
             }`;
 
             const fontEl = document.createElement("div");
             fontEl.className = "font-loader";
             fontEl.style.fontFamily = fontName;
-            fontEl.style.fontWeight = `${weight}`;
             fontEl.innerHTML = fontName;
 
             document.body.append(fontEl);
@@ -38,5 +55,33 @@ export namespace Utils {
         hash.set(obj, result);
         return Object.assign(result, ...Object.keys(obj).map(
             key => ({ [key]: deepClone(obj[key], hash) }) ));
+    }
+
+    export function delay(scene: Phaser.Scene, ms: number) : Promise<void>{
+        return new Promise(resolve => {
+            scene.time.delayedCall(ms, () => resolve());
+        });
+    }
+
+    export function asArray<T>(target: T | T[]): T[] {
+        if (Array.isArray(target)) {
+            return target;
+        } else {
+            return [target];
+        }
+    }
+
+    export function tween(scene: Phaser.Scene, config: Phaser.Types.Tweens.TweenBuilderConfig | object) : Promise<Phaser.Tweens.Tween> {
+        return new Promise(resolve => {
+            const tween = scene.tweens.add(config);
+            tween.on("complete", () => resolve(tween));
+        });
+    }
+
+    export function tweenCounter(scene: Phaser.Scene, config: Phaser.Types.Tweens.NumberTweenBuilderConfig | object) : Promise<Phaser.Tweens.Tween> {
+        return new Promise(resolve => {
+            const tween = scene.tweens.addCounter(config);
+            tween.on("complete", () => resolve(tween));
+        });
     }
 }
