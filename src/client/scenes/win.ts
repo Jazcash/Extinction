@@ -53,6 +53,8 @@ export class WinScene extends Phaser.Scene {
 
         this.cameras.main.fadeOut(2000);
 
-        
+        await Utils.delay(this, 2000);
+
+        this.scene.start("credits");
     }
 }

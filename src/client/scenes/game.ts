@@ -249,5 +249,7 @@ export class GameScene extends Phaser.Scene {
         this.player.dance();
 
         await Utils.delay(this, 5000);
+
+        this.scene.start("win");
     }
 }
