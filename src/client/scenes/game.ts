@@ -105,12 +105,12 @@ export class GameScene extends Phaser.Scene {
         new Rubbish(this, 2200, 300);
         new Rubbish(this, 2930, 350);
         new Rubbish(this, 4400, 570);
-        new Rubbish(this, 3690, 900);
+        new Rubbish(this, 3690, 930);
         new Rubbish(this, 5500, 50);
         new Rubbish(this, 7239, 870);
         new Rubbish(this, 7800, 500);
+        new Rubbish(this, 8300, 400);
         new Rubbish(this, 9900, 50);
-        new Rubbish(this, 8630, 200);
         new Rubbish(this, 10700, 300);
         new Rubbish(this, 12090, 350);
         new Rubbish(this, 12975, 350);
@@ -139,6 +139,25 @@ export class GameScene extends Phaser.Scene {
         this.oilrig = new OilRig(this, 14100, 50);
 
         new Boat(this, 16550, 800);
+
+        const textStyle = { 
+            fontFamily: "OCRAEXT",
+            fontSize: "40px",
+            color: "rgba(255, 255, 255, 0.8)",
+            lineSpacing: 30
+        } as Phaser.Types.GameObjects.Text.TextStyle;
+
+        this.add.text(705, 250, "Forests cover 30% of the Earth's land", textStyle);
+        this.add.text(1791, 994, "They play an important role in absorbing the world's C0²", textStyle);
+        this.add.text(3449, 237, "But they are\ndisappearing", textStyle);
+        this.add.text(4502, 155, "50,000 trees are cut down every minute", Object.assign({ align: "center" }, textStyle));
+        this.add.text(5422, 573, "Over 2000\norangutans\nare killed\nevery year", Object.assign({ align: "center" }, textStyle));
+        this.add.text(7130, 346, "Agriculture\nis the\nmain cause of\ndeforestation", Object.assign({ align: "right" }, textStyle, { fontSize: "30px" }));
+        this.add.text(8492, 195, "It is estimated that within 100 years\n              there will be no rainforests...", textStyle);
+        this.add.text(9684, 661, "As our climate warms up, the ice caps melt away", textStyle);
+        this.add.text(12421, 511, "Oil drilling\nis putting\nmarine life\nin danger", textStyle);
+        this.add.text(14297, 990, "Oil spills can be deadly to animals", textStyle);
+        this.add.text(16615, 302, "So together, let's fight to stop climate change", textStyle);
 
         const particles = this.add.particles("misc", "snow-particle");
         this.snowEmitter = particles.createEmitter({
@@ -221,6 +240,10 @@ export class GameScene extends Phaser.Scene {
         }
 
         if (this.ui.timer.getProgress() === 1 || this.ui.currentHealth === 0){
+            this.gameOver();
+        }
+
+        if (this.player.y > 2000){
             this.gameOver();
         }
 

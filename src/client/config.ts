@@ -1,5 +1,8 @@
-export default {
-    startPos: { x: 300 , y: -100 },
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+const config = {
+    startPos: { x: 8900 , y: -100 },
     speed: 7,
     crouchSpeed: 3,
     jump: 17,
@@ -19,3 +22,11 @@ export default {
         "Rip Earth..."
     ],
 };
+
+for (const [key, value] of Array.from(urlParams.entries())){
+    if (key in config){
+        (config as any)[key] = parseInt(value);
+    }
+}
+
+export default config;
