@@ -24,27 +24,28 @@ declare var __DEV__: boolean;
 
 export class GameScene extends Phaser.Scene {
     player: Player;
-    gamepadInitialised = false;
+    gamepadInitialised: boolean;
     keys: { [key: string]: Phaser.Input.Keyboard.Key };
-    t = 0;
     logSpawner: LogSpawner;
     clouds: Clouds;
     saturation: Phaser.Renderer.WebGL.WebGLPipeline;
     oilrig: OilRig;
     platform: MatterJS.BodyType;
     snowEmitter: Phaser.GameObjects.Particles.ParticleEmitter;
-    tutorial: boolean = true;
+    tutorial: boolean;
     bounds: { x: number; y: number; width: number; height: number; };
     ui: UIScene;
-    won: boolean = false;
+    won: boolean;
 
     constructor() {
-        super({
-            key: "game",
-        });
+        super({ key: "game" });
     }
 
     async create() {
+        this.won = false;
+        this.gamepadInitialised = false;
+        this.tutorial = true;
+
         this.bounds = { x: 50, y: 0, width: 18700, height: 1080 };
 
         this.cameras.main.setBackgroundColor("#A9EFFE");
@@ -70,19 +71,21 @@ export class GameScene extends Phaser.Scene {
 
         this.cameras.main.startFollow(this.player, true, 0.15, 0.15, -500);
 
-        this.keys = this.input.keyboard.addKeys({
-            left: Input.Keyboard.KeyCodes.LEFT,
-            right: Input.Keyboard.KeyCodes.RIGHT,
-            up: Input.Keyboard.KeyCodes.UP,
-            down: Input.Keyboard.KeyCodes.DOWN,
-            space: Input.Keyboard.KeyCodes.SPACE,
-            shift: Input.Keyboard.KeyCodes.SHIFT,
-            esc: Input.Keyboard.KeyCodes.ESC
-        }) as any;
-
-        this.keys.space?.on("down", () => this.player.jump());
-        this.keys.up?.on("down", () => this.player.jump());
-        this.keys.esc?.on("down", () => (this.scene.get("pause") as PauseScene).resume())
+        if (!this.input.keyboard.keys.length){
+            this.keys = this.input.keyboard.addKeys({
+                left: Input.Keyboard.KeyCodes.LEFT,
+                right: Input.Keyboard.KeyCodes.RIGHT,
+                up: Input.Keyboard.KeyCodes.UP,
+                down: Input.Keyboard.KeyCodes.DOWN,
+                space: Input.Keyboard.KeyCodes.SPACE,
+                shift: Input.Keyboard.KeyCodes.SHIFT,
+                esc: Input.Keyboard.KeyCodes.ESC
+            }) as any;
+    
+            this.keys.space?.on("down", () => this.player.jump());
+            this.keys.up?.on("down", () => this.player.jump());
+            this.keys.esc?.on("down", () => (this.scene.get("pause") as PauseScene).resume())
+        }
 
         this.scene.run("pause");
 
@@ -162,7 +165,7 @@ export class GameScene extends Phaser.Scene {
         this.player.visible = false;
     }
 
-    update() {
+    update(time: number, delta: number) {
         const pad = this.input.gamepad.getPad(0);
 
         if (pad && !this.gamepadInitialised) {

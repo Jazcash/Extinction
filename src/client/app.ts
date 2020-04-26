@@ -61,11 +61,17 @@ const game = window.game = new Phaser.Game({
     ]
 });
 
-if (__DEV__) {
-    const stats = new Stats();
-    stats.showPanel(2);
-    document.body.appendChild(stats.dom);
+let stats: Stats | undefined;
 
-    game.events.on(Phaser.Core.Events.PRE_STEP, () => stats.begin());
-    game.events.on(Phaser.Core.Events.POST_RENDER, () => stats.end());
-}
+document.addEventListener('keydown', function(event) {
+    if (event.shiftKey && event.key === 'F' && !stats) {
+        stats = new Stats();
+        stats.showPanel(0);
+        document.body.appendChild(stats.dom);
+
+        game.events.on(Phaser.Core.Events.PRE_STEP, () => stats!.begin());
+        game.events.on(Phaser.Core.Events.POST_RENDER, () => stats!.end());
+    } else if (event.shiftKey && event.key === 'F'){
+        stats?.dom.classList.toggle("hidden");
+    }
+});

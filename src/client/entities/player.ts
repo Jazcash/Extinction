@@ -3,6 +3,7 @@ import config from "client/config";
 import { Utils } from "client/utils/utils";
 import { Rubbish } from "./rubbish";
 import { UIScene } from "client/scenes/ui";
+import { GameScene } from "client/scenes/game";
 
 export enum PlayerState {
     IDLE = "IDLE",

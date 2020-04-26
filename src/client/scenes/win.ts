@@ -12,6 +12,8 @@ export class WinScene extends Phaser.Scene {
     }
 
     async create() {
+        this.scene.get("pause").scene.stop();
+
         const rect = this.add.rectangle(0, 0, this.cameras.main.width, this.cameras.main.height, 0x000000);
         const text = this.add.text(0, 0, "To be continued...", {
             fontFamily: "OCRAEXT",

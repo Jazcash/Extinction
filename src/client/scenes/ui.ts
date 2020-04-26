@@ -8,12 +8,12 @@ export class UIScene extends Phaser.Scene {
     pollutionMeter: PollutionMeter;
     timerText: Phaser.GameObjects.Text;
     timer: Phaser.Time.TimerEvent;
-    currentHealth: number = config.maxHealth;
-    hearts: GameObjects.Sprite[] = [];
+    currentHealth: number;
+    hearts: GameObjects.Sprite[];
     snow: GameObjects.Particles.ParticleEmitterManager;
     keys: { [key: string]: Phaser.Input.Keyboard.Key };
     tutorialAssets: GameObjects.Group;
-    isTutorial: boolean = true;
+    isTutorial: boolean;
 
     constructor() {
         super({
@@ -22,6 +22,9 @@ export class UIScene extends Phaser.Scene {
     }
 
     create() {
+        this.currentHealth = config.maxHealth;
+        this.hearts = [];
+
         const boundingZone = this.add.zone(this.cameras.main.x, this.cameras.main.y, this.cameras.main.width, this.cameras.main.height).setOrigin(0, 0);
 
         this.pollutionMeter = new PollutionMeter(this, 0, 0);
@@ -98,6 +101,8 @@ export class UIScene extends Phaser.Scene {
     }
 
     tutorial() {
+        this.isTutorial = true;
+
         this.timer.paused = true;
 
         const game = this.scene.get("game") as GameScene;
