@@ -181,6 +181,21 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">misc/arrow.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.3</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>227,68,454,135</rect>
+                <key>scale9Paddings</key>
+                <rect>227,68,454,135</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">misc/black-banner.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -211,6 +226,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">misc/btn-menu.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>83,51,166,102</rect>
+                <key>scale9Paddings</key>
+                <rect>83,51,166,102</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">misc/btn-play.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -223,6 +253,21 @@
                 <rect>46,38,91,75</rect>
                 <key>scale9Paddings</key>
                 <rect>46,38,91,75</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/btn-retry.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>83,48,166,97</rect>
+                <key>scale9Paddings</key>
+                <rect>83,48,166,97</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -317,36 +362,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">misc/crouch-tooltip.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>62,51,125,101</rect>
-                <key>scale9Paddings</key>
-                <rect>62,51,125,101</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">misc/double-jump-tooltip.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>69,54,137,107</rect>
-                <key>scale9Paddings</key>
-                <rect>69,54,137,107</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">misc/drills/1/0.png</key>
             <key type="filename">misc/drills/1/1.png</key>
             <key type="filename">misc/drills/1/2.png</key>
@@ -402,6 +417,25 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">misc/flag/0.png</key>
+            <key type="filename">misc/flag/1.png</key>
+            <key type="filename">misc/flag/2.png</key>
+            <key type="filename">misc/flag/3.png</key>
+            <key type="filename">misc/flag/flag-pole.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>316,270,631,540</rect>
+                <key>scale9Paddings</key>
+                <rect>316,270,631,540</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">misc/heart-fill.png</key>
             <key type="filename">misc/heart-outline.png</key>
             <struct type="IndividualSpriteSettings">
@@ -445,21 +479,6 @@
                 <rect>83,91,165,183</rect>
                 <key>scale9Paddings</key>
                 <rect>83,91,165,183</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">misc/jump-tooltip.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>67,51,133,103</rect>
-                <key>scale9Paddings</key>
-                <rect>67,51,133,103</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -721,36 +740,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">misc/sea-bottom.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>738,54,1475,108</rect>
-                <key>scale9Paddings</key>
-                <rect>738,54,1475,108</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">misc/sea-top.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>787,70,1574,141</rect>
-                <key>scale9Paddings</key>
-                <rect>787,70,1574,141</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">misc/snow-particle.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -763,6 +752,66 @@
                 <rect>4,4,7,7</rect>
                 <key>scale9Paddings</key>
                 <rect>4,4,7,7</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/tooltips/crouch.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>62,51,125,101</rect>
+                <key>scale9Paddings</key>
+                <rect>62,51,125,101</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/tooltips/double-jump.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>69,54,137,107</rect>
+                <key>scale9Paddings</key>
+                <rect>69,54,137,107</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/tooltips/jump.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>67,51,133,103</rect>
+                <key>scale9Paddings</key>
+                <rect>67,51,133,103</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/tooltips/wallgrip.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>77,55,155,111</rect>
+                <key>scale9Paddings</key>
+                <rect>77,55,155,111</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -781,7 +830,9 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">misc/wallgrip-tooltip.png</key>
+            <key type="filename">misc/waterfall/0.png</key>
+            <key type="filename">misc/waterfall/1.png</key>
+            <key type="filename">misc/waterfall/2.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -790,9 +841,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>77,55,155,111</rect>
+                <rect>94,165,189,331</rect>
                 <key>scale9Paddings</key>
-                <rect>77,55,155,111</rect>
+                <rect>94,165,189,331</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

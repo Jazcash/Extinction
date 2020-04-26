@@ -22,7 +22,7 @@ export class DebugScene extends Phaser.Scene {
         const gameScene = this.scene.get("game") as GameScene | undefined;
         const player = gameScene?.player;
 
-        if (!gameScene) {
+        if (!gameScene || !gameScene.scene.isActive()) {
             return;
         }
 

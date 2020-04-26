@@ -1,12 +1,17 @@
 import { GameObjects } from "phaser";
 import { GameScene } from "client/scenes/game";
 
-export class Tooltip extends GameObjects.Sprite {
+export class Tooltip extends GameObjects.Container {
     active = false;
     interval: Phaser.Time.TimerEvent;
 
-    constructor(scene: Phaser.Scene, x: number, y: number, frameName: string, public triggerDistance = 500) {
-        super(scene, x, y, "misc", frameName);
+    constructor(scene: Phaser.Scene, x: number, y: number, frameName: string, text: string, fontSize: number = 30, textY = -20, public triggerDistance = 500) {
+        super(scene, x, y);
+
+        const frame = scene.add.sprite(0, 0, "misc", `tooltips/${frameName}`);
+        const bitmaptext = scene.add.bitmapText(0, textY, "alphabet", text, fontSize, 1).setOrigin(0.5, 0.5);
+
+        this.add([frame, bitmaptext])
 
         this.scene.add.existing(this);
 

@@ -79,7 +79,7 @@ export class PauseScene extends Phaser.Scene {
 		[...this.mainElements, ...this.menuElements].forEach(obj => obj.setAlpha(0));
 
 		if (this.game.renderer instanceof Phaser.Renderer.WebGL.WebGLRenderer){
-		    this.customPipeline = this.game.renderer.addPipeline("GaussianBlur1", new GaussianBlur1(this.game));
+		    this.customPipeline = this.game.renderer.getPipeline("GaussianBlur1");
 		    this.customPipeline.setFloat2('iResolution', 1920, 1080);
 		    this.customPipeline.setFloat1('Size', 0);
 		}

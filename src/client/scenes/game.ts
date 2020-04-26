@@ -15,6 +15,9 @@ import { IceCap } from "client/entities/ice-cap";
 import { Drill } from "client/entities/drill";
 import { OilRig } from "client/entities/oil-rig";
 import { Boat } from "client/entities/boat";
+import { UIScene } from "./ui";
+import { LumaFadePipeline } from "client/shaders/luma-fade-pipeline";
+import { Utils } from "client/utils/utils";
 
 declare let window: any;
 declare var __DEV__: boolean;
@@ -27,10 +30,13 @@ export class GameScene extends Phaser.Scene {
     logSpawner: LogSpawner;
     clouds: Clouds;
     saturation: Phaser.Renderer.WebGL.WebGLPipeline;
-    entering: boolean = false;
     oilrig: OilRig;
     platform: MatterJS.BodyType;
     snowEmitter: Phaser.GameObjects.Particles.ParticleEmitter;
+    tutorial: boolean = true;
+    bounds: { x: number; y: number; width: number; height: number; };
+    ui: UIScene;
+    won: boolean = false;
 
     constructor() {
         super({
@@ -38,26 +44,24 @@ export class GameScene extends Phaser.Scene {
         });
     }
 
-    create() {
-        const bounds = { x: 50, y: 0, width: 18700, height: 1080 };
+    async create() {
+        this.bounds = { x: 50, y: 0, width: 18700, height: 1080 };
 
         this.cameras.main.setBackgroundColor("#A9EFFE");
 
-        this.cameras.main.setBounds(bounds.x, bounds.y, bounds.width, bounds.height, true);
-
-        this.cameras.main.setZoom(1);
+        this.cameras.main.setBounds(this.bounds.x, this.bounds.y, this.bounds.width, this.bounds.height, true);
 
         this.player = window.player = new Player(this, config.startPos.x, config.startPos.y);
 
         const world = window.world = this.matter.add.fromPhysicsEditor(0, 0, this.cache.json.get('shapes').world);
-        this.matter.alignBody(world, 0, bounds.height, Phaser.Display.Align.BOTTOM_LEFT);
+        this.matter.alignBody(world, 0, this.bounds.height, Phaser.Display.Align.BOTTOM_LEFT);
 
         BackgroundManager.setupSceneBackgrounds(this, [
             { texture: "sky", depth: -6, scrollFactorX: 1, totalFrames: 74 },
-            { texture: "bg5", depth: -5, scrollFactorX: 0.2, totalFrames: 15 },
-            { texture: "bg4", depth: -4, scrollFactorX: 0.2, totalFrames: 25 },
+            { texture: "bg5", depth: -5, scrollFactorX: 0.2, totalFrames: 17 },
+            { texture: "bg4", depth: -4, scrollFactorX: 0.2, totalFrames: 14 },
             { texture: "bg3", depth: -3, scrollFactorX: 0.3, totalFrames: 9, offsetX: 1000 },
-            { texture: "bg2", depth: -2, scrollFactorX: 0.5, totalFrames: 37 },
+            { texture: "bg2", depth: -2, scrollFactorX: 0.5, totalFrames: 44 },
             { texture: "bg1", depth: -1, scrollFactorX: 1, totalFrames: 75 },
             { texture: "fg1", depth: 1, scrollFactorX: 1.25, totalFrames: 71 },
             { texture: "fg2", depth: 2, scrollFactorX: 1.4, totalFrames: 51 },
@@ -84,15 +88,15 @@ export class GameScene extends Phaser.Scene {
 
         const truck = this.add.image(6330, 400, "misc", "truck").setDepth(-0.5);
 
-        this.add.image(9591, 868, "misc", "sea-bottom").setOrigin(0).setDepth(1).setBlendMode(Phaser.BlendModes.MULTIPLY);
-        this.add.image(9591, 810, "misc", "sea-top").setOrigin(0).setDepth(1);
+        this.add.image(9599, 864, "world", "misc/sea-bottom").setOrigin(0).setDepth(1).setBlendMode(Phaser.BlendModes.MULTIPLY);
+        this.add.image(9591, 799, "world", "misc/sea-top").setOrigin(0).setDepth(1);
 
         this.clouds = new Clouds(this);
 
-        new Tooltip(this, 800, 400, "jump-tooltip");
-        new Tooltip(this, 1300, 400, "double-jump-tooltip");
-        new Tooltip(this, 2300, 500, "crouch-tooltip");
-        new Tooltip(this, 3200, 400, "wallgrip-tooltip");
+        new Tooltip(this, 800, 400, "jump", "JUMP", 30);
+        new Tooltip(this, 1300, 400, "double-jump", "DOUBLE\nJUMP", 20);
+        new Tooltip(this, 2300, 500, "crouch", "CROUCH", 26, -25);
+        new Tooltip(this, 3200, 400, "wallgrip", "WALL GRIP", 25, -30);
 
         new Rubbish(this, 1100, 700);
         new Rubbish(this, 2200, 300);
@@ -147,12 +151,15 @@ export class GameScene extends Phaser.Scene {
         });
 
         if (this.game.renderer instanceof Phaser.Renderer.WebGL.WebGLRenderer) {
-            this.saturation = this.game.renderer.addPipeline("SaturatePipeline", new SaturatePipeline(this.game));
+            this.saturation = this.game.renderer.getPipeline("SaturatePipeline");
             this.saturation.setFloat2('iResolution', 1920, 1080);
             this.cameras.main.setRenderToTexture(this.saturation);
         }
 
         this.scene.run("ui");
+        this.ui = this.scene.get("ui") as UIScene;
+
+        this.player.visible = false;
     }
 
     update() {
@@ -163,8 +170,7 @@ export class GameScene extends Phaser.Scene {
             this.setupGamepad(pad);
         }
 
-        if (this.entering && !__DEV__){
-            this.player.run(config.speed * 0.5);
+        if (this.tutorial || this.player.state === PlayerState.DANCING) {
         } else if (this.player.state == PlayerState.SPIKED) {
             this.player.body.friction = 0;
         } else if ((this.keys.shift?.isDown || pad?.R2) && this.player.canClimb()) {
@@ -210,6 +216,16 @@ export class GameScene extends Phaser.Scene {
         } else if (this.player.body.position.x < 8000 || this.player.body.position.x > 14000 && this.snowEmitter.on){
             this.snowEmitter.stop();
         }
+
+        if (this.ui.timer.getProgress() === 1 || this.ui.currentHealth === 0){
+            this.gameOver();
+        }
+
+        if (this.player.x > 18100 && !this.won){
+            this.won = true;
+            this.ui.timer.paused = true;
+            this.win();
+        }
     }
 
     setupGamepad(pad: Phaser.Input.Gamepad.Gamepad) {
@@ -224,16 +240,14 @@ export class GameScene extends Phaser.Scene {
         this.saturation.setFloat1('saturation', amount);
     }
 
-    entrance(){
-        this.cameras.main.fadeIn(1000, 0, 0, 0, (camera: Phaser.Cameras.Scene2D.Camera, progress: number) => {
-            if (progress === 1){
-                this.input.gamepad.enabled = true;
-                this.input.keyboard.enabled = true;
+    gameOver(){
+        this.scene.run("game-over");
+        this.scene.pause();
+    }
 
-                this.entering = false;
+    async win(){
+        this.player.dance();
 
-                this.player.run();
-            }
-        });
+        await Utils.delay(this, 5000);
     }
 }

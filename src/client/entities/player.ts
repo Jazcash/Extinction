@@ -10,7 +10,8 @@ export enum PlayerState {
     JUMPING = "JUMPING",
     CROUCHING = "CROUCHING",
     CLIMBING = "CLIMBING",
-    SPIKED = "SPIKED"
+    SPIKED = "SPIKED",
+    DANCING = "DANCING"
 }
 
 export class Player extends Physics.Matter.Sprite {
@@ -76,6 +77,14 @@ export class Player extends Physics.Matter.Sprite {
             frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 9, prefix: `${Player.gender}/jumping/` }),
             frameRate: 20
         });
+
+        this.anims.animationManager.create({
+            key: "dancing",
+            frames: this.anims.animationManager.generateFrameNames("player", { start: 0, end: 7, prefix: `${Player.gender}/dancing/` }),
+            frameRate: 10,
+            repeat: -1
+        });
+
 
         Player.friction = this.body.friction;
 
@@ -215,7 +224,7 @@ export class Player extends Physics.Matter.Sprite {
     }
 
     jump() {
-        if (this.state === PlayerState.CROUCHING){
+        if (this.state === PlayerState.CROUCHING || this.state === PlayerState.DANCING){
             return;
         }
 
@@ -313,5 +322,11 @@ export class Player extends Physics.Matter.Sprite {
         }
 
         (this.scene.scene.get("ui") as UIScene).damage(1);
+    }
+
+    dance() {
+        this.state = PlayerState.DANCING;
+
+        this.play("dancing");
     }
 }

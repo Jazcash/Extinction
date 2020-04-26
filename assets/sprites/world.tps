@@ -285,7 +285,13 @@
             <key type="filename">world/bg2/33.png</key>
             <key type="filename">world/bg2/34.png</key>
             <key type="filename">world/bg2/35.png</key>
+            <key type="filename">world/bg2/37.png</key>
+            <key type="filename">world/bg2/38.png</key>
+            <key type="filename">world/bg2/39.png</key>
             <key type="filename">world/bg2/4.png</key>
+            <key type="filename">world/bg2/40.png</key>
+            <key type="filename">world/bg2/41.png</key>
+            <key type="filename">world/bg2/42.png</key>
             <key type="filename">world/bg2/5.png</key>
             <key type="filename">world/bg2/6.png</key>
             <key type="filename">world/bg2/7.png</key>
@@ -306,18 +312,7 @@
             <key type="filename">world/bg4/11.png</key>
             <key type="filename">world/bg4/12.png</key>
             <key type="filename">world/bg4/13.png</key>
-            <key type="filename">world/bg4/14.png</key>
-            <key type="filename">world/bg4/15.png</key>
-            <key type="filename">world/bg4/16.png</key>
-            <key type="filename">world/bg4/17.png</key>
-            <key type="filename">world/bg4/18.png</key>
-            <key type="filename">world/bg4/19.png</key>
             <key type="filename">world/bg4/2.png</key>
-            <key type="filename">world/bg4/20.png</key>
-            <key type="filename">world/bg4/21.png</key>
-            <key type="filename">world/bg4/22.png</key>
-            <key type="filename">world/bg4/23.png</key>
-            <key type="filename">world/bg4/24.png</key>
             <key type="filename">world/bg4/3.png</key>
             <key type="filename">world/bg4/4.png</key>
             <key type="filename">world/bg4/5.png</key>
@@ -332,6 +327,7 @@
             <key type="filename">world/bg5/12.png</key>
             <key type="filename">world/bg5/13.png</key>
             <key type="filename">world/bg5/14.png</key>
+            <key type="filename">world/bg5/15.png</key>
             <key type="filename">world/bg5/2.png</key>
             <key type="filename">world/bg5/3.png</key>
             <key type="filename">world/bg5/4.png</key>
@@ -703,6 +699,36 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">world/bg2/43.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>57,270,115,540</rect>
+                <key>scale9Paddings</key>
+                <rect>57,270,115,540</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">world/bg5/16.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>9,270,19,540</rect>
+                <key>scale9Paddings</key>
+                <rect>9,270,19,540</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">world/fg1/70.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -760,6 +786,36 @@
                 <rect>984,132,1967,263</rect>
                 <key>scale9Paddings</key>
                 <rect>984,132,1967,263</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">world/misc/sea-bottom.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>2094,54,4188,108</rect>
+                <key>scale9Paddings</key>
+                <rect>2094,54,4188,108</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">world/misc/sea-top.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>787,70,1574,141</rect>
+                <key>scale9Paddings</key>
+                <rect>787,70,1574,141</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

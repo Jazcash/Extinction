@@ -218,6 +218,102 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">player/boy/dancing/0.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>17,37,34,73</rect>
+                <key>scale9Paddings</key>
+                <rect>17,37,34,73</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">player/boy/dancing/1.png</key>
+            <key type="filename">player/boy/dancing/7.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>16,37,31,73</rect>
+                <key>scale9Paddings</key>
+                <rect>16,37,31,73</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">player/boy/dancing/2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>18,37,36,75</rect>
+                <key>scale9Paddings</key>
+                <rect>18,37,36,75</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">player/boy/dancing/3.png</key>
+            <key type="filename">player/boy/dancing/5.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>19,37,37,73</rect>
+                <key>scale9Paddings</key>
+                <rect>19,37,37,73</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">player/boy/dancing/4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>21,37,42,73</rect>
+                <key>scale9Paddings</key>
+                <rect>21,37,42,73</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">player/boy/dancing/6.png</key>
+            <key type="filename">player/boy/jumping/3.png</key>
+            <key type="filename">player/boy/jumping/4.png</key>
+            <key type="filename">player/boy/jumping/5.png</key>
+            <key type="filename">player/boy/jumping/6.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>16,37,31,74</rect>
+                <key>scale9Paddings</key>
+                <rect>16,37,31,74</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">player/boy/idle.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -266,24 +362,6 @@
                 <rect>17,31,33,63</rect>
                 <key>scale9Paddings</key>
                 <rect>17,31,33,63</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">player/boy/jumping/3.png</key>
-            <key type="filename">player/boy/jumping/4.png</key>
-            <key type="filename">player/boy/jumping/5.png</key>
-            <key type="filename">player/boy/jumping/6.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>16,37,31,74</rect>
-                <key>scale9Paddings</key>
-                <rect>16,37,31,74</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -449,6 +527,74 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">player/girl/dancing/0.png</key>
+            <key type="filename">player/girl/dancing/6.png</key>
+            <key type="filename">player/girl/dancing/7.png</key>
+            <key type="filename">player/girl/jumping/4.png</key>
+            <key type="filename">player/girl/jumping/5.png</key>
+            <key type="filename">player/girl/jumping/6.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>23,37,45,73</rect>
+                <key>scale9Paddings</key>
+                <rect>23,37,45,73</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">player/girl/dancing/1.png</key>
+            <key type="filename">player/girl/dancing/5.png</key>
+            <key type="filename">player/girl/jumping/3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>23,37,45,74</rect>
+                <key>scale9Paddings</key>
+                <rect>23,37,45,74</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">player/girl/dancing/2.png</key>
+            <key type="filename">player/girl/dancing/4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>23,37,46,73</rect>
+                <key>scale9Paddings</key>
+                <rect>23,37,46,73</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">player/girl/dancing/3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>26,37,51,73</rect>
+                <key>scale9Paddings</key>
+                <rect>26,37,51,73</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">player/girl/idle.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -478,38 +624,6 @@
                 <rect>23,31,45,63</rect>
                 <key>scale9Paddings</key>
                 <rect>23,31,45,63</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">player/girl/jumping/3.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>23,37,45,74</rect>
-                <key>scale9Paddings</key>
-                <rect>23,37,45,74</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">player/girl/jumping/4.png</key>
-            <key type="filename">player/girl/jumping/5.png</key>
-            <key type="filename">player/girl/jumping/6.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>23,37,45,73</rect>
-                <key>scale9Paddings</key>
-                <rect>23,37,45,73</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

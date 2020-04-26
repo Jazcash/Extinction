@@ -4,53 +4,11 @@
 			"image": "misc-0.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 3657,
-				"h": 3299
+				"w": 3794,
+				"h": 3154
 			},
 			"scale": 1,
 			"frames": [
-				{
-					"filename": "sea-top",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 2962,
-						"h": 274
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 2962,
-						"h": 274
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 2962,
-						"h": 274
-					}
-				},
-				{
-					"filename": "sea-bottom",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 2950,
-						"h": 216
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 2950,
-						"h": 216
-					},
-					"frame": {
-						"x": 1,
-						"y": 277,
-						"w": 2950,
-						"h": 216
-					}
-				},
 				{
 					"filename": "pause-overlay",
 					"rotated": false,
@@ -67,7 +25,7 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 495,
+						"y": 1,
 						"w": 1777,
 						"h": 971
 					}
@@ -88,7 +46,7 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 1468,
+						"y": 974,
 						"w": 1296,
 						"h": 1017
 					}
@@ -108,8 +66,8 @@
 						"h": 717
 					},
 					"frame": {
-						"x": 1,
-						"y": 2487,
+						"x": 1780,
+						"y": 1,
 						"w": 1301,
 						"h": 717
 					}
@@ -129,31 +87,10 @@
 						"h": 565
 					},
 					"frame": {
-						"x": 1780,
-						"y": 495,
+						"x": 1,
+						"y": 1993,
 						"w": 1166,
 						"h": 565
-					}
-				},
-				{
-					"filename": "truck",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 691,
-						"h": 421
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 691,
-						"h": 421
-					},
-					"frame": {
-						"x": 2965,
-						"y": 1,
-						"w": 691,
-						"h": 421
 					}
 				},
 				{
@@ -172,9 +109,30 @@
 					},
 					"frame": {
 						"x": 1780,
-						"y": 1062,
+						"y": 720,
 						"w": 965,
 						"h": 226
+					}
+				},
+				{
+					"filename": "oil-rig/rig-arm-right1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 523,
+						"h": 613
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 523,
+						"h": 613
+					},
+					"frame": {
+						"x": 3083,
+						"y": 1,
+						"w": 523,
+						"h": 613
 					}
 				},
 				{
@@ -193,9 +151,30 @@
 					},
 					"frame": {
 						"x": 1299,
-						"y": 1468,
+						"y": 974,
 						"w": 266,
 						"h": 870
+					}
+				},
+				{
+					"filename": "truck",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 691,
+						"h": 421
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 691,
+						"h": 421
+					},
+					"frame": {
+						"x": 1,
+						"y": 2560,
+						"w": 691,
+						"h": 421
 					}
 				},
 				{
@@ -214,30 +193,9 @@
 					},
 					"frame": {
 						"x": 1567,
-						"y": 1468,
+						"y": 974,
 						"w": 261,
 						"h": 870
-					}
-				},
-				{
-					"filename": "oil-rig/rig-arm-right1",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 523,
-						"h": 613
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 523,
-						"h": 613
-					},
-					"frame": {
-						"x": 1304,
-						"y": 2340,
-						"w": 523,
-						"h": 613
 					}
 				},
 				{
@@ -256,7 +214,7 @@
 					},
 					"frame": {
 						"x": 1830,
-						"y": 1290,
+						"y": 948,
 						"w": 256,
 						"h": 870
 					}
@@ -277,7 +235,7 @@
 					},
 					"frame": {
 						"x": 2088,
-						"y": 1290,
+						"y": 948,
 						"w": 256,
 						"h": 870
 					}
@@ -298,7 +256,7 @@
 					},
 					"frame": {
 						"x": 2346,
-						"y": 1290,
+						"y": 948,
 						"w": 256,
 						"h": 870
 					}
@@ -319,30 +277,9 @@
 					},
 					"frame": {
 						"x": 2604,
-						"y": 1290,
+						"y": 948,
 						"w": 256,
 						"h": 870
-					}
-				},
-				{
-					"filename": "logo",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 602,
-						"h": 318
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 602,
-						"h": 318
-					},
-					"frame": {
-						"x": 1830,
-						"y": 2162,
-						"w": 602,
-						"h": 318
 					}
 				},
 				{
@@ -360,31 +297,10 @@
 						"h": 468
 					},
 					"frame": {
-						"x": 1829,
-						"y": 2482,
+						"x": 694,
+						"y": 2560,
 						"w": 517,
 						"h": 468
-					}
-				},
-				{
-					"filename": "oil-rig/rig-arm-left",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 534,
-						"h": 324
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 534,
-						"h": 324
-					},
-					"frame": {
-						"x": 1304,
-						"y": 2955,
-						"w": 534,
-						"h": 324
 					}
 				},
 				{
@@ -403,114 +319,30 @@
 					},
 					"frame": {
 						"x": 2862,
-						"y": 1062,
+						"y": 720,
 						"w": 256,
 						"h": 870
 					}
 				},
 				{
-					"filename": "ice-cap2",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 330,
-						"h": 365
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 330,
-						"h": 365
-					},
-					"frame": {
-						"x": 2434,
-						"y": 2162,
-						"w": 330,
-						"h": 365
-					}
-				},
-				{
-					"filename": "drills/2/0",
+					"filename": "flag/flag-pole",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 473,
-						"h": 852
+						"w": 1263,
+						"h": 1080
 					},
 					"spriteSourceSize": {
-						"x": 59,
-						"y": 17,
-						"w": 321,
-						"h": 744
+						"x": 436,
+						"y": 78,
+						"w": 298,
+						"h": 818
 					},
 					"frame": {
-						"x": 2348,
-						"y": 2529,
-						"w": 321,
-						"h": 744
-					}
-				},
-				{
-					"filename": "drills/2/1",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 473,
-						"h": 852
-					},
-					"spriteSourceSize": {
-						"x": 109,
-						"y": 33,
-						"w": 249,
-						"h": 720
-					},
-					"frame": {
-						"x": 2671,
-						"y": 2529,
-						"w": 249,
-						"h": 720
-					}
-				},
-				{
-					"filename": "ice-cap1",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 294,
-						"h": 308
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 294,
-						"h": 308
-					},
-					"frame": {
-						"x": 1840,
-						"y": 2952,
-						"w": 294,
-						"h": 308
-					}
-				},
-				{
-					"filename": "btn-skip",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 316,
-						"h": 236
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 316,
-						"h": 236
-					},
-					"frame": {
-						"x": 2862,
-						"y": 1934,
-						"w": 316,
-						"h": 236
+						"x": 3120,
+						"y": 616,
+						"w": 298,
+						"h": 818
 					}
 				},
 				{
@@ -528,10 +360,136 @@
 						"h": 841
 					},
 					"frame": {
-						"x": 2922,
-						"y": 2172,
+						"x": 3420,
+						"y": 616,
 						"w": 206,
 						"h": 841
+					}
+				},
+				{
+					"filename": "oil-rig/rig-arm-left",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 534,
+						"h": 324
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 534,
+						"h": 324
+					},
+					"frame": {
+						"x": 1299,
+						"y": 1846,
+						"w": 534,
+						"h": 324
+					}
+				},
+				{
+					"filename": "logo",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 602,
+						"h": 318
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 602,
+						"h": 318
+					},
+					"frame": {
+						"x": 1835,
+						"y": 1820,
+						"w": 602,
+						"h": 318
+					}
+				},
+				{
+					"filename": "waterfall/2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 377,
+						"h": 661
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 377,
+						"h": 661
+					},
+					"frame": {
+						"x": 2439,
+						"y": 1820,
+						"w": 377,
+						"h": 661
+					}
+				},
+				{
+					"filename": "drills/2/2",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 473,
+						"h": 852
+					},
+					"spriteSourceSize": {
+						"x": 105,
+						"y": 33,
+						"w": 259,
+						"h": 714
+					},
+					"frame": {
+						"x": 2818,
+						"y": 1820,
+						"w": 259,
+						"h": 714
+					}
+				},
+				{
+					"filename": "drills/1/0",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 847
+					},
+					"spriteSourceSize": {
+						"x": 81,
+						"y": 0,
+						"w": 193,
+						"h": 847
+					},
+					"frame": {
+						"x": 3079,
+						"y": 1592,
+						"w": 193,
+						"h": 847
+					}
+				},
+				{
+					"filename": "drills/2/0",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 473,
+						"h": 852
+					},
+					"spriteSourceSize": {
+						"x": 59,
+						"y": 17,
+						"w": 321,
+						"h": 744
+					},
+					"frame": {
+						"x": 3274,
+						"y": 1459,
+						"w": 321,
+						"h": 744
 					}
 				},
 				{
@@ -549,8 +507,8 @@
 						"h": 847
 					},
 					"frame": {
-						"x": 3130,
-						"y": 2172,
+						"x": 3597,
+						"y": 1459,
 						"w": 196,
 						"h": 847
 					}
@@ -570,10 +528,115 @@
 						"h": 476
 					},
 					"frame": {
-						"x": 2948,
-						"y": 495,
+						"x": 3608,
+						"y": 1,
 						"w": 158,
 						"h": 476
+					}
+				},
+				{
+					"filename": "ice-cap2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 330,
+						"h": 365
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 330,
+						"h": 365
+					},
+					"frame": {
+						"x": 1169,
+						"y": 2172,
+						"w": 330,
+						"h": 365
+					}
+				},
+				{
+					"filename": "waterfall/0",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 377,
+						"h": 661
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 0,
+						"w": 356,
+						"h": 602
+					},
+					"frame": {
+						"x": 1213,
+						"y": 2539,
+						"w": 356,
+						"h": 602
+					}
+				},
+				{
+					"filename": "ice-cap1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 294,
+						"h": 308
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 294,
+						"h": 308
+					},
+					"frame": {
+						"x": 1501,
+						"y": 2172,
+						"w": 294,
+						"h": 308
+					}
+				},
+				{
+					"filename": "waterfall/1",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 377,
+						"h": 661
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 0,
+						"w": 363,
+						"h": 617
+					},
+					"frame": {
+						"x": 1571,
+						"y": 2482,
+						"w": 363,
+						"h": 617
+					}
+				},
+				{
+					"filename": "drills/2/1",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 473,
+						"h": 852
+					},
+					"spriteSourceSize": {
+						"x": 109,
+						"y": 33,
+						"w": 249,
+						"h": 720
+					},
+					"frame": {
+						"x": 1936,
+						"y": 2140,
+						"w": 249,
+						"h": 720
 					}
 				},
 				{
@@ -591,73 +654,73 @@
 						"h": 623
 					},
 					"frame": {
-						"x": 3108,
-						"y": 424,
+						"x": 2187,
+						"y": 2140,
 						"w": 167,
 						"h": 623
 					}
 				},
 				{
-					"filename": "drills/1/0",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 380,
-						"h": 847
-					},
-					"spriteSourceSize": {
-						"x": 81,
-						"y": 0,
-						"w": 193,
-						"h": 847
-					},
-					"frame": {
-						"x": 3120,
-						"y": 1049,
-						"w": 193,
-						"h": 847
-					}
-				},
-				{
-					"filename": "claw2",
+					"filename": "btn-skip",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 167,
-						"h": 623
+						"w": 316,
+						"h": 236
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 167,
-						"h": 623
+						"w": 316,
+						"h": 236
 					},
 					"frame": {
-						"x": 3277,
-						"y": 424,
-						"w": 167,
-						"h": 623
+						"x": 3274,
+						"y": 2205,
+						"w": 316,
+						"h": 236
 					}
 				},
 				{
-					"filename": "drills/2/2",
+					"filename": "flag/1",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 473,
-						"h": 852
+						"w": 1263,
+						"h": 1080
 					},
 					"spriteSourceSize": {
-						"x": 105,
-						"y": 33,
-						"w": 259,
-						"h": 714
+						"x": 346,
+						"y": 193,
+						"w": 323,
+						"h": 239
 					},
 					"frame": {
-						"x": 3315,
-						"y": 1049,
-						"w": 259,
-						"h": 714
+						"x": 1936,
+						"y": 2862,
+						"w": 323,
+						"h": 239
+					}
+				},
+				{
+					"filename": "flag/0",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1263,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 327,
+						"y": 197,
+						"w": 333,
+						"h": 210
+					},
+					"frame": {
+						"x": 2356,
+						"y": 2483,
+						"w": 333,
+						"h": 210
 					}
 				},
 				{
@@ -675,8 +738,8 @@
 						"h": 444
 					},
 					"frame": {
-						"x": 3446,
-						"y": 424,
+						"x": 3628,
+						"y": 479,
 						"w": 160,
 						"h": 444
 					}
@@ -696,178 +759,52 @@
 						"h": 200
 					},
 					"frame": {
-						"x": 2136,
-						"y": 2952,
+						"x": 2862,
+						"y": 1592,
 						"w": 205,
 						"h": 200
 					}
 				},
 				{
-					"filename": "logroll/1",
+					"filename": "btn-menu",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 332,
+						"h": 204
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 332,
+						"h": 204
+					},
+					"frame": {
+						"x": 2356,
+						"y": 2695,
+						"w": 332,
+						"h": 204
+					}
+				},
+				{
+					"filename": "flag/3",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 205,
-						"h": 205
+						"w": 1263,
+						"h": 1080
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 5,
-						"w": 205,
-						"h": 200
+						"x": 349,
+						"y": 201,
+						"w": 322,
+						"h": 203
 					},
 					"frame": {
-						"x": 2922,
-						"y": 3015,
-						"w": 205,
-						"h": 200
-					}
-				},
-				{
-					"filename": "crouch-tooltip",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 249,
-						"h": 202
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 249,
-						"h": 202
-					},
-					"frame": {
-						"x": 3129,
-						"y": 3021,
-						"w": 249,
-						"h": 202
-					}
-				},
-				{
-					"filename": "double-jump-tooltip",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 274,
-						"h": 214
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 274,
-						"h": 214
-					},
-					"frame": {
-						"x": 3315,
-						"y": 1765,
-						"w": 274,
-						"h": 214
-					}
-				},
-				{
-					"filename": "rubbish/3",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 155,
-						"h": 175
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 155,
-						"h": 175
-					},
-					"frame": {
-						"x": 3446,
-						"y": 870,
-						"w": 155,
-						"h": 175
-					}
-				},
-				{
-					"filename": "wallgrip-tooltip",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 309,
-						"h": 221
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 309,
-						"h": 221
-					},
-					"frame": {
-						"x": 3328,
-						"y": 1981,
-						"w": 309,
-						"h": 221
-					}
-				},
-				{
-					"filename": "jump-tooltip",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 266,
-						"h": 205
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 266,
-						"h": 205
-					},
-					"frame": {
-						"x": 3328,
-						"y": 2204,
-						"w": 266,
-						"h": 205
-					}
-				},
-				{
-					"filename": "logroll/2",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 205,
-						"h": 205
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 5,
-						"w": 205,
-						"h": 200
-					},
-					"frame": {
-						"x": 3328,
-						"y": 2411,
-						"w": 205,
-						"h": 200
-					}
-				},
-				{
-					"filename": "logroll/3",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 205,
-						"h": 205
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 5,
-						"w": 205,
-						"h": 200
-					},
-					"frame": {
-						"x": 3328,
-						"y": 2613,
-						"w": 205,
-						"h": 200
+						"x": 2261,
+						"y": 2901,
+						"w": 322,
+						"h": 203
 					}
 				},
 				{
@@ -885,73 +822,115 @@
 						"h": 151
 					},
 					"frame": {
-						"x": 3328,
-						"y": 2815,
+						"x": 1,
+						"y": 2983,
 						"w": 242,
 						"h": 151
 					}
 				},
 				{
-					"filename": "rubbish/1",
+					"filename": "arrow",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 172,
-						"h": 108
+						"w": 272,
+						"h": 81
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 172,
-						"h": 108
+						"w": 272,
+						"h": 81
 					},
 					"frame": {
-						"x": 2136,
-						"y": 3154,
-						"w": 172,
-						"h": 108
+						"x": 245,
+						"y": 2983,
+						"w": 272,
+						"h": 81
 					}
 				},
 				{
-					"filename": "rubbish/5",
+					"filename": "btn-retry",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 144,
-						"h": 92
+						"w": 332,
+						"h": 193
 					},
 					"spriteSourceSize": {
-						"x": 0,
+						"x": 12,
 						"y": 0,
-						"w": 144,
-						"h": 92
+						"w": 317,
+						"h": 193
 					},
 					"frame": {
-						"x": 1,
-						"y": 3206,
-						"w": 144,
-						"h": 92
+						"x": 2691,
+						"y": 2536,
+						"w": 317,
+						"h": 193
 					}
 				},
 				{
-					"filename": "rubbish/9",
+					"filename": "tooltips/wallgrip",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 309,
+						"h": 221
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 309,
+						"h": 220
+					},
+					"frame": {
+						"x": 2690,
+						"y": 2731,
+						"w": 309,
+						"h": 220
+					}
+				},
+				{
+					"filename": "rubbish/3",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 134,
-						"h": 92
+						"w": 155,
+						"h": 175
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 134,
-						"h": 92
+						"w": 155,
+						"h": 175
 					},
 					"frame": {
-						"x": 147,
-						"y": 3206,
-						"w": 134,
-						"h": 92
+						"x": 3628,
+						"y": 925,
+						"w": 155,
+						"h": 175
+					}
+				},
+				{
+					"filename": "claw2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 167,
+						"h": 623
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 167,
+						"h": 623
+					},
+					"frame": {
+						"x": 3592,
+						"y": 2308,
+						"w": 167,
+						"h": 623
 					}
 				},
 				{
@@ -969,8 +948,8 @@
 						"h": 125
 					},
 					"frame": {
-						"x": 3380,
-						"y": 2968,
+						"x": 3628,
+						"y": 1102,
 						"w": 153,
 						"h": 125
 					}
@@ -990,10 +969,283 @@
 						"h": 114
 					},
 					"frame": {
-						"x": 3380,
-						"y": 3095,
+						"x": 3628,
+						"y": 1229,
 						"w": 158,
 						"h": 114
+					}
+				},
+				{
+					"filename": "rubbish/1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 172,
+						"h": 108
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 172,
+						"h": 108
+					},
+					"frame": {
+						"x": 3079,
+						"y": 2441,
+						"w": 172,
+						"h": 108
+					}
+				},
+				{
+					"filename": "flag/2",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1263,
+						"h": 1080
+					},
+					"spriteSourceSize": {
+						"x": 365,
+						"y": 195,
+						"w": 296,
+						"h": 217
+					},
+					"frame": {
+						"x": 3253,
+						"y": 2443,
+						"w": 296,
+						"h": 217
+					}
+				},
+				{
+					"filename": "logroll/1",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 205,
+						"h": 205
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 5,
+						"w": 205,
+						"h": 200
+					},
+					"frame": {
+						"x": 3010,
+						"y": 2551,
+						"w": 205,
+						"h": 200
+					}
+				},
+				{
+					"filename": "tooltips/crouch",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 249,
+						"h": 202
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 248,
+						"h": 202
+					},
+					"frame": {
+						"x": 3001,
+						"y": 2753,
+						"w": 248,
+						"h": 202
+					}
+				},
+				{
+					"filename": "tooltips/double-jump",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 274,
+						"h": 214
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 273,
+						"h": 212
+					},
+					"frame": {
+						"x": 3251,
+						"y": 2662,
+						"w": 273,
+						"h": 212
+					}
+				},
+				{
+					"filename": "tooltips/jump",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 266,
+						"h": 205
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 1,
+						"w": 264,
+						"h": 203
+					},
+					"frame": {
+						"x": 3251,
+						"y": 2876,
+						"w": 264,
+						"h": 203
+					}
+				},
+				{
+					"filename": "logroll/2",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 205,
+						"h": 205
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 5,
+						"w": 205,
+						"h": 200
+					},
+					"frame": {
+						"x": 3517,
+						"y": 2933,
+						"w": 205,
+						"h": 200
+					}
+				},
+				{
+					"filename": "logroll/3",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 205,
+						"h": 205
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 5,
+						"w": 205,
+						"h": 200
+					},
+					"frame": {
+						"x": 2585,
+						"y": 2953,
+						"w": 205,
+						"h": 200
+					}
+				},
+				{
+					"filename": "rubbish/4",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 143,
+						"h": 98
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 143,
+						"h": 98
+					},
+					"frame": {
+						"x": 3120,
+						"y": 1436,
+						"w": 143,
+						"h": 98
+					}
+				},
+				{
+					"filename": "heart-outline",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 123,
+						"h": 118
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 123,
+						"h": 118
+					},
+					"frame": {
+						"x": 1169,
+						"y": 1993,
+						"w": 123,
+						"h": 118
+					}
+				},
+				{
+					"filename": "rubbish/5",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 144,
+						"h": 92
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 144,
+						"h": 92
+					},
+					"frame": {
+						"x": 2187,
+						"y": 2765,
+						"w": 144,
+						"h": 92
+					}
+				},
+				{
+					"filename": "rubbish/9",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 134,
+						"h": 92
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 134,
+						"h": 92
+					},
+					"frame": {
+						"x": 3628,
+						"y": 1345,
+						"w": 134,
+						"h": 92
+					}
+				},
+				{
+					"filename": "rubbish/0",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 120,
+						"h": 104
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 120,
+						"h": 104
+					},
+					"frame": {
+						"x": 2792,
+						"y": 2953,
+						"w": 120,
+						"h": 104
 					}
 				},
 				{
@@ -1012,51 +1264,9 @@
 					},
 					"frame": {
 						"x": 2747,
-						"y": 1062,
+						"y": 720,
 						"w": 105,
 						"h": 108
-					}
-				},
-				{
-					"filename": "heart-outline",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 123,
-						"h": 118
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 123,
-						"h": 118
-					},
-					"frame": {
-						"x": 3180,
-						"y": 1898,
-						"w": 123,
-						"h": 118
-					}
-				},
-				{
-					"filename": "rubbish/0",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 120,
-						"h": 104
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 120,
-						"h": 104
-					},
-					"frame": {
-						"x": 3180,
-						"y": 2018,
-						"w": 120,
-						"h": 104
 					}
 				},
 				{
@@ -1074,8 +1284,8 @@
 						"h": 91
 					},
 					"frame": {
-						"x": 283,
-						"y": 3206,
+						"x": 2792,
+						"y": 3059,
 						"w": 105,
 						"h": 91
 					}
@@ -1095,31 +1305,10 @@
 						"h": 102
 					},
 					"frame": {
-						"x": 2766,
-						"y": 2162,
+						"x": 2356,
+						"y": 2140,
 						"w": 79,
 						"h": 102
-					}
-				},
-				{
-					"filename": "rubbish/4",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 143,
-						"h": 98
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 143,
-						"h": 98
-					},
-					"frame": {
-						"x": 2766,
-						"y": 2266,
-						"w": 143,
-						"h": 98
 					}
 				},
 				{
@@ -1137,8 +1326,8 @@
 						"h": 60
 					},
 					"frame": {
-						"x": 2948,
-						"y": 973,
+						"x": 519,
+						"y": 2983,
 						"w": 78,
 						"h": 60
 					}
@@ -1159,7 +1348,7 @@
 					},
 					"frame": {
 						"x": 1780,
-						"y": 1290,
+						"y": 948,
 						"w": 14,
 						"h": 14
 					}
@@ -1170,6 +1359,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:453894d64e9b121e5d6f231e323b406f:e4ebd5e562cb362403e9afab295fe426:b09e3af404e9adef832d409bb34f066a$"
+		"smartupdate": "$TexturePacker:SmartUpdate:a9afad7b6f584a017c7ef565ca93bfb1:0c7000684e20cc7ed5793528a6539ab8:b09e3af404e9adef832d409bb34f066a$"
 	}
 }
