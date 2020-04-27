@@ -131,13 +131,6 @@
 				"label": "spikes",
 				"isSensor": false,
 				"vertices": [
-					[ { "x":5037, "y":901 }, { "x":5037, "y":941 }, { "x":5129, "y":941 }, { "x":5127, "y":901 } ]
-				]
-			},
-			{
-				"label": "spikes",
-				"isSensor": false,
-				"vertices": [
 					[ { "x":4977, "y":57 }, { "x":4992, "y":101 }, { "x":5152, "y":97 }, { "x":5162, "y":54 } ]
 				]
 			},
@@ -165,7 +158,7 @@
 				]
 			},
 			{
-				"label": "spikes",
+				"label": "spikes-side",
 				"isSensor": false,
 				"vertices": [
 					[ { "x":6764, "y":993 }, { "x":6796, "y":993 }, { "x":6796, "y":630 }, { "x":6767, "y":630 } ]
@@ -202,14 +195,14 @@
 				]
 			},
 			{
-				"label": "spikes",
+				"label": "spikes-side",
 				"isSensor": false,
 				"vertices": [
 					[ { "x":7098, "y":447 }, { "x":7098, "y":307 }, { "x":7039, "y":291 }, { "x":7037, "y":454 } ]
 				]
 			},
 			{
-				"label": "spikes",
+				"label": "spikes-side",
 				"isSensor": false,
 				"vertices": [
 					[ { "x":7384, "y":810 }, { "x":7385, "y":614 }, { "x":7325, "y":631 }, { "x":7324, "y":789 } ]
@@ -327,7 +320,7 @@
 				]
 			},
 			{
-				"label": "spikes",
+				"label": "spikes-side",
 				"isSensor": false,
 				"vertices": [
 					[ { "x":74, "y":578 }, { "x":133, "y":578 }, { "x":133, "y":56 }, { "x":78, "y":56 } ]
@@ -358,7 +351,7 @@
 				]
 			},
 			{
-				"label": "spikes",
+				"label": "spikes-side",
 				"isSensor": false,
 				"vertices": [
 					[ { "x":34, "y":54 }, { "x":34, "y":576 }, { "x":89, "y":576 }, { "x":89, "y":54 } ]
@@ -389,7 +382,7 @@
 				]
 			},
 			{
-				"label": "spikes",
+				"label": "spikes-side",
 				"isSensor": false,
 				"vertices": [
 					[ { "x":81, "y":37 }, { "x":81, "y":447 }, { "x":126, "y":436 }, { "x":126, "y":52 } ]
@@ -420,7 +413,7 @@
 				]
 			},
 			{
-				"label": "spikes",
+				"label": "spikes-side",
 				"isSensor": false,
 				"vertices": [
 					[ { "x":80, "y":31 }, { "x":32, "y":59 }, { "x":32, "y":386 }, { "x":80, "y":412 } ]
@@ -492,7 +485,7 @@
 		},
 		"fixtures": [
 			{
-				"label": "spikes",
+				"label": "spikes-side",
 				"isSensor": false,
 				"vertices": [
 					[ { "x":182, "y":817 }, { "x":224, "y":749 }, { "x":224, "y":21 }, { "x":126, "y":21 }, { "x":130, "y":760 } ]
@@ -506,7 +499,7 @@
 		"isStatic": true,
 		"density": 0.10000000149011612,
 		"restitution": 0,
-		"friction": 0.10000000149011612,
+		"friction": 0.1,
 		"frictionAir": 0.009999999776482582,
 		"frictionStatic": 0.5,
 		"collisionFilter": {
@@ -516,7 +509,7 @@
 		},
 		"fixtures": [
 			{
-				"label": "spikes",
+				"label": "spikes-side",
 				"isSensor": false,
 				"vertices": [
 					[ { "x":236, "y":714 }, { "x":312, "y":650 }, { "x":312, "y":74 }, { "x":160, "y":74 }, { "x":160, "y":644 } ]

@@ -96,6 +96,25 @@ export class GameScene extends Phaser.Scene {
 
         this.clouds = new Clouds(this);
 
+        this.anims.create({
+            key: "waterfall",
+            frames: this.anims.generateFrameNames("misc", { start: 0, end: 2, prefix: `waterfall/` }),
+            frameRate: 7,
+            repeat: -1,
+        });
+
+        this.add.sprite(1890, 0, "misc", "waterfall/0").setOrigin(0).setScrollFactor(0.3).setDepth(-3).play("waterfall");
+
+        this.anims.create({
+            key: "flag",
+            frames: this.anims.generateFrameNames("misc", { start: 0, end: 3, prefix: `flag/` }),
+            frameRate: 7,
+            repeat: -1,
+        });
+
+        this.add.sprite(17500, 0, "misc", "flag/0").setOrigin(0).setDepth(-1.5).play("flag");
+        this.add.sprite(17500, 0, "misc", "flag/flag-pole").setOrigin(0).setDepth(-1.5);
+
         new Tooltip(this, 800, 400, "jump", "JUMP", 30);
         new Tooltip(this, 1300, 400, "double-jump", "DOUBLE\nJUMP", 20);
         new Tooltip(this, 2300, 500, "crouch", "CROUCH", 26, -25);
@@ -147,17 +166,17 @@ export class GameScene extends Phaser.Scene {
             lineSpacing: 30
         } as Phaser.Types.GameObjects.Text.TextStyle;
 
-        this.add.text(705, 250, "Forests cover 30% of the Earth's land", textStyle);
-        this.add.text(1791, 994, "They play an important role in absorbing the world's C0²", textStyle);
-        this.add.text(3449, 237, "But they are\ndisappearing", textStyle);
-        this.add.text(4502, 155, "50,000 trees are cut down every minute", Object.assign({ align: "center" }, textStyle));
-        this.add.text(5422, 573, "Over 2000\norangutans\nare killed\nevery year", Object.assign({ align: "center" }, textStyle));
-        this.add.text(7130, 346, "Agriculture\nis the\nmain cause of\ndeforestation", Object.assign({ align: "right" }, textStyle, { fontSize: "30px" }));
-        this.add.text(8492, 195, "It is estimated that within 100 years\n              there will be no rainforests...", textStyle);
-        this.add.text(9684, 661, "As our climate warms up, the ice caps melt away", textStyle);
-        this.add.text(12421, 511, "Oil drilling\nis putting\nmarine life\nin danger", textStyle);
-        this.add.text(14297, 990, "Oil spills can be deadly to animals", textStyle);
-        this.add.text(16615, 302, "So together, let's fight to stop climate change", textStyle);
+        this.add.text(705, 250, "Forests cover 30% of the Earth's land", textStyle).setDepth(-0.5);
+        this.add.text(1791, 994, "They play an important role in absorbing the world's C0²", textStyle).setDepth(-0.5);
+        this.add.text(3449, 237, "But they are\ndisappearing", textStyle).setDepth(-0.5);
+        this.add.text(4502, 155, "50,000 trees are cut down every minute", Object.assign({ align: "center" }, textStyle)).setDepth(-0.5);
+        this.add.text(5422, 573, "Over 2000\norangutans\nare killed\nevery year", Object.assign({ align: "center" }, textStyle)).setDepth(-0.5);
+        this.add.text(7130, 346, "Agriculture\nis the\nmain cause of\ndeforestation", Object.assign({ align: "right" }, textStyle, { fontSize: "30px" })).setDepth(-0.5);
+        this.add.text(8492, 195, "It is estimated that within 100 years\n              there will be no rainforests...", textStyle).setDepth(-0.5);
+        this.add.text(9684, 661, "As our climate warms up, the ice caps melt away", textStyle).setDepth(-0.5);
+        this.add.text(12421, 511, "Oil drilling\nis putting\nmarine life\nin danger", textStyle).setDepth(-0.5);
+        this.add.text(14297, 990, "Oil spills can be deadly to animals", textStyle).setDepth(-0.5);
+        this.add.text(16615, 302, "So together, let's fight to stop climate change", textStyle).setDepth(-0.5);
 
         const particles = this.add.particles("misc", "snow-particle");
         this.snowEmitter = particles.createEmitter({

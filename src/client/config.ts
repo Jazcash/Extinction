@@ -2,7 +2,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
 const config = {
-    startPos: { x: 300 , y: -100 },
+    startPos: { x: 3950 , y: -100 },
     speed: 7,
     crouchSpeed: 3,
     jump: 17,

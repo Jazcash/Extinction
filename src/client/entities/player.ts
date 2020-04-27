@@ -100,6 +100,8 @@ export class Player extends Physics.Matter.Sprite {
         this.parts.main.onCollideCallback = (pair: Types.Physics.Matter.MatterCollisionPair) => {
             if (pair.bodyB.label === "spikes"){
                 this.spike();
+            } else if (pair.bodyB.label === "spikes-side"){
+                this.spike(true);
             }
 
             if (pair.bodyB.label === "rubbish"){
@@ -276,7 +278,7 @@ export class Player extends Physics.Matter.Sprite {
         this.hasDoubleJump = true;
     }
 
-    spike(){
+    spike(sideSpike = false){
         this.anims.stop();
 
         this.setFrame(`${Player.gender}/idle`);
@@ -289,10 +291,12 @@ export class Player extends Physics.Matter.Sprite {
 
         this.state = PlayerState.SPIKED;
 
-        if (this.body.velocity.y > 1){
-            requestAnimationFrame(() => this.setVelocityY(-config.knockbackY));
-        } else if(this.body.velocity.y < -1){
-            requestAnimationFrame(() => this.setVelocityY(config.knockbackY));
+        if (!sideSpike){
+            if (this.body.velocity.y > 1){
+                requestAnimationFrame(() => this.setVelocityY(-config.knockbackY));
+            } else if(this.body.velocity.y < -1){
+                requestAnimationFrame(() => this.setVelocityY(config.knockbackY));
+            }
         }
 
         if (this.body.velocity.y > 1 || this.body.velocity.y < -1){
