@@ -1,7 +1,9 @@
 import { GameObjects } from "phaser";
 
 export class Button extends GameObjects.Sprite {
-    constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number){
+    callback: Function;
+
+    constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number, tint = false){
         super(scene, x, y, texture, frame);
 
         scene.add.existing(this);
@@ -9,17 +11,33 @@ export class Button extends GameObjects.Sprite {
         this.setInteractive({ useHandCursor: true });
 
         this.on(Phaser.Input.Events.POINTER_OVER, (event: Phaser.Input.Pointer, gameObjects: Button[]) => {
-            this.scene.tweens.add({ targets: this, scale: 1.05, duration: 50 });
+            this.hover();
         });
 
         this.on(Phaser.Input.Events.POINTER_OUT, (event: Phaser.Input.Pointer, gameObjects: Button[]) => {
-            this.scene.tweens.add({ targets: this, scale: 1, duration: 50 });
+            this.unhover();
         });
     }
 
     action(callback: Function){
+        this.callback = callback;
+
         this.on(Phaser.Input.Events.POINTER_DOWN, (event: Phaser.Input.Pointer, gameObjects: Button[]) => {
-            callback();
+            this.callback();
         });
+    }
+
+    hover(duration = 50, callback?: Function){
+        this.scene.tweens.add({ targets: this, scale: 1.05, duration: duration});
+        if (this.tint){
+            this.tint = 0xFFFFFF;
+        }
+    }
+
+    unhover(duration = 50, callback?: Function){
+        this.scene.tweens.add({ targets: this, scale: 1, duration: duration });
+        if (this.tint){
+            this.tint = 0xAAAAAA;
+        }
     }
 }

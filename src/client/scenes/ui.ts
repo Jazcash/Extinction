@@ -3,6 +3,7 @@ import config from "client/config";
 import { GameScene } from "./game";
 import { GameObjects, Geom, Input } from "phaser";
 import { Utils } from "client/utils/utils";
+import { InputManager, PadButtons } from "client/managers/input-manager";
 
 export class UIScene extends Phaser.Scene {
     pollutionMeter: PollutionMeter;
@@ -11,9 +12,9 @@ export class UIScene extends Phaser.Scene {
     currentHealth: number;
     hearts: GameObjects.Sprite[];
     snow: GameObjects.Particles.ParticleEmitterManager;
-    keys: { [key: string]: Phaser.Input.Keyboard.Key };
     tutorialAssets: GameObjects.Group;
     isTutorial: boolean;
+    inputManager: InputManager;
 
     constructor() {
         super({
@@ -51,11 +52,9 @@ export class UIScene extends Phaser.Scene {
             this.hearts.push(heartFill);
         }
 
-        this.keys = this.input.keyboard.addKeys({
-            space: Input.Keyboard.KeyCodes.SPACE
-        }) as any;
+        this.inputManager = new InputManager(this);
 
-        this.keys.space?.on("down", () => this.endTutorial());
+        this.inputManager.on({keys: ["Escape", "Enter", " "], padButtons: [PadButtons.START, PadButtons.A]}, () => this.endTutorial());
 
         this.tutorial();
     }
@@ -74,8 +73,6 @@ export class UIScene extends Phaser.Scene {
         this.pollutionMeter.setPercent(percent, true);
 
         (this.scene.get("game") as GameScene).setSaturation(1 - percent);
-
-        const pad = this.input.gamepad.getPad(0);
     }
 
     addTime(time: number) {
@@ -147,7 +144,7 @@ export class UIScene extends Phaser.Scene {
                 align: "center",
                 fixedWidth: 1920
             } as Phaser.Types.GameObjects.Text.TextStyle)
-            ]);
+        ]);
     }
 
     endTutorial() {
@@ -171,6 +168,7 @@ export class UIScene extends Phaser.Scene {
                 game.player.visible = true;
                 game.tutorial = false;
                 this.timer.paused = false;
+                this.scene.run("pause");
             }
         })
     }

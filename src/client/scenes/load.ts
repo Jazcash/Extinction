@@ -37,12 +37,16 @@ export class LoadScene extends Phaser.Scene {
         this.load.multiatlas("world3", "sprites/world3.json", "sprites");
         this.load.multiatlas("player", "sprites/player.json", "sprites");
         this.load.multiatlas("misc", "sprites/misc.json", "sprites");
+        this.load.multiatlas("pause", "sprites/pause.json", "sprites");
 
         this.load.video("title", ["video/title.webm", "video/title.mp4"]);
         this.load.video("game-over", ["video/game-over.webm", "video/game-over.mp4"]);
         this.load.video("credits", ["video/credits.webm", "video/credits.mp4"]);
 
         this.load.bitmapFont("alphabet", "fonts/alphabet.png", "fonts/alphabet.xml");
+
+        this.load.audio("title", ["audio/title.mp3"]);
+        this.load.audio("game", ["audio/game.mp3"]);
 
         Utils.loadFont("Roboto", [100, 300, 400, 500, 700, 900]);
         Utils.loadFont("OCRAEXT");

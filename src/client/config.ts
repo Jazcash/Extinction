@@ -1,6 +1,8 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
+declare var __DEV__: boolean;
+
 const config = {
     startPos: { x: 300 , y: -100 },
     speed: 7,
@@ -22,6 +24,10 @@ const config = {
         "Rip Earth..."
     ],
 };
+
+if (__DEV__){
+    config.startPos = { x: 300 , y: -100 };
+}
 
 for (const [key, value] of Array.from(urlParams.entries())){
     if (key in config){

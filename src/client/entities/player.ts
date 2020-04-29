@@ -40,6 +40,7 @@ export class Player extends Physics.Matter.Sprite {
     crouching = false;
     onIce = false;
     idleTween: Phaser.Tweens.Tween;
+    immune = false;
 
     constructor(scene: Phaser.Scene, x: number, y: number) {
         super(scene.matter.world, x, y, "player", `${Player.gender}/idle`);
@@ -318,7 +319,16 @@ export class Player extends Physics.Matter.Sprite {
             this.state = prevState;
         });
 
-        this.damage();
+        if (this.immune){
+
+        } else {
+            this.damage();
+            this.immune = true;
+
+            this.scene.time.delayedCall(2000, () => {
+                this.immune = false;
+            });
+        }
     }
 
     damage(){

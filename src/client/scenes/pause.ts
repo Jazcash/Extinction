@@ -2,6 +2,9 @@ import { Input, Display, GameObjects, Game } from "phaser";
 import { GameScene } from "./game";
 import { GaussianBlur1 } from "client/shaders/gaussian-blur-1-pipeline";
 import { UIScene } from "./ui";
+import { Button } from "client/ui/button";
+import { Toggle } from "client/ui/toggle";
+import { InputManager, PadButtons, PadStick } from "client/managers/input-manager";
 
 const menuTextStyle: Phaser.Types.GameObjects.Text.TextStyle = {
     fontFamily: "Roboto",
@@ -16,17 +19,23 @@ const menuTextStyle: Phaser.Types.GameObjects.Text.TextStyle = {
     }
 };
 
+enum Page {
+    PAUSED,
+    CONTROLS,
+    SETTINGS,
+    NONE
+}
+
 export class PauseScene extends Phaser.Scene {
-    keys: { [key: string]: Phaser.Input.Keyboard.Key };
-    menuElements: (GameObjects.Sprite | GameObjects.Text | GameObjects.Rectangle | GameObjects.Graphics)[] = [];
-    mainElements: (GameObjects.Sprite | GameObjects.Text | GameObjects.Rectangle | GameObjects.Graphics)[] = [];
-    controlsElements: (GameObjects.Sprite | GameObjects.Text | GameObjects.Rectangle | GameObjects.Graphics)[] = [];
     customPipeline: Phaser.Renderer.WebGL.WebGLPipeline;
-    active = false;
     selectedOption = 0;
-    options: GameObjects.Text[] = [];
-    selectedBorder: GameObjects.Graphics;
+    selectedButton: Button;
+    buttons: Button[] = [];
     controlsActive = false;
+    pages: Map<Page, GameObjects.Group> = new Map();
+    mainElements: GameObjects.Group;
+    currentPage: Page = Page.NONE;
+    inputManager: InputManager;
 
     constructor() {
         super({
@@ -36,71 +45,122 @@ export class PauseScene extends Phaser.Scene {
     }
 
     create() {
-        this.keys = this.input.keyboard.addKeys({
-            esc: Input.Keyboard.KeyCodes.ESC,
-            up: Input.Keyboard.KeyCodes.UP,
-            down: Input.Keyboard.KeyCodes.DOWN,
-            space: Input.Keyboard.KeyCodes.SPACE
-        }) as any;
+        const pauseOverlayRect = this.add.rectangle(0, 0, this.cameras.main.width, this.cameras.main.height, 0x00AD7F, 0.35);
+        pauseOverlayRect.setOrigin(0, 0);
+        pauseOverlayRect.setAlpha(0);
 
-		this.keys.esc?.on("down", () => this.exit());
-		this.keys.up?.on("down", () => this.selectAbove());
-		this.keys.down?.on("down", () => this.selectBelow());
-		this.keys.space?.on("down", () => this.triggerOption());
+        const pauseBorder = this.add.sprite(0, 0, "pause", "frame").setOrigin(0, 0);
 
-		const pauseOverlayRect = this.add.rectangle(0, 0, this.cameras.main.width, this.cameras.main.height, 0x00AD7F, 0.35);
-		pauseOverlayRect.setOrigin(0, 0);
-		pauseOverlayRect.setAlpha(0);
+        this.mainElements = this.add.group([pauseBorder, pauseOverlayRect]).setAlpha(0);
 
-		const pauseBorder = this.add.sprite(0, 0, "misc", "pause-overlay").setOrigin(0, 0);
+        const btnBack = new Button(this, 500, 250, "pause", "back");
+        btnBack.action(() => this.setPage(Page.PAUSED));
 
-		const headingStyle = Object.assign({}, menuTextStyle, { fontSize: "150px" });
+        const pausedTitle = this.add.image(this.cameras.main.centerX, 275, "pause", "paused_title");
 
-		const pausedText = this.add.text(this.cameras.main.centerX, 200, "Paused", headingStyle).setOrigin(0.5);
-		const resumeText = this.add.text(this.cameras.main.centerX, pausedText.getBounds().bottom + 150, "Resume", menuTextStyle).setOrigin(0.5);
-		const controlsText = this.add.text(this.cameras.main.centerX, resumeText.getBounds().bottom + 75, "Controls", menuTextStyle).setOrigin(0.5);
-		const menuText = this.add.text(this.cameras.main.centerX, controlsText.getBounds().bottom + 75, "Menu", menuTextStyle).setOrigin(0.5);
+        const spacing = 60;
 
-		this.selectedBorder = this.add.graphics({ lineStyle: { color: 0xffffff, width:12}});
-		this.selectedBorder.strokeRoundedRect(this.cameras.main.centerX - 300, 0, 600, 150, 75);
-		this.selectedBorder.setY(resumeText.getBounds().top - 20);
+        const btnResume = new Button(this, this.cameras.main.centerX, pausedTitle.getBounds().bottom + spacing, "pause", "resume_text", true);
+        const btnControls = new Button(this, this.cameras.main.centerX, btnResume.getBounds().bottom + spacing - 5, "pause", "controls_text", true);
+        const btnSettings = new Button(this, this.cameras.main.centerX, btnControls.getBounds().bottom + spacing, "pause", "settings_text", true);
+        const btnMenu = new Button(this, this.cameras.main.centerX, btnSettings.getBounds().bottom + spacing, "pause", "menu_text", true);
 
-		const controlsTitle = this.add.text(this.cameras.main.centerX, 200, "Controls", headingStyle).setOrigin(0.5).setAlpha(0);
-		const controlsImage = this.add.sprite(0, 0, "misc", "controls").setOrigin(0, 0).setAlpha(0);
+        btnResume.action(() => this.toggle());
+        btnControls.action(() => this.setPage(Page.CONTROLS));
+        btnSettings.action(() => this.setPage(Page.SETTINGS));
+        btnMenu.action(() => this.scene.start("main-menu"));
 
-		this.mainElements.push(pauseBorder, pauseOverlayRect);
+        this.buttons = [ btnResume, btnControls, btnSettings, btnMenu ];
 
-		this.menuElements.push(pausedText, resumeText, controlsText, menuText, this.selectedBorder);
+        this.selectedOption = 0;
+        this.selectedButton = btnResume;
 
-		this.controlsElements.push(controlsTitle, controlsImage);
+        this.buttons.forEach(button => {
+            button.unhover(0);
+        });
 
-		this.options.push(resumeText, controlsText, menuText);
+        this.pages.set(Page.NONE, this.add.group());
 
-		[...this.mainElements, ...this.menuElements].forEach(obj => obj.setAlpha(0));
+        // this.time.delayedCall(100, () => btnResume.hover());
 
-		if (this.game.renderer instanceof Phaser.Renderer.WebGL.WebGLRenderer){
-		    this.customPipeline = this.game.renderer.getPipeline("GaussianBlur1");
-		    this.customPipeline.setFloat2('iResolution', 1920, 1080);
-		    this.customPipeline.setFloat1('Size', 0);
-		}
+        this.pages.set(Page.PAUSED, this.add.group([pausedTitle, btnResume, btnControls, btnSettings, btnMenu]).setAlpha(0));
 
-		this.scene.sleep();
-    }
+        const controlsTitle = this.add.image(this.cameras.main.centerX, 275, "pause", "controls_title");
+        const controlsImg = this.add.image(this.cameras.main.centerX, 550, "pause", "controls");
 
-    exit(){
-        if (this.controlsActive){
-            this.menuElements.forEach(obj => obj.setAlpha(1));
-            this.controlsElements.forEach(obj => obj.setAlpha(0));
+        this.pages.set(Page.CONTROLS, this.add.group([btnBack, controlsTitle, controlsImg]).setAlpha(0));
 
-            this.controlsActive = false;
+        const settingsTitle = this.add.image(this.cameras.main.centerX, 275, "pause", "settings_title");
 
-            return;
+        const musicText = this.add.image(500, 400, "pause", "music_text").setOrigin(0);
+        const musicToggle = new Toggle(this, 1200, musicText.y);
+        musicToggle.setEnabled(!this.sound.mute);
+        musicToggle.onToggled.add(() => this.sound.mute = !this.sound.mute);
+
+        const soundText = this.add.image(500, 500, "pause", "sound_effects_text").setOrigin(0);
+        const soundToggle = new Toggle(this, 1200, soundText.y);
+        soundToggle.setEnabled(true);
+
+        this.pages.set(Page.SETTINGS, this.add.group([btnBack, settingsTitle, musicText, musicToggle, soundText, soundToggle]).setAlpha(0));
+
+        if (this.game.renderer instanceof Phaser.Renderer.WebGL.WebGLRenderer) {
+            this.customPipeline = this.game.renderer.getPipeline("GaussianBlur1");
+            this.customPipeline.setFloat2('iResolution', 1920, 1080);
+            this.customPipeline.setFloat1('Size', 0);
         }
 
+        this.inputManager = new InputManager(this);
+
+        this.inputManager.on({keys: ["Escape"], padButtons: [PadButtons.BACK, PadButtons.B]}, () => {
+            if (this.currentPage !== Page.NONE){ 
+                if (this.currentPage === Page.PAUSED){
+                    this.toggle();
+                } else {
+                    this.setPage(Page.PAUSED);
+                }
+            }
+        });
+        this.inputManager.on({keys: ["ArrowUp"], padButtons: [PadButtons.DUP], padSticks: {left: PadStick.UP}}, () => {
+            if (this.currentPage !== Page.NONE){
+                this.selectAbove();
+            }
+        });
+        this.inputManager.on({keys: ["ArrowDown"], padButtons: [PadButtons.DDOWN], padSticks: {left: PadStick.DOWN}}, () => {
+            if (this.currentPage !== Page.NONE){
+                this.selectBelow();
+            }
+        });
+        this.inputManager.on({keys: ["Enter", " "], padButtons: [PadButtons.START, PadButtons.A]}, () => {
+            if (this.currentPage !== Page.NONE){
+                this.triggerButton(this.selectedButton);
+            }
+        });
+        this.inputManager.on({keys: ["Escape"], padButtons: [PadButtons.START, PadButtons.BACK]}, () => {
+            if (this.currentPage === Page.NONE){
+                this.toggle();
+            }
+        });
+
+        this.setPage(this.currentPage);
+    }
+
+    setPage(page: Page, instant = false) {
+        this.pages.forEach(page => {
+            page.getChildren().forEach((child: GameObjects.Sprite) => child.setAlpha(0));
+        });
+
+        this.pages.get(page)?.getChildren().forEach((child: GameObjects.Sprite) => child.setAlpha(1));
+
+        this.currentPage = page;
+    }
+
+    toggle() {
         const gameScene = this.scene.get("game") as GameScene;
         const uiScene = this.scene.get("ui") as UIScene;
 
-        if (!this.active){
+        console.log("toggling");
+
+        if (this.currentPage === Page.NONE) {
             [gameScene, uiScene].forEach(scene => scene.cameras.main.setRenderToTexture(this.customPipeline));
 
             this.tweens.addCounter({
@@ -109,7 +169,9 @@ export class PauseScene extends Phaser.Scene {
                 duration: 200,
                 onUpdate: (tween, current) => {
                     this.customPipeline.setFloat1('Size', current.value);
-                    [...this.mainElements, ...this.menuElements].forEach(obj => obj.setAlpha(tween.progress));
+                    this.mainElements.setAlpha(tween.progress);
+                    this.setPage(Page.PAUSED, true);
+                    this.pages.get(this.currentPage)!.setAlpha(tween.progress);
                 },
                 onComplete: () => {
                     [gameScene, uiScene].forEach(scene => scene.scene.pause());
@@ -124,51 +186,38 @@ export class PauseScene extends Phaser.Scene {
                 duration: 200,
                 onUpdate: (tween, current) => {
                     this.customPipeline.setFloat1('Size', current.value);
-                    [...this.mainElements, ...this.menuElements].forEach(obj => obj.setAlpha(1 - tween.progress));
+                    this.mainElements.setAlpha(1 - tween.progress);
+                    this.pages.get(this.currentPage)!.setAlpha(1 - tween.progress);
                 },
                 onComplete: () => {
+                    this.setPage(Page.NONE, true);
                     [gameScene, uiScene].forEach(scene => scene.cameras.main.clearRenderToTexture());
-
-                    this.scene.sleep();
                 }
             });
         }
-
-        this.active = !this.active;
-    }
-
-    showControls(){
-        this.controlsActive = true;
-
-        this.menuElements.forEach(obj => obj.setAlpha(0));
-        this.controlsElements.forEach(obj => obj.setAlpha(1));
     }
 
     selectAbove() {
-        this.selectedOption = this.selectedOption === 0 ? this.options.length - 1 : this.selectedOption - 1;
-        const option = this.options[this.selectedOption];
-
-        this.selectedBorder.setY(option.getBounds().top - 20);
+        this.selectedOption = this.selectedOption === 0 ? this.buttons.length - 1 : this.selectedOption - 1;
+        const option = this.buttons[this.selectedOption];
+        this.buttons.forEach(button => {
+            button.unhover(0);
+        });
+        option.hover(0);
+        this.selectedButton = option;
     }
 
     selectBelow() {
-        this.selectedOption = this.selectedOption === this.options.length - 1 ? 0 : this.selectedOption + 1;
-        const option = this.options[this.selectedOption];
-
-        this.selectedBorder.setY(option.getBounds().top - 20);
+        this.selectedOption = this.selectedOption === this.buttons.length - 1 ? 0 : this.selectedOption + 1;
+        const option = this.buttons[this.selectedOption];
+        this.buttons.forEach(button => {
+            button.unhover(0);
+        });
+        option.hover(0);
+        this.selectedButton = option;
     }
 
-    triggerOption(){
-        if (this.selectedOption === 0){
-            this.exit();
-        } else if (this.selectedOption === 1){
-            this.showControls();
-        }
-    }
-
-    resume(){
-        this.scene.wake();
-
-        this.exit();
+    triggerButton(button: Button){
+        button.callback();
     }
 }

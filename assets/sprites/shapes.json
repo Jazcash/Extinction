@@ -223,13 +223,6 @@
 				]
 			},
 			{
-				"label": "spikes",
-				"isSensor": false,
-				"vertices": [
-					[ { "x":7483, "y":878 }, { "x":7545, "y":878 }, { "x":7545, "y":478 }, { "x":7484, "y":478 } ]
-				]
-			},
-			{
 				"label": "",
 				"isSensor": false,
 				"vertices": [
@@ -533,7 +526,7 @@
 		},
 		"fixtures": [
 			{
-				"label": "spikes",
+				"label": "spikes-side",
 				"isSensor": false,
 				"vertices": [
 					[ { "x":186, "y":836 }, { "x":259, "y":749 }, { "x":259, "y":23 }, { "x":101, "y":23 }, { "x":106, "y":791 } ]
