@@ -1,11 +1,13 @@
-import { GameObjects } from "phaser";
+import { GameObjects, Input } from "phaser";
 import { TypewriterText } from "client/entities/typewriter-text";
 import { Utils } from "client/utils/utils";
 import config from "client/config";
 import { Button } from "client/ui/button";
 import { Anims } from "client/utils/anims";
+import { InputManager, PadButtons } from "client/managers/input-manager";
 
 export class GameOverScene extends Phaser.Scene {
+    inputManager: InputManager;
     constructor() {
         super({
             key: "game-over"
@@ -43,6 +45,10 @@ export class GameOverScene extends Phaser.Scene {
                 await this.displayRandomDeathMessage();
             }
         });
+        
+        this.inputManager = new InputManager(this);
+
+        //this.inputManager.on({keys: ["ArrowDown", "ArrowUp"], padButtons: [PadButtons.DUP, PadButtons.DDOWN]}, 
     }
 
     displayRandomDeathMessage(){

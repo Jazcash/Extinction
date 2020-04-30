@@ -16,6 +16,7 @@ const config = {
     logSpawnRate: 2, // seconds
     iceFriction: 0.01,
     harvesterRate: 3, // seconds
+    immunityTime: 1.5,
     deathMessages: [
         "It's the end of the world as we know it...",
         "At least it's not the end of the world... Oh wait",
@@ -31,7 +32,7 @@ if (__DEV__){
 
 for (const [key, value] of Array.from(urlParams.entries())){
     if (key in config){
-        (config as any)[key] = parseInt(value);
+        (config as any)[key] = parseFloat(value);
     }
 }
 

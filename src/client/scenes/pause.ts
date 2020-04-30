@@ -81,8 +81,6 @@ export class PauseScene extends Phaser.Scene {
 
         this.pages.set(Page.NONE, this.add.group());
 
-        // this.time.delayedCall(100, () => btnResume.hover());
-
         this.pages.set(Page.PAUSED, this.add.group([pausedTitle, btnResume, btnControls, btnSettings, btnMenu]).setAlpha(0));
 
         const controlsTitle = this.add.image(this.cameras.main.centerX, 275, "pause", "controls_title");
@@ -157,8 +155,6 @@ export class PauseScene extends Phaser.Scene {
     toggle() {
         const gameScene = this.scene.get("game") as GameScene;
         const uiScene = this.scene.get("ui") as UIScene;
-
-        console.log("toggling");
 
         if (this.currentPage === Page.NONE) {
             [gameScene, uiScene].forEach(scene => scene.cameras.main.setRenderToTexture(this.customPipeline));

@@ -5,6 +5,7 @@ import { EdgeFadePipeline } from "client/shaders/edge-fade-pipeline";
 import { TypewriterText } from "client/entities/typewriter-text";
 import { Utils } from "client/utils/utils";
 import { Anims } from "client/utils/anims";
+import { InputManager, PadButtons } from "client/managers/input-manager";
 
 export enum Character {
     GIRL = "girl",
@@ -27,7 +28,6 @@ const textStyle = {
 export class CharacterSelection extends Phaser.Scene {
     blobBacking: Phaser.GameObjects.Sprite;
     selectedChar: Character = Character.GIRL;
-    keys: { [key: string]: Phaser.Input.Keyboard.Key };
     girl: Phaser.GameObjects.Image;
     boy: Phaser.GameObjects.Image;
     fadeShader: Phaser.Renderer.WebGL.WebGLPipeline;
@@ -36,6 +36,7 @@ export class CharacterSelection extends Phaser.Scene {
     backArrow: Button;
     playArrow: Button;
     spotlightImages: Phaser.GameObjects.Image[];
+    inputManager: InputManager;
 
     constructor() {
         super({
@@ -74,15 +75,6 @@ export class CharacterSelection extends Phaser.Scene {
 
         this.blobBacking.play("blob");
 
-        this.keys = this.input.keyboard.addKeys({
-            left: Input.Keyboard.KeyCodes.LEFT,
-            right: Input.Keyboard.KeyCodes.RIGHT,
-            enter: Input.Keyboard.KeyCodes.ENTER
-        }) as any;
-
-        this.keys.left?.on("down", () => this.selectOtherChar());
-        this.keys.right?.on("down", () => this.selectOtherChar());
-
         this.backArrow = new Button(this, 0, 0, "menu", "back-arrow").setVisible(false);
         this.playArrow = new Button(this, 0, 0, "menu", "play-arrow").setVisible(false);
         const skipBtn = new Button(this, 500, 500, "misc", "btn-skip");
@@ -100,26 +92,18 @@ export class CharacterSelection extends Phaser.Scene {
         Phaser.Display.Align.In.BottomRight(this.playArrow, bounds, -20, -20);
         Phaser.Display.Align.In.TopRight(skipBtn, bounds, -20, -20);
 
-        this.input.gamepad.on(Phaser.Input.Gamepad.Events.CONNECTED, (pad:Phaser.Input.Gamepad.Gamepad) => {
-            pad.on(Phaser.Input.Gamepad.Events.BUTTON_DOWN, (keyCode: number) => {
-                if (keyCode === 14 || keyCode === 15){
-                    this.selectOtherChar();
-                } else if (keyCode === 9){
-                    this.scene.start("game");
-                }
-            });
-        });
-
-        this.keys.enter?.on("down", () => {
-            this.scene.start("game");
-        });
-
         if (this.game.renderer instanceof Phaser.Renderer.WebGL.WebGLRenderer) {
             this.fadeShader = this.game.renderer.getPipeline("EdgeFadePipeline");
             this.fadeShader.setFloat2('iResolution', 1920, 1080);
             this.fadeShader.setFloat1('amount', 5);
             this.cameras.main.setRenderToTexture(this.fadeShader);
         }
+
+        this.inputManager = new InputManager(this);
+
+        this.inputManager.on({keys: ["ArrowLeft", "ArrowRight"], padButtons: [PadButtons.DLEFT, PadButtons.DRIGHT]}, () => this.selectOtherChar());
+        this.inputManager.on({keys: ["Enter", " "], padButtons: [PadButtons.START, PadButtons.A]}, () => this.playArrow.trigger());
+        this.inputManager.on({keys: ["Backspace", "Escape"], padButtons: [PadButtons.BACK, PadButtons.B]}, () => this.backArrow.trigger());
         
         if (!skip){
             await this.intro();

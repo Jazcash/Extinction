@@ -325,7 +325,7 @@ export class Player extends Physics.Matter.Sprite {
             this.damage();
             this.immune = true;
 
-            this.scene.time.delayedCall(2000, () => {
+            this.scene.time.delayedCall(config.immunityTime, () => {
                 this.immune = false;
             });
         }

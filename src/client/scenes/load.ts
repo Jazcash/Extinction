@@ -63,7 +63,7 @@ export class LoadScene extends Phaser.Scene {
         this.scene.run("debug");
 
         if (__DEV__){
-            this.scene.start("game");
+            this.scene.start("game-over");
         } else {
             this.scene.start("main-menu");
         }

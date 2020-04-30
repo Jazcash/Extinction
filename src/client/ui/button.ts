@@ -40,4 +40,8 @@ export class Button extends GameObjects.Sprite {
             this.tint = 0xAAAAAA;
         }
     }
+
+    trigger(){
+        this.callback();
+    }
 }
