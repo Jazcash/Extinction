@@ -213,22 +213,20 @@ export class GameScene extends Phaser.Scene {
             this.setupGamepad(pad);
         }
 
-        console.log(pad?.axes[0].getValue(), pad?.axes[1].getValue());
-
         if (this.tutorial || this.player.state === PlayerState.DANCING) {
         } else if (this.player.state == PlayerState.SPIKED) {
             this.player.body.friction = 0;
         } else if ((this.keys.shift?.isDown || pad?.R2) && this.player.canClimb()) {
             this.player.climb();
         } else {
-            if (this.keys.left?.isDown || pad?.axes[0].getValue() !== 0) {
-                if (this.keys.down?.isDown || (pad?.axes[0].getValue() < 0 && pad?.axes[0].getValue() > -0.25)) {
+            if (this.keys.left?.isDown) {
+                if (this.keys.down?.isDown) {
                     this.player.crouch(-config.crouchSpeed);
                 } else {
                     this.player.run(-config.speed);
                 }
-            } else if (this.keys.right?.isDown || pad?.axes[0].getValue() !== 0) {
-                if (this.keys.down?.isDown || (pad?.axes[0].getValue() > 0 && pad?.axes[0].getValue() < 0.25)) {
+            } else if (this.keys.right?.isDown) {
+                if (this.keys.down?.isDown) {
                     this.player.crouch(config.crouchSpeed);
                 } else {
                     this.player.run(config.speed);
