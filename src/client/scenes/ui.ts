@@ -56,7 +56,11 @@ export class UIScene extends Phaser.Scene {
 
         this.inputManager.on({keys: ["Escape", "Enter", " "], padButtons: [PadButtons.START, PadButtons.A]}, () => this.endTutorial());
 
-        this.tutorial();
+        if (config.tutorialEnabled){
+            this.tutorial();
+        } else {
+            this.isTutorial = false;
+        }
     }
 
     update() {
@@ -103,6 +107,7 @@ export class UIScene extends Phaser.Scene {
         this.timer.paused = true;
 
         const game = this.scene.get("game") as GameScene;
+        game.player.visible = false;
         game.scene.pause();
 
         this.tutorialAssets = this.add.group([
@@ -168,8 +173,9 @@ export class UIScene extends Phaser.Scene {
                 game.player.visible = true;
                 game.tutorial = false;
                 this.timer.paused = false;
-                this.scene.run("pause");
             }
-        })
+        });
+
+        config.tutorialEnabled = false;
     }
 }

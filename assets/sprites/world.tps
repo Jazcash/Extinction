@@ -834,6 +834,186 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">world/waves/0.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1001,207,2001,413</rect>
+                <key>scale9Paddings</key>
+                <rect>1001,207,2001,413</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">world/waves/1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1001,203,2001,407</rect>
+                <key>scale9Paddings</key>
+                <rect>1001,203,2001,407</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">world/waves/10.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1001,190,2001,380</rect>
+                <key>scale9Paddings</key>
+                <rect>1001,190,2001,380</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">world/waves/11.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1001,198,2001,395</rect>
+                <key>scale9Paddings</key>
+                <rect>1001,198,2001,395</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">world/waves/2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1001,203,2001,405</rect>
+                <key>scale9Paddings</key>
+                <rect>1001,203,2001,405</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">world/waves/3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1001,193,2001,385</rect>
+                <key>scale9Paddings</key>
+                <rect>1001,193,2001,385</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">world/waves/4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1001,158,2001,316</rect>
+                <key>scale9Paddings</key>
+                <rect>1001,158,2001,316</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">world/waves/5.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1001,136,2001,271</rect>
+                <key>scale9Paddings</key>
+                <rect>1001,136,2001,271</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">world/waves/6.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1001,113,2001,226</rect>
+                <key>scale9Paddings</key>
+                <rect>1001,113,2001,226</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">world/waves/7.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1001,116,2001,231</rect>
+                <key>scale9Paddings</key>
+                <rect>1001,116,2001,231</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">world/waves/8.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1001,128,2001,257</rect>
+                <key>scale9Paddings</key>
+                <rect>1001,128,2001,257</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">world/waves/9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1001,149,2001,297</rect>
+                <key>scale9Paddings</key>
+                <rect>1001,149,2001,297</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
         </map>
         <key>fileList</key>
         <array>

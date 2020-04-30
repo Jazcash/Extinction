@@ -1,7 +1,7 @@
 import { Player, PlayerState } from "client/entities/player";
 import { BackgroundManager } from "client/managers/background-manager";
 import config from "client/config";
-import { Input } from "phaser";
+import { Input, GameObjects } from "phaser";
 import { GaussianBlur1 } from "client/shaders/gaussian-blur-1-pipeline";
 import { PauseScene } from "./pause";
 import { Tooltip } from "client/entities/tooltip";
@@ -38,6 +38,7 @@ export class GameScene extends Phaser.Scene {
     ui: UIScene;
     won: boolean;
     inputManager: InputManager;
+    waves: GameObjects.Group;
 
     constructor() {
         super({ key: "game" });
@@ -50,7 +51,7 @@ export class GameScene extends Phaser.Scene {
 
         this.won = false;
         this.gamepadInitialised = false;
-        this.tutorial = true;
+        this.tutorial = config.tutorialEnabled;
 
         this.bounds = { x: 50, y: 0, width: 18700, height: 1080 };
 
@@ -157,6 +158,37 @@ export class GameScene extends Phaser.Scene {
 
         this.add.image(10090, 0, "world", "misc/ice-cave-top").setOrigin(0);
 
+        const waves = this.add.sprite(7800, 870, "world", "waves/0").setDepth(-2).setScale(0.98).setScrollFactor(0.5);
+        this.anims.create({
+            key: "waves",
+            frames: this.anims.generateFrameNames("world", { start: 0, end: 11, prefix: `waves/` }),
+            frameRate: 7,
+            repeat: -1,
+        });
+        waves.play("waves");
+
+        const waves2 = this.add.sprite(7200, 950, "world", "waves/0").setDepth(-2.1).setScale(0.8).setScrollFactor(0.4);
+        this.anims.create({
+            key: "waves2",
+            frames: this.anims.generateFrameNames("world", { start: 0, end: 11, prefix: `waves/` }),
+            frameRate: 7,
+            repeat: -1,
+            delay: 1000
+        });
+        waves2.play("waves2");
+
+        const waves3 = this.add.sprite(5000, 800, "world", "waves/0").setDepth(-2.2).setScale(0.5).setScrollFactor(0.25);
+        this.anims.create({
+            key: "waves3",
+            frames: this.anims.generateFrameNames("world", { start: 0, end: 11, prefix: `waves/` }),
+            frameRate: 7,
+            repeat: -1,
+            delay: 500
+        });
+        waves3.play("waves3");
+
+        this.waves = this.add.group([waves, waves2, waves3]);
+
         this.oilrig = new OilRig(this, 14100, 50);
 
         new Boat(this, 16550, 800);
@@ -199,10 +231,9 @@ export class GameScene extends Phaser.Scene {
             this.cameras.main.setRenderToTexture(this.saturation);
         }
 
+        this.scene.run("pause");
         this.scene.run("ui");
         this.ui = this.scene.get("ui") as UIScene;
-
-        this.player.visible = false;
     }
 
     update(time: number, delta: number) {
@@ -258,6 +289,12 @@ export class GameScene extends Phaser.Scene {
             this.snowEmitter.start();
         } else if (this.player.body.position.x < 8000 || this.player.body.position.x > 14000 && this.snowEmitter.on){
             this.snowEmitter.stop();
+        }
+
+        if (this.player.body.position.x > 11500){
+            this.waves.setVisible(true);
+        } else {
+            this.waves.setVisible(false);
         }
 
         if (this.ui.timer.getProgress() === 1 || this.ui.currentHealth === 0){

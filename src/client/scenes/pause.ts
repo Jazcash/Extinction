@@ -5,6 +5,7 @@ import { UIScene } from "./ui";
 import { Button } from "client/ui/button";
 import { Toggle } from "client/ui/toggle";
 import { InputManager, PadButtons, PadStick } from "client/managers/input-manager";
+import config from "client/config";
 
 const menuTextStyle: Phaser.Types.GameObjects.Text.TextStyle = {
     fontFamily: "Roboto",
@@ -99,7 +100,12 @@ export class PauseScene extends Phaser.Scene {
         const soundToggle = new Toggle(this, 1200, soundText.y);
         soundToggle.setEnabled(true);
 
-        this.pages.set(Page.SETTINGS, this.add.group([btnBack, settingsTitle, musicText, musicToggle, soundText, soundToggle]).setAlpha(0));
+        const tutorialText = this.add.image(500, 600, "pause", "tutorial_enabled_text").setOrigin(0);
+        const tutorialToggle = new Toggle(this, 1200, tutorialText.y);
+        tutorialToggle.setEnabled(config.tutorialEnabled);
+        tutorialToggle.onToggled.add(() => config.tutorialEnabled = !config.tutorialEnabled);
+
+        this.pages.set(Page.SETTINGS, this.add.group([btnBack, settingsTitle, musicText, musicToggle, soundText, soundToggle, tutorialText, tutorialToggle]).setAlpha(0));
 
         if (this.game.renderer instanceof Phaser.Renderer.WebGL.WebGLRenderer) {
             this.customPipeline = this.game.renderer.getPipeline("GaussianBlur1");
