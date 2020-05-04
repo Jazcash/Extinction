@@ -3,6 +3,8 @@ import { PollutionMeter } from "client/entities/pollution-meter";
 import { EdgeFadePipeline } from "client/shaders/edge-fade-pipeline";
 import { SaturatePipeline } from "client/shaders/saturate-pipeline";
 import { GaussianBlur1 } from "client/shaders/gaussian-blur-1-pipeline";
+import config from "client/config";
+import { Sound } from "phaser";
 
 declare var __DEV__: boolean;
 declare var window: any;
@@ -44,9 +46,9 @@ export class LoadScene extends Phaser.Scene {
         this.load.video("credits", ["video/credits.webm", "video/credits.mp4"]);
 
         this.load.bitmapFont("alphabet", "fonts/alphabet.png", "fonts/alphabet.xml");
-
-        this.load.audio("title", ["audio/title.mp3"]);
-        this.load.audio("game", ["audio/game.mp3"]);
+        
+        config.sounds.music.forEach(soundKey => this.load.audio(soundKey, [`audio/music/${soundKey}.mp3`]));
+        config.sounds.sfx.forEach(soundKey => this.load.audio(soundKey, [`audio/sfx/${soundKey}.mp3`]));
 
         Utils.loadFont("Roboto", [100, 300, 400, 500, 700, 900]);
         Utils.loadFont("OCRAEXT");
@@ -59,6 +61,21 @@ export class LoadScene extends Phaser.Scene {
             this.game.renderer.addPipeline("SaturatePipeline", new SaturatePipeline(this.game));
             this.game.renderer.addPipeline("GaussianBlur1", new GaussianBlur1(this.game));
         }
+
+        config.sounds.music.forEach(soundKey => this.game.sound.add(soundKey, { volume: 0.1 }));
+        config.sounds.sfx.forEach(soundKey => this.game.sound.add(soundKey, { volume: 0.1 }));
+        
+        config.sounds.music.forEach(soundKey => {
+            this.sound.getAll(soundKey).forEach(sound => {
+                (sound as Sound.WebAudioSound).setMute(!config.musicEnabled);
+            });
+        });
+
+        config.sounds.sfx.forEach(soundKey => {
+            this.sound.getAll(soundKey).forEach(sound => {
+                (sound as Sound.WebAudioSound).setMute(!config.sfxEnabled);
+            });
+        });
 
         this.scene.run("debug");
 

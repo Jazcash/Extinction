@@ -12,8 +12,6 @@ export class MainMenuScene extends Phaser.Scene {
     }
 
     create() {
-        this.sound.pauseOnBlur = false;
-
         this.sound.stopAll();
 
         this.music = this.sound.add("title", { loop: true, volume: 0.1 });

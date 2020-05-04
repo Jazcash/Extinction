@@ -1,3 +1,5 @@
+import { Sound } from "phaser";
+
 export namespace Utils {
     export function loadFont(fontName: string, weights?: number[]){
         const fontFace = document.createElement("style");

@@ -31,12 +31,12 @@ export class CharacterSelection extends Phaser.Scene {
     girl: Phaser.GameObjects.Image;
     boy: Phaser.GameObjects.Image;
     fadeShader: Phaser.Renderer.WebGL.WebGLPipeline;
-    selectText: Phaser.GameObjects.Image;
     fade: Phaser.GameObjects.Graphics;
     backArrow: Button;
     playArrow: Button;
     spotlightImages: Phaser.GameObjects.Image[];
     inputManager: InputManager;
+    selectText: Phaser.GameObjects.BitmapText;
 
     constructor() {
         super({
@@ -57,7 +57,7 @@ export class CharacterSelection extends Phaser.Scene {
         this.boy = this.add.image(1074, 1000, "menu", "boy").setOrigin(0, 1).setScale(1, 0.99).setVisible(false);
         const fg = this.add.image(0, 0, "menu", "foreground").setOrigin(0);
         const spotlightTop = this.add.image(0, 0, "menu", "spotlight-top").setOrigin(0).setVisible(false);
-        this.selectText = this.add.image(0, 0, "menu", "select-text").setOrigin(0).setVisible(false);
+        this.selectText = this.add.bitmapText(this.cameras.main.centerX, 285, "alphabet", "SELECT   YOUR   CHARACTER", 50).setOrigin(0.5).setVisible(false);
 
         this.spotlightImages = [spotlightGround, spotlightMain, spotlightTop];
 

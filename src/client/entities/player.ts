@@ -187,6 +187,10 @@ export class Player extends Physics.Matter.Sprite {
             this.state = PlayerState.RUNNING;
 
             this.play("running", true);
+
+            if (!this.scene.sound.get("footsteps")){
+                this.scene.sound.play("footsteps", { volume: 0.4 });
+            }
         }
 
         if (speed){
@@ -198,6 +202,7 @@ export class Player extends Physics.Matter.Sprite {
             this.facingLeft = speed < 0;
         } else {
             this.idle();
+            this.scene.sound.stopByKey("footsteps");
         }
     }
 
@@ -259,6 +264,10 @@ export class Player extends Physics.Matter.Sprite {
                 this.hasDoubleJump = true;
             }
         }
+
+        this.scene.sound.play("jump", { volume: 0.1 });
+
+        this.scene.sound.stopByKey("footsteps");
 
         this.state = PlayerState.JUMPING;
 

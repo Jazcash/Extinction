@@ -45,6 +45,8 @@ export class GameScene extends Phaser.Scene {
     }
 
     async create() {
+        this.sound.pauseOnBlur = false;
+
         this.sound.stopAll();
 
         this.sound.play("game", { loop: true, volume: 0.1 });
@@ -250,19 +252,19 @@ export class GameScene extends Phaser.Scene {
         } else if ((this.keys.shift?.isDown || pad?.R2) && this.player.canClimb()) {
             this.player.climb();
         } else {
-            if (this.keys.left?.isDown) {
-                if (this.keys.down?.isDown) {
+            if (this.keys.left?.isDown || pad?.axes[0].getValue() < -0.5) {
+                if (this.keys.down?.isDown || pad?.axes[1].getValue() > 0.5) {
                     this.player.crouch(-config.crouchSpeed);
                 } else {
                     this.player.run(-config.speed);
                 }
-            } else if (this.keys.right?.isDown) {
-                if (this.keys.down?.isDown) {
+            } else if (this.keys.right?.isDown || pad?.axes[0].getValue() > 0.5) {
+                if (this.keys.down?.isDown || pad?.axes[1].getValue() > 0.5) {
                     this.player.crouch(config.crouchSpeed);
                 } else {
                     this.player.run(config.speed);
                 }
-            } else if (this.keys.down?.isDown || pad?.down || pad?.axes[1].getValue() === 1) {
+            } else if (this.keys.down?.isDown || pad?.down || pad?.axes[1].getValue() > 0.5) {
                 this.player.crouch();
             } else if (this.player.state !== PlayerState.JUMPING) {
                 this.player.run();

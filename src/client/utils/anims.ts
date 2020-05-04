@@ -2,7 +2,7 @@ import { GameObjects } from "phaser";
 import { Utils } from "./utils";
 
 export namespace Anims {
-    export function fadeOut(objects: any, duration = 400, easing = Phaser.Math.Easing.Linear.Linear) : Promise<void>{
+    export function fadeOut(objects: any, duration = 400, easing = Phaser.Math.Easing.Linear) : Promise<void>{
         const targets = Utils.asArray(objects);
         const scene: Phaser.Scene = targets[0].scene;
 
@@ -17,7 +17,7 @@ export namespace Anims {
         });
     }
 
-    export function fadeIn(objects: any, duration = 400, easing = Phaser.Math.Easing.Linear.Linear) : Promise<void>{
+    export function fadeIn(objects: any, duration = 400, easing = Phaser.Math.Easing.Linear) : Promise<void>{
         const targets = Utils.asArray(objects);
         const scene: Phaser.Scene = targets[0].scene;
 

@@ -57,7 +57,7 @@ export class Tooltip extends GameObjects.Container {
             scaleX: 0,
             scaleY: 0,
             duration: 100,
-            ease: Phaser.Math.Easing.Linear.Linear
+            ease: Phaser.Math.Easing.Linear
         });
     }
 }

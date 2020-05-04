@@ -18,6 +18,8 @@ const config = {
     harvesterRate: 3, // seconds
     immunityTime: 1.5,
     tutorialEnabled: true,
+    musicEnabled: localStorage.getItem("musicEnabled") === "true",
+    sfxEnabled: localStorage.getItem("sfxEnabled") === "true",
     deathMessages: [
         "It's the end of the world as we know it...",
         "At least it's not the end of the world... Oh wait",
@@ -25,10 +27,14 @@ const config = {
         "Leave it to Extinction Rebellion...",
         "Rip Earth..."
     ],
+    sounds: {
+        music: ["title", "game"],
+        sfx: ["birds", "bulldozer", "button", "drill1", "drill2", "drill3", "footsteps", "gameover", "jump", "sea", "wind"]
+    }
 };
 
 if (__DEV__){
-    config.startPos = { x: 15605 , y: -100 };
+    config.startPos = { x: 300 , y: -100 };
 }
 
 for (const [key, value] of Array.from(urlParams.entries())){

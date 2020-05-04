@@ -14,6 +14,7 @@ import { TestScene } from "./scenes/test";
 import { GameOverScene } from "./scenes/game-over";
 import { WinScene } from "./scenes/win";
 import { CreditsScene } from "./scenes/credits";
+import { Test2Scene } from "./scenes/test2";
 
 declare var window: any;
 declare var __DEV__: boolean;
@@ -57,7 +58,8 @@ const game = window.game = new Phaser.Game({
         new WinScene(),
         new CreditsScene(),
         __DEV__ ? new DebugScene() : {},
-        __DEV__ ? new TestScene() : {}
+        __DEV__ ? new TestScene() : {},
+        __DEV__ ? new Test2Scene() : {}
     ]
 });
 

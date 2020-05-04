@@ -1,4 +1,4 @@
-import { Input, Display, GameObjects, Game } from "phaser";
+import { Input, Display, GameObjects, Game, Sound } from "phaser";
 import { GameScene } from "./game";
 import { GaussianBlur1 } from "client/shaders/gaussian-blur-1-pipeline";
 import { UIScene } from "./ui";
@@ -93,12 +93,29 @@ export class PauseScene extends Phaser.Scene {
 
         const musicText = this.add.image(500, 400, "pause", "music_text").setOrigin(0);
         const musicToggle = new Toggle(this, 1200, musicText.y);
-        musicToggle.setEnabled(!this.sound.mute);
-        musicToggle.onToggled.add(() => this.sound.mute = !this.sound.mute);
+        musicToggle.setEnabled(config.musicEnabled);
+        musicToggle.onToggled.add(() => {
+            config.musicEnabled = !config.musicEnabled;
+            localStorage.setItem("musicEnabled", `${config.musicEnabled}`);
+            config.sounds.music.forEach(soundKey => {
+                this.sound.getAll(soundKey).forEach(sound => {
+                    (sound as Sound.WebAudioSound).setMute(!config.musicEnabled);
+                });
+            });
+        });
 
         const soundText = this.add.image(500, 500, "pause", "sound_effects_text").setOrigin(0);
         const soundToggle = new Toggle(this, 1200, soundText.y);
-        soundToggle.setEnabled(true);
+        soundToggle.setEnabled(config.sfxEnabled);
+        soundToggle.onToggled.add(() => {
+            config.sfxEnabled = !config.sfxEnabled;
+            localStorage.setItem("sfxEnabled", `${config.sfxEnabled}`);
+            config.sounds.sfx.forEach(soundKey => {
+                this.sound.getAll(soundKey).forEach(sound => {
+                    (sound as Sound.WebAudioSound).setMute(!config.sfxEnabled);
+                });
+            });
+        });
 
         const tutorialText = this.add.image(500, 600, "pause", "tutorial_enabled_text").setOrigin(0);
         const tutorialToggle = new Toggle(this, 1200, tutorialText.y);

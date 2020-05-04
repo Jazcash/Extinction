@@ -11,6 +11,10 @@ export class TestScene extends Phaser.Scene {
     }
 
     create() {
+        //this.sound.play("game", { loop: true, volume: 0.1 });
         
+        this.game.sound.play("game", { loop: true, volume: 0.1 });
+
+        this.time.delayedCall(4000, () => this.scene.start("test2"));
     }
 }
