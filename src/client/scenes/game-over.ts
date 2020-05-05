@@ -18,6 +18,9 @@ export class GameOverScene extends Phaser.Scene {
         this.scene.get("ui").scene.stop();
         this.scene.get("pause").scene.stop();
 
+        this.sound.stopByKey("game");
+        this.sound.play("gameover");
+
         const vid = this.add.video(0, 0, "game-over").setOrigin(0) as GameObjects.Video;
         vid.play();
         vid.on("complete", () => {

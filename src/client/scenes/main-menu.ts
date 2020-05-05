@@ -3,7 +3,6 @@ import { Button } from "client/ui/button";
 export class MainMenuScene extends Phaser.Scene {
     video: Phaser.GameObjects.Video;
     btnPlay: Button;
-    music: Phaser.Sound.BaseSound;
 
     constructor() {
         super({
@@ -14,8 +13,7 @@ export class MainMenuScene extends Phaser.Scene {
     create() {
         this.sound.stopAll();
 
-        this.music = this.sound.add("title", { loop: true, volume: 0.1 });
-        this.music.play();
+        this.sound.play("title-loop", { loop: true, volume: 0.1 });
 
         this.video = this.add.video(0, 0, "title").setOrigin(0) as Phaser.GameObjects.Video;
 
