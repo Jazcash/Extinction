@@ -28,7 +28,7 @@ const config = {
         "Rip Earth..."
     ],
     sounds: {
-        music: ["title", "game"],
+        music: ["title-loop", "game", "game-loop"],
         sfx: ["birds", "bulldozer", "button", "drill1", "drill2", "drill3", "footsteps", "gameover", "jump", "sea", "wind"]
     }
 };
