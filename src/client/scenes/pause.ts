@@ -29,13 +29,13 @@ enum Page {
 
 export class PauseScene extends Phaser.Scene {
     customPipeline: Phaser.Renderer.WebGL.WebGLPipeline;
-    selectedOption = 0;
+    selectedOption: number;
     selectedButton: Button;
-    buttons: Button[] = [];
-    controlsActive = false;
-    pages: Map<Page, GameObjects.Group> = new Map();
+    buttons: Button[];
+    controlsActive: boolean;
+    pages: Map<Page, GameObjects.Group>;
     mainElements: GameObjects.Group;
-    currentPage: Page = Page.NONE;
+    currentPage: Page;
     inputManager: InputManager;
 
     constructor() {
@@ -46,6 +46,12 @@ export class PauseScene extends Phaser.Scene {
     }
 
     create() {
+        this.currentPage = Page.NONE;
+        this.selectedOption = 0;
+        this.pages = new Map();
+        this.buttons = [];
+        this.controlsActive = false;
+
         const pauseOverlayRect = this.add.rectangle(0, 0, this.cameras.main.width, this.cameras.main.height, 0x00AD7F, 0.35);
         pauseOverlayRect.setOrigin(0, 0);
         pauseOverlayRect.setAlpha(0);
@@ -69,7 +75,11 @@ export class PauseScene extends Phaser.Scene {
         btnResume.action(() => this.toggle());
         btnControls.action(() => this.setPage(Page.CONTROLS));
         btnSettings.action(() => this.setPage(Page.SETTINGS));
-        btnMenu.action(() => this.scene.start("main-menu"));
+        btnMenu.action(() => {
+            this.scene.stop("ui");
+            this.scene.stop("game");
+            this.scene.start("main-menu");
+        });
 
         this.buttons = [ btnResume, btnControls, btnSettings, btnMenu ];
 

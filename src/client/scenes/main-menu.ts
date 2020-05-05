@@ -11,6 +11,8 @@ export class MainMenuScene extends Phaser.Scene {
     }
 
     create() {
+        this.cameras.main.setAlpha(1);
+
         this.sound.stopAll();
 
         this.sound.play("title-loop", { loop: true, volume: 0.1 });
