@@ -160,7 +160,7 @@ export class GameScene extends Phaser.Scene {
 
         this.add.image(10090, 0, "world", "misc/ice-cave-top").setOrigin(0);
 
-        const waves = this.add.sprite(7800, 870, "world", "waves/0").setDepth(-2).setScale(0.98).setScrollFactor(0.5);
+        const waves = this.add.sprite(7800, 900, "world", "waves/0").setDepth(-2).setScale(0.98).setScrollFactor(0.5);
         this.anims.create({
             key: "waves",
             frames: this.anims.generateFrameNames("world", { start: 0, end: 11, prefix: `waves/` }),
@@ -169,7 +169,7 @@ export class GameScene extends Phaser.Scene {
         });
         waves.play("waves");
 
-        const waves2 = this.add.sprite(7200, 950, "world", "waves/0").setDepth(-2.1).setScale(0.8).setScrollFactor(0.4);
+        const waves2 = this.add.sprite(6900, 750, "world", "waves/0").setDepth(-2.1).setScale(0.8).setScrollFactor(0.4);
         this.anims.create({
             key: "waves2",
             frames: this.anims.generateFrameNames("world", { start: 0, end: 11, prefix: `waves/` }),
@@ -179,7 +179,7 @@ export class GameScene extends Phaser.Scene {
         });
         waves2.play("waves2");
 
-        const waves3 = this.add.sprite(5000, 800, "world", "waves/0").setDepth(-2.2).setScale(0.5).setScrollFactor(0.25);
+        const waves3 = this.add.sprite(4700, 700, "world", "waves/0").setDepth(-2.2).setScale(0.5).setScrollFactor(0.25);
         this.anims.create({
             key: "waves3",
             frames: this.anims.generateFrameNames("world", { start: 0, end: 11, prefix: `waves/` }),

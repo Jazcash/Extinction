@@ -75,7 +75,7 @@ export class CharacterSelection extends Phaser.Scene {
 
         this.blobBacking.play("blob");
 
-        this.backArrow = new Button(this, 0, 0, "menu", "back-arrow").setVisible(false);
+        this.backArrow = new Button(this, 0, 0, "pause", "back").setVisible(false);
         this.playArrow = new Button(this, 0, 0, "menu", "play-arrow").setVisible(false);
         const skipBtn = new Button(this, 500, 500, "misc", "btn-skip");
 

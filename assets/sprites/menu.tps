@@ -181,21 +181,6 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">menu/back-arrow.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>39,28,77,56</rect>
-                <key>scale9Paddings</key>
-                <rect>39,28,77,56</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">menu/background.png</key>
             <key type="filename">menu/boy.png</key>
             <key type="filename">menu/foreground.png</key>
