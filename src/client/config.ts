@@ -34,7 +34,7 @@ const config = {
 };
 
 if (__DEV__){
-    config.startPos = { x: 16500 , y: -100 };
+    config.startPos = { x: 9312 , y: -100 };
 }
 
 for (const [key, value] of Array.from(urlParams.entries())){
